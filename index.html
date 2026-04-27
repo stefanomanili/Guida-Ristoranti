@@ -21,11 +21,6 @@ h1 em{font-style:italic;color:var(--gold);}
 .hc{margin-top:22px;display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(201,168,92,.35);padding:9px 18px;}
 .hc b{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold);}
 .hc small{font-size:9px;color:rgba(245,240,232,.4);letter-spacing:1px;text-transform:uppercase;line-height:1.4;}
-.mapbar{background:#111;border-bottom:2px solid var(--gold);}
-.mapbar a{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 40px;text-decoration:none;color:var(--cream);transition:background .2s;}
-.mapbar a:hover{background:#000;}
-.mapbar strong{display:block;font-size:13px;color:var(--gold);letter-spacing:.4px;}
-.mapbar span{font-size:10px;color:rgba(245,240,232,.45);}
 .ctrl{background:var(--warm);border-bottom:1px solid var(--lg);padding:12px 40px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.05);}
 .ci{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:7px;}
 .row{display:flex;flex-wrap:wrap;gap:7px;align-items:center;}
@@ -48,33 +43,36 @@ h1 em{font-style:italic;color:var(--gold);}
 /* CARD */
 .card{background:var(--warm);overflow:hidden;transition:transform .25s,box-shadow .25s;position:relative;}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,.1);}
-/* FAV BUTTON */
-.favbtn{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:white;border:1px solid var(--lg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .2s;z-index:5;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+/* ZONA BADGE */
+.zbadge{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--sage);background:rgba(122,140,114,.1);border:1px solid rgba(122,140,114,.3);padding:2px 8px;border-radius:2px;}
+
+.favbtn{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:white;border:1px solid var(–lg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .2s;z-index:5;box-shadow:0 1px 6px rgba(0,0,0,.08);}
 .favbtn:hover{transform:scale(1.15);}
-.favbtn.on{background:var(--fav);border-color:var(--fav);}
+.favbtn.on{background:var(–fav);border-color:var(–fav);}
 .cb{padding:16px 18px 14px;}
 .ctag{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;padding-right:40px;}
-.ccu{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500;}
-.cpr{font-size:10px;font-weight:600;color:var(--gold);background:rgba(201,168,92,.1);border:1px solid rgba(201,168,92,.25);padding:2px 8px;border-radius:2px;}
-.cn{font-family:'Playfair Display',serif;font-size:19px;line-height:1.2;margin-bottom:6px;padding-right:40px;}
+.ccu{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(–muted);font-weight:500;}
+.cpr{font-size:10px;font-weight:600;color:var(–gold);background:rgba(201,168,92,.1);border:1px solid rgba(201,168,92,.25);padding:2px 8px;border-radius:2px;}
+.cn{font-family:‘Playfair Display’,serif;font-size:19px;line-height:1.2;margin-bottom:6px;padding-right:40px;}
 .lks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:9px;}
-.lks a{font-size:10px;color:var(--muted);text-decoration:none;transition:opacity .2s;}
+.lks a{font-size:10px;color:var(–muted);text-decoration:none;transition:opacity .2s;}
 .lks a:hover{opacity:.65;}
-.lks a.ws{color:var(--gold);font-weight:500;border-bottom:1px solid rgba(201,168,92,.3);}
+.lks a.ws{color:var(–gold);font-weight:500;border-bottom:1px solid rgba(201,168,92,.3);}
 .sc{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:9px;}
 .sg{display:inline-flex;align-items:center;gap:3px;padding:3px 7px;border-radius:2px;font-size:9px;font-weight:600;}
-.sg.mi{background:#FFF0F0;border:1px solid #FFCDD2;color:var(--mr);}
-.sg.gr{background:#FFF8F0;border:1px solid #FFCC80;color:var(--gr);}
-.sg.es{background:#EEF2FF;border:1px solid #C5CAE9;color:var(--eb);}
+.sg.mi{background:#FFF0F0;border:1px solid #FFCDD2;color:var(–mr);}
+.sg.gr{background:#FFF8F0;border:1px solid #FFCC80;color:var(–gr);}
+.sg.es{background:#EEF2FF;border:1px solid #C5CAE9;color:var(–eb);}
 .sg.fd{opacity:.28;}
 .gn{font-size:7px;letter-spacing:.4px;text-transform:uppercase;opacity:.6;font-weight:400;}
-.cs{font-size:10.5px;color:var(--sage);font-style:italic;margin-bottom:9px;line-height:1.5;}
-.rvs{border-top:1px solid var(--lg);padding-top:8px;}
-.rv{font-size:10.5px;color:var(--muted);line-height:1.5;padding:3px 0;border-bottom:1px solid var(--lg);display:flex;gap:5px;}
+.cs{font-size:10.5px;color:var(–sage);font-style:italic;margin-bottom:9px;line-height:1.5;}
+.rvs{border-top:1px solid var(–lg);padding-top:8px;}
+.rv{font-size:10.5px;color:var(–muted);line-height:1.5;padding:3px 0;border-bottom:1px solid var(–lg);display:flex;gap:5px;}
 .rv:last-child{border-bottom:none;}
-.st{color:var(--gold);flex-shrink:0;font-size:8px;padding-top:2px;}
+.st{color:var(–gold);flex-shrink:0;font-size:8px;padding-top:2px;}
 @media(max-width:600px){header{padding:32px 18px 28px;}.ctrl{padding:10px 14px;}.gw{padding:18px 14px 60px;}.grid{grid-template-columns:1fr;}.mapbar a{padding:12px 18px;}}
 </style>
+
 </head>
 <body>
 
@@ -86,17 +84,6 @@ h1 em{font-style:italic;color:var(--gold);}
     <div class="hc"><b id="tot">67</b><small>Ristoranti<br>Selezionati</small></div>
   </div>
 </header>
-
-<div class="mapbar">
-  <a href="https://www.google.com/maps/search/ristoranti+Milano/@45.4654,9.1859,13z" target="_blank">
-    <span style="font-size:20px">🗺️</span>
-    <div>
-      <strong>Apri la mappa su Google Maps</strong>
-      <span>Tutti i ristoranti della guida · Milano</span>
-    </div>
-    <span style="color:var(--gold);font-size:16px;margin-left:8px">→</span>
-  </a>
-</div>
 
 <div class="ctrl">
   <div class="ci">
@@ -135,6 +122,12 @@ h1 em{font-style:italic;color:var(--gold);}
       </div>
       <div class="dv"></div>
       <button class="fb favf" id="favf">❤️ Preferiti <span id="favc" style="display:none;font-weight:700"></span></button>
+    </div>
+    <div class="row">
+      <span class="fl">Zona</span>
+      <div class="fg" id="zg">
+        <button class="fb on" data-z="all">Tutte</button>
+      </div>
     </div>
   </div>
 </div>
@@ -230,10 +223,15 @@ function updateFavBtn(){
 }
 
 // STATE
-const S = {c:'all', p:'all', g:'all', q:'', fav:false};
+const S = {c:'all', p:'all', g:'all', q:'', fav:false, z:'all'};
+// Estrae la zona dall'indirizzo (seconda parte dopo la virgola)
+function zona(a){ return a.split(',')[1]?.trim() || ''; }
+
+// Tutte le zone uniche ordinate
+const ZONE = [...new Set(R.map(r=>zona(r.a)))].sort();
+
 const maps = a => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a+', Milano')}`;
 
-function miBadge(r){
   if(r.mi.s>=1) return`<span class="sg mi">${'⭐'.repeat(r.mi.s)} ${r.mi.s===1?'Una Stella':r.mi.s+' Stelle'} <span class="gn">Michelin</span></span>`;
   if(r.mi.b) return`<span class="sg mi">😊 Bib Gourmand <span class="gn">Michelin</span></span>`;
   if(r.mi.green) return`<span class="sg mi" style="background:#f0fff4;border-color:#a8d5b5;color:#276749">🌿 Green Star <span class="gn">Michelin</span></span>`;
@@ -249,7 +247,8 @@ function card(r){
       <div class="ctag"><span class="ccu">${r.cu.toUpperCase()}</span><span class="cpr">${r.pr}</span></div>
       <h2 class="cn">${r.n}</h2>
       <div class="lks">
-        <a href="${maps(r.a)}" target="_blank">📍 ${r.a}</a>
+        <a href="${maps(r.a)}" target="_blank">📍 ${r.a.split(',')[0]}</a>
+        <span class="zbadge">📌 ${zona(r.a)}</span>
         <a href="${r.ws}" target="_blank" class="ws">🌐 Sito web</a>
       </div>
       <div class="sc">
@@ -270,6 +269,7 @@ function render(){
     if(S.g==='michelin' && !r.mi.s && !r.mi.b && !r.mi.green) return false;
     if(S.g==='gambero' && r.gr.f<2) return false;
     if(S.g==='espresso' && r.es.v<15) return false;
+    if(S.z!=='all' && zona(r.a)!==S.z) return false;
     if(S.fav && !favs.has(r.n)) return false;
     if(S.q){ const q=S.q.toLowerCase(); if(![r.n,r.cu,r.a,r.st].some(s=>s.toLowerCase().includes(q))) return false; }
     return true;
@@ -304,6 +304,19 @@ document.getElementById('favf').addEventListener('click', function(){
   render();
 });
 document.getElementById('srch').addEventListener('input', e=>{ S.q=e.target.value; render(); });
+
+// Popola filtro zone
+const zg = document.getElementById('zg');
+ZONE.forEach(z=>{
+  const b = document.createElement('button');
+  b.className='fb'; b.dataset.z=z; b.textContent=z;
+  zg.appendChild(b);
+});
+document.getElementById('zg').addEventListener('click', e=>{
+  const b=e.target.closest('.fb'); if(!b) return;
+  document.querySelectorAll('#zg .fb').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); S.z=b.dataset.z; render();
+});
 
 updateFavBtn();
 render();
