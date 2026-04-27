@@ -10,105 +10,71 @@
 :root{--cream:#F5F0E8;--charcoal:#1A1A1A;--gold:#C9A85C;--sage:#7A8C72;--warm:#FDFAF4;--lg:#E8E4DC;--muted:#6B6560;--mr:#E4002B;--gr:#8B1A1A;--eb:#1B3A6B;--fav:#E8445A;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--charcoal);}
-
-/* HEADER */
-header{background:var(–charcoal);color:var(–cream);padding:52px 40px 40px;position:relative;overflow:hidden;}
-header::before{content:’’;position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:2px solid rgba(201,168,92,.18);}
-header::after{content:’’;position:absolute;bottom:-70px;left:-70px;width:240px;height:240px;border-radius:50%;border:2px solid rgba(201,168,92,.12);}
+header{background:var(--charcoal);color:var(--cream);padding:52px 40px 40px;position:relative;overflow:hidden;}
+header::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:2px solid rgba(201,168,92,.18);}
+header::after{content:'';position:absolute;bottom:-70px;left:-70px;width:240px;height:240px;border-radius:50%;border:2px solid rgba(201,168,92,.12);}
 .hi{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
-.ht{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(–gold);margin-bottom:12px;font-weight:500;}
-h1{font-family:‘Playfair Display’,serif;font-size:clamp(38px,6vw,72px);line-height:1.05;letter-spacing:-1px;}
-h1 em{font-style:italic;color:var(–gold);}
+.ht{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:500;}
+h1{font-family:'Playfair Display',serif;font-size:clamp(38px,6vw,72px);line-height:1.05;letter-spacing:-1px;}
+h1 em{font-style:italic;color:var(--gold);}
 .hs{margin-top:16px;font-size:13px;color:rgba(245,240,232,.55);max-width:460px;line-height:1.6;}
 .hc{margin-top:22px;display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(201,168,92,.35);padding:9px 18px;}
-.hc b{font-family:‘Playfair Display’,serif;font-size:26px;color:var(–gold);}
+.hc b{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold);}
 .hc small{font-size:9px;color:rgba(245,240,232,.4);letter-spacing:1px;text-transform:uppercase;line-height:1.4;}
-
-/* MAP BAR */
-.mapbar{background:#111;border-bottom:2px solid var(–gold);}
-.mapbar a{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 40px;text-decoration:none;color:var(–cream);transition:background .2s;}
+.mapbar{background:#111;border-bottom:2px solid var(--gold);}
+.mapbar a{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 40px;text-decoration:none;color:var(--cream);transition:background .2s;}
 .mapbar a:hover{background:#000;}
-.mapbar strong{display:block;font-size:13px;color:var(–gold);letter-spacing:.4px;}
+.mapbar strong{display:block;font-size:13px;color:var(--gold);letter-spacing:.4px;}
 .mapbar span{font-size:10px;color:rgba(245,240,232,.45);}
-
-/* SORT BAR */
-.sortbar{background:var(–charcoal);padding:10px 40px;border-bottom:1px solid rgba(201,168,92,.2);}
-.sorti{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-.sort-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,.45);font-weight:500;white-space:nowrap;}
-.sort-sep{width:1px;height:14px;background:rgba(255,255,255,.1);}
-.sbtn{padding:5px 13px;border:1px solid rgba(201,168,92,.3);border-radius:2px;background:transparent;font-family:‘DM Sans’,sans-serif;font-size:10px;cursor:pointer;transition:all .2s;color:rgba(245,240,232,.6);white-space:nowrap;letter-spacing:.3px;}
-.sbtn:hover{border-color:var(–gold);color:var(–gold);}
-.sbtn.on{background:var(–gold);border-color:var(–gold);color:var(–charcoal);font-weight:600;}
-.sbtn.fav-sort.on{background:var(–fav);border-color:var(–fav);color:white;}
-
-/* CONTROLS */
-.ctrl{background:var(–warm);border-bottom:1px solid var(–lg);padding:12px 40px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.05);}
+.ctrl{background:var(--warm);border-bottom:1px solid var(--lg);padding:12px 40px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.05);}
 .ci{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:7px;}
 .row{display:flex;flex-wrap:wrap;gap:7px;align-items:center;}
 .sw{flex:1;min-width:170px;position:relative;}
-.sw input{width:100%;padding:7px 11px 7px 34px;border:1px solid var(–lg);border-radius:2px;font-family:‘DM Sans’,sans-serif;font-size:12px;background:white;outline:none;transition:border-color .2s;}
-.sw input:focus{border-color:var(–gold);}
-.si{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(–muted);font-size:12px;}
-.fl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(–muted);font-weight:500;white-space:nowrap;}
+.sw input{width:100%;padding:7px 11px 7px 34px;border:1px solid var(--lg);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:12px;background:white;outline:none;transition:border-color .2s;}
+.sw input:focus{border-color:var(--gold);}
+.si{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:12px;}
+.fl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500;white-space:nowrap;}
 .fg{display:flex;flex-wrap:wrap;gap:4px;}
-.fb{padding:5px 11px;border:1px solid var(–lg);border-radius:2px;background:white;font-family:‘DM Sans’,sans-serif;font-size:10px;cursor:pointer;transition:all .2s;color:var(–muted);white-space:nowrap;}
-.fb:hover,.fb.on{background:var(–charcoal);border-color:var(–charcoal);color:var(–cream);}
-.pb.on{background:var(–gold);border-color:var(–gold);color:var(–charcoal);font-weight:700;}
-.fb.fav-filter.on{background:var(–fav);border-color:var(–fav);color:white;}
-.dv{width:1px;height:16px;background:var(–lg);flex-shrink:0;}
-.rc{font-size:11px;color:var(–muted);margin-left:auto;white-space:nowrap;}
-
-/* GRID */
+.fb{padding:5px 11px;border:1px solid var(--lg);border-radius:2px;background:white;font-family:'DM Sans',sans-serif;font-size:10px;cursor:pointer;transition:all .2s;color:var(--muted);white-space:nowrap;}
+.fb:hover,.fb.on{background:var(--charcoal);border-color:var(--charcoal);color:var(--cream);}
+.pb.on{background:var(--gold);border-color:var(--gold);color:var(--charcoal);font-weight:700;}
+.fb.favf.on{background:var(--fav);border-color:var(--fav);color:white;}
+.dv{width:1px;height:16px;background:var(--lg);flex-shrink:0;}
+.rc{font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap;}
 .gw{max-width:1200px;margin:0 auto;padding:24px 40px 80px;}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2px;}
 .nr{text-align:center;padding:80px 20px;grid-column:1/-1;display:none;}
-.nr h3{font-family:‘Playfair Display’,serif;font-size:24px;margin-bottom:8px;}
-
+.nr h3{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:8px;}
 /* CARD */
-.card{background:var(–warm);overflow:hidden;transition:transform .25s,box-shadow .25s;position:relative;}
+.card{background:var(--warm);overflow:hidden;transition:transform .25s,box-shadow .25s;position:relative;}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,.1);}
-.cb{padding:16px 18px 14px;}
-
 /* FAV BUTTON */
-.fav-btn{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:white;border:1px solid var(–lg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:all .2s;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.08);}
-.fav-btn:hover{transform:scale(1.15);}
-.fav-btn.active{background:var(–fav);border-color:var(–fav);}
-
-.ctag{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;padding-right:42px;}
-.ccu{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(–muted);font-weight:500;}
-.cpr{font-size:10px;font-weight:600;color:var(–gold);background:rgba(201,168,92,.1);border:1px solid rgba(201,168,92,.25);padding:2px 8px;border-radius:2px;}
-.cn{font-family:‘Playfair Display’,serif;font-size:19px;line-height:1.2;margin-bottom:6px;padding-right:42px;}
+.favbtn{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:white;border:1px solid var(--lg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .2s;z-index:5;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+.favbtn:hover{transform:scale(1.15);}
+.favbtn.on{background:var(--fav);border-color:var(--fav);}
+.cb{padding:16px 18px 14px;}
+.ctag{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;padding-right:40px;}
+.ccu{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500;}
+.cpr{font-size:10px;font-weight:600;color:var(--gold);background:rgba(201,168,92,.1);border:1px solid rgba(201,168,92,.25);padding:2px 8px;border-radius:2px;}
+.cn{font-family:'Playfair Display',serif;font-size:19px;line-height:1.2;margin-bottom:6px;padding-right:40px;}
 .lks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:9px;}
-.lks a{font-size:10px;color:var(–muted);text-decoration:none;transition:opacity .2s;}
+.lks a{font-size:10px;color:var(--muted);text-decoration:none;transition:opacity .2s;}
 .lks a:hover{opacity:.65;}
-.lks a.ws{color:var(–gold);font-weight:500;border-bottom:1px solid rgba(201,168,92,.3);}
+.lks a.ws{color:var(--gold);font-weight:500;border-bottom:1px solid rgba(201,168,92,.3);}
 .sc{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:9px;}
 .sg{display:inline-flex;align-items:center;gap:3px;padding:3px 7px;border-radius:2px;font-size:9px;font-weight:600;}
-.sg.mi{background:#FFF0F0;border:1px solid #FFCDD2;color:var(–mr);}
-.sg.gr{background:#FFF8F0;border:1px solid #FFCC80;color:var(–gr);}
-.sg.es{background:#EEF2FF;border:1px solid #C5CAE9;color:var(–eb);}
+.sg.mi{background:#FFF0F0;border:1px solid #FFCDD2;color:var(--mr);}
+.sg.gr{background:#FFF8F0;border:1px solid #FFCC80;color:var(--gr);}
+.sg.es{background:#EEF2FF;border:1px solid #C5CAE9;color:var(--eb);}
 .sg.fd{opacity:.28;}
 .gn{font-size:7px;letter-spacing:.4px;text-transform:uppercase;opacity:.6;font-weight:400;}
-.cs{font-size:10.5px;color:var(–sage);font-style:italic;margin-bottom:9px;line-height:1.5;}
-.rvs{border-top:1px solid var(–lg);padding-top:8px;}
-.rv{font-size:10.5px;color:var(–muted);line-height:1.5;padding:3px 0;border-bottom:1px solid var(–lg);display:flex;gap:5px;}
+.cs{font-size:10.5px;color:var(--sage);font-style:italic;margin-bottom:9px;line-height:1.5;}
+.rvs{border-top:1px solid var(--lg);padding-top:8px;}
+.rv{font-size:10.5px;color:var(--muted);line-height:1.5;padding:3px 0;border-bottom:1px solid var(--lg);display:flex;gap:5px;}
 .rv:last-child{border-bottom:none;}
-.st{color:var(–gold);flex-shrink:0;font-size:8px;padding-top:2px;}
-
-/* FAV COUNTER */
-.fav-count{display:none;font-size:10px;color:var(–fav);font-weight:600;margin-left:4px;}
-.fav-count.show{display:inline;}
-
-@media(max-width:600px){
-header{padding:32px 18px 28px;}
-.sortbar{padding:10px 14px;}
-.ctrl{padding:10px 14px;}
-.gw{padding:18px 14px 60px;}
-.grid{grid-template-columns:1fr;}
-.mapbar a{padding:12px 18px;}
-}
+.st{color:var(--gold);flex-shrink:0;font-size:8px;padding-top:2px;}
+@media(max-width:600px){header{padding:32px 18px 28px;}.ctrl{padding:10px 14px;}.gw{padding:18px 14px 60px;}.grid{grid-template-columns:1fr;}.mapbar a{padding:12px 18px;}}
 </style>
-
 </head>
 <body>
 
@@ -131,23 +97,6 @@ header{padding:32px 18px 28px;}
     <span style="color:var(--gold);font-size:16px;margin-left:8px">→</span>
   </a>
 </div>
-
-<!-- SORT BAR -->
-
-<div class="sortbar">
-  <div class="sorti">
-    <span class="sort-label">Ordina per</span>
-    <div class="fg" id="sg">
-      <button class="sbtn on" data-s="default">Predefinito</button>
-      <button class="sbtn" data-s="cuisine">Tipo cucina A→Z</button>
-      <button class="sbtn" data-s="price-asc">Prezzo ↑</button>
-      <button class="sbtn" data-s="price-desc">Prezzo ↓</button>
-      <button class="sbtn fav-sort" data-s="fav">❤️ Preferiti prima</button>
-    </div>
-  </div>
-</div>
-
-<!-- FILTER BAR -->
 
 <div class="ctrl">
   <div class="ci">
@@ -185,7 +134,7 @@ header{padding:32px 18px 28px;}
         <button class="fb" data-g="espresso">☕ Espresso</button>
       </div>
       <div class="dv"></div>
-      <button class="fb fav-filter" id="favFilter">❤️ Preferiti <span class="fav-count" id="favCount">0</span></button>
+      <button class="fb favf" id="favf">❤️ Preferiti <span id="favc" style="display:none;font-weight:700"></span></button>
     </div>
   </div>
 </div>
@@ -206,7 +155,7 @@ const R=[
 {n:"Dry Milano",a:"Via Solferino 33, Brera",pl:2,pr:"€€·~40€",cu:"Pizza Gourmet",tg:"pizza",ws:"https://drymilano.it",st:"Pioniere della pizza gourmet a Milano. Impasto ricercato, ingredienti selezionati e cocktail list eccellente. Bib Gourmand.",mi:{s:0,b:1},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["La pizza qui è un'altra cosa rispetto alla media milanese.","La cocktail list è tra le migliori di Milano.","Un'istituzione che ha cambiato la cultura gastronomica milanese."]},
 {n:"Pacifico",a:"Via della Moscova 29, Moscova",pl:3,pr:"€€€·~65€",cu:"Peruviana Nikkei",tg:"internazionale",ws:"https://gruppopacifico.it",st:"Il Perù incontra il Giappone. Design coloniale latinoamericano e cucina Nikkei di altissimo livello.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:15,l:"15/20"},rv:["Il ceviche è perfetto: acidità, freschezza, pesce di qualità.","Tiradito e causas: piatti che non trovate altrove a Milano.","Il Pisco Sour qui è quello autentico."]},
 {n:"Gong",a:"Corso Concordia 8, Porta Venezia",pl:3,pr:"€€€·~70€",cu:"Cinese Contemporanea",tg:"asiatica",ws:"https://gongmilano.it",st:"La cucina cinese di lusso a Milano. Design orientale di gran classe, ambiente glamour.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Il Peking Duck è tra i migliori fuori dalla Cina.","Ambiente di grande fascino, perfetto per ospiti importanti.","Dim sum di qualità superiore rispetto alla media milanese."]},
-{n:"Miyama",a:"Via Bazzini 37, Città Studi",pl:3,pr:"€€€·~70€",cu:"Giapponese",tg:"giapponese",ws:"https://miyamamilan.com",st:"Cucina kaiseki tradizionale in uno spazio raccolto e sereno. Precisione e filosofia giapponese classica. Una stella Michelin.",mi:{s:1,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:17,l:"17/20"},rv:["Il miglior giapponese tradizionale di Milano senza dubbio.","Sashimi servito con rispetto. Il tonno è straordinario.","Si percepisce subito il rispetto per la tradizione."]},
+{n:"Miyama",a:"Via Bazzini 37, Città Studi",pl:3,pr:"€€€·~70€",cu:"Giapponese",tg:"giapponese",ws:"https://miyamamilan.com",st:"Cucina kaiseki tradizionale in uno spazio raccolto e sereno. Una stella Michelin.",mi:{s:1,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:17,l:"17/20"},rv:["Il miglior giapponese tradizionale di Milano senza dubbio.","Sashimi servito con rispetto. Il tonno è straordinario.","Si percepisce subito il rispetto per la tradizione."]},
 {n:"Roppongi",a:"Via Canova 33, Sarpi",pl:3,pr:"€€€·~70€",cu:"Sushi Omakase",tg:"giapponese",ws:"https://ristoranteroppongi.it",st:"Omakase e sushi di qualità. Il pesce arriva direttamente dal Giappone. Una stella Michelin.",mi:{s:1,b:0},gr:{f:2,l:"Due Forchette"},es:{v:16,l:"16/20"},rv:["L'omakase è un'esperienza da vivere almeno una volta.","Toro, uni e salmone selvatico di qualità che non si trova altrove.","Uno dei migliori sushi bar d'Italia."]},
 {n:"Starita",a:"Via Procaccini 20, Sarpi",pl:1,pr:"€·~25€",cu:"Pizza Napoletana",tg:"pizza",ws:"https://staritanapoli.it",st:"La leggendaria pizzeria napoletana di Materdei arriva a Milano. Lievito madre e forno a legna.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:13,l:"13/20"},rv:["La pizza napoletana più autentica di Milano.","Friggitoria straordinaria: montanarine, cuoppo, crocchette.","Prezzi paragonabili a Napoli, qualità idem."]},
 {n:"Bela Tusa",a:"Via Procaccini 37, Sarpi",pl:2,pr:"€€·~35€",cu:"Piemontese",tg:"italiana",ws:"https://belatusa.it",st:"Trattoria piemontese autentica. Tajarin, vitello tonnato e formaggi delle valli. Bib Gourmand.",mi:{s:0,b:1},gr:{f:2,l:"Due Forchette"},es:{v:13,l:"13/20"},rv:["I tajarin al ragù d'anatra sono uno dei piatti più buoni di Milano.","Il vitello tonnato qui è quello vero: carne tenera, salsa cremosa.","Prezzi contenuti per un'esperienza genuina."]},
@@ -225,7 +174,7 @@ const R=[
 {n:"Razdora",a:"Via Molino delle Armi 48, Duomo",pl:3,pr:"€€€·~65€",cu:"Emiliana",tg:"italiana",ws:"https://razdora.it",st:"La cucina emiliana nella sua forma più raffinata. Tortellini in brodo, tagliatelle al ragù, culatello.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:15,l:"15/20"},rv:["Il tortellino in brodo originale: piccolo, saporito, brodo profondo.","Le tagliatelle al ragù bolognese sono il piatto cult.","Il culatello è fuori categoria."]},
 {n:"Fioraio Bianchi",a:"Via Montebello 7, Moscova",pl:3,pr:"€€€·~60€",cu:"Italiana Contemporanea",tg:"italiana",ws:"https://fioraio-bianchi.com",st:"Il ristorante dentro la storica fioreria di Brera. Atmosfera unica tra fiori freschi e luci calde.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Tra i fiori e le luci soffuse si crea vera magia.","Per occasioni speciali è il posto perfetto a Milano.","La carta dei vini è curata con intelligenza."]},
 {n:"Orizzonti",a:"Viale Monte Nero 56, Porta Romana",pl:3,pr:"€€€·~60€",cu:"Italiana Contemporanea",tg:"italiana",ws:"https://ristoranteorizzonti.it",st:"Cucina italiana contemporanea con forte attenzione agli ingredienti di stagione e tradizioni regionali.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Cucina pulita e precisa, ingredienti di stagione con rispetto.","Carta dei vini sorprendente: etichette ricercate a prezzi onesti.","I primi piatti sono il punto di forza: pasta fatta in casa."]},
-{n:"Da Berti",a:"Via Solari 32, Tortona",pl:2,pr:"€€·~38€",cu:"Italiana Tradizionale",tg:"italiana",ws:"https://trattoriadaberti.it",st:"Trattoria milanese classica, vino sfuso, cucina senza mode. Pura autenticità nel quartiere Tortona.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["Un'ancora di tradizione nel quartiere Tortona.","Semplicità e qualità in ogni piatto. La pasta al forno è memorabile.","L'animella impanata è un capolavoro di cucina di recupero."]},
+{n:"Da Berti",a:"Via Solari 32, Tortona",pl:2,pr:"€€·~38€",cu:"Italiana Tradizionale",tg:"italiana",ws:"https://trattoriadaberti.it",st:"Trattoria milanese classica, vino sfuso, cucina senza mode. Pura autenticità nel quartiere Tortona.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["Un'ancora di tradizione nel quartiere Tortona.","Semplicità e qualità in ogni piatto.","L'animella impanata è un capolavoro di cucina di recupero."]},
 {n:"Manna",a:"Via L. Cusani 1, Brera",pl:3,pr:"€€€·~55€",cu:"Italiana Creativa",tg:"italiana",ws:"https://ristorantemanna.it",st:"Cucina italiana contemporanea creativa. Ingredienti di stagione e tecniche moderne in atmosfera elegante.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Menu stagionale: ogni visita è una nuova esperienza.","La pasta fresca fatta in casa con farine di qualità eccelsa.","Servizio giovane e preparato, racconta ogni piatto con passione."]},
 {n:"Ba",a:"Via Bagnera 2, Duomo",pl:3,pr:"€€€·~60€",cu:"Asiatica Fusion",tg:"asiatica",ws:"https://baresto.it",st:"Viaggio gastronomico attraverso le cucine dell'Asia in uno dei vicoli più antichi di Milano.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Dim sum di livello autentico: delicati e saporosi. Rarità a Milano.","Atmosfera unica in una delle strade più antiche della città.","Cucina fusion che non tradisce le origini asiatiche."]},
 {n:"Cavoli a Merenda",a:"Via Melzo 10, Porta Venezia",pl:2,pr:"€€·~40€",cu:"Vegetariana",tg:"italiana",ws:"https://cavoliam.it",st:"Cucina vegetariana creativa che dimostra come si possa mangiare benissimo senza carne.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Finalmente un vegetariano che non sembra un sacrificio.","Anche i carnivori escono soddisfatti. Le verdure sono protagoniste.","Ottimo rapporto qualità/prezzo per il quartiere."]},
@@ -262,29 +211,26 @@ const R=[
 {n:"Coke Tales",a:"Via B. Marcello 34, Porta Venezia",pl:2,pr:"€€·~35€",cu:"Cocktail Bar",tg:"internazionale",ws:"https://coketales.it",st:"Cocktail bar con cucina fusion. Il cocktail è al centro, la cucina lo accompagna con creatività.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["Cocktail di livello altissimo. Il bartender crea abbinamenti originali.","La cucina è sorprendentemente buona per un cocktail bar.","Uno dei migliori indirizzi di Porta Venezia per iniziare la serata."]}
 ];
 
-// — FAVOURITES (localStorage) —
-const FAV_KEY = 'milanofav';
-function loadFavs(){ try{ return new Set(JSON.parse(localStorage.getItem(FAV_KEY)||'[]')); }catch(e){ return new Set(); } }
-function saveFavs(s){ localStorage.setItem(FAV_KEY, JSON.stringify([...s])); }
-let favs = loadFavs();
+// FAVOURITES
+let favs = new Set(JSON.parse(localStorage.getItem('mifav')||'[]'));
+const saveFavs = () => localStorage.setItem('mifav', JSON.stringify([...favs]));
 
 function toggleFav(name){
-  if(favs.has(name)) favs.delete(name); else favs.add(name);
-  saveFavs(favs);
-  updateFavCount();
+  favs.has(name) ? favs.delete(name) : favs.add(name);
+  saveFavs();
+  updateFavBtn();
   render();
 }
 
-function updateFavCount(){
-  const c = favs.size;
-  const el = document.getElementById('favCount');
-  el.textContent = c;
-  el.classList.toggle('show', c > 0);
+function updateFavBtn(){
+  const n = favs.size;
+  const el = document.getElementById('favc');
+  el.textContent = n > 0 ? `(${n})` : '';
+  el.style.display = n > 0 ? 'inline' : 'none';
 }
 
-// — STATE —
-const S = {c:'all', p:'all', g:'all', q:'', onlyFav:false, sort:'default'};
-
+// STATE
+const S = {c:'all', p:'all', g:'all', q:'', fav:false};
 const maps = a => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a+', Milano')}`;
 
 function miBadge(r){
@@ -296,10 +242,9 @@ function miBadge(r){
 
 function card(r){
   const isFav = favs.has(r.n);
+  const safeName = r.n.replace(/'/g,"\\'");
   return`<div class="card">
-    <button class="fav-btn${isFav?' active':''}" onclick="toggleFav('${r.n.replace(/'/g,"\\'")}')">
-      ${isFav ? '❤️' : '🤍'}
-    </button>
+    <button class="favbtn${isFav?' on':''}" onclick="toggleFav('${safeName}')" title="${isFav?'Rimuovi dai preferiti':'Aggiungi ai preferiti'}">${isFav?'❤️':'🤍'}</button>
     <div class="cb">
       <div class="ctag"><span class="ccu">${r.cu.toUpperCase()}</span><span class="cpr">${r.pr}</span></div>
       <h2 class="cn">${r.n}</h2>
@@ -318,36 +263,26 @@ function card(r){
   </div>`;
 }
 
-function sortData(d){
-  const s = [...d];
-  if(S.sort==='cuisine') s.sort((a,b)=>a.cu.localeCompare(b.cu));
-  else if(S.sort==='price-asc') s.sort((a,b)=>a.pl-b.pl);
-  else if(S.sort==='price-desc') s.sort((a,b)=>b.pl-a.pl);
-  else if(S.sort==='fav') s.sort((a,b)=>(favs.has(b.n)?1:0)-(favs.has(a.n)?1:0));
-  return s;
-}
-
 function render(){
-  let d = R.filter(r=>{
+  const d = R.filter(r=>{
     if(S.c!=='all' && r.tg!==S.c) return false;
     if(S.p!=='all' && r.pl!==+S.p) return false;
     if(S.g==='michelin' && !r.mi.s && !r.mi.b && !r.mi.green) return false;
     if(S.g==='gambero' && r.gr.f<2) return false;
     if(S.g==='espresso' && r.es.v<15) return false;
-    if(S.onlyFav && !favs.has(r.n)) return false;
+    if(S.fav && !favs.has(r.n)) return false;
     if(S.q){ const q=S.q.toLowerCase(); if(![r.n,r.cu,r.a,r.st].some(s=>s.toLowerCase().includes(q))) return false; }
     return true;
   });
-  d = sortData(d);
   document.getElementById('tot').textContent = d.length;
-  document.getElementById('rc').textContent = d.length + ' risultati';
+  document.getElementById('rc').textContent = d.length+' risultati';
   const g = document.getElementById('grid');
   [...g.querySelectorAll('.card')].forEach(c=>c.remove());
   document.getElementById('nr').style.display = d.length ? 'none' : 'block';
   d.forEach(r => g.insertAdjacentHTML('beforeend', card(r)));
 }
 
-// — EVENTS —
+// EVENTS
 document.getElementById('cg').addEventListener('click', e=>{
   const b=e.target.closest('.fb'); if(!b) return;
   document.querySelectorAll('#cg .fb').forEach(x=>x.classList.remove('on'));
@@ -363,19 +298,14 @@ document.getElementById('gg').addEventListener('click', e=>{
   document.querySelectorAll('#gg .fb').forEach(x=>x.classList.remove('on'));
   b.classList.add('on'); S.g=b.dataset.g; render();
 });
-document.getElementById('favFilter').addEventListener('click', function(){
-  S.onlyFav = !S.onlyFav;
-  this.classList.toggle('on', S.onlyFav);
+document.getElementById('favf').addEventListener('click', function(){
+  S.fav = !S.fav;
+  this.classList.toggle('on', S.fav);
   render();
-});
-document.getElementById('sg').addEventListener('click', e=>{
-  const b=e.target.closest('.sbtn'); if(!b) return;
-  document.querySelectorAll('#sg .sbtn').forEach(x=>x.classList.remove('on'));
-  b.classList.add('on'); S.sort=b.dataset.s; render();
 });
 document.getElementById('srch').addEventListener('input', e=>{ S.q=e.target.value; render(); });
 
-updateFavCount();
+updateFavBtn();
 render();
 </script>
 
