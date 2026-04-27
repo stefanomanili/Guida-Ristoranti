@@ -54,6 +54,7 @@ h1 em{font-style:italic;color:var(--gold);}
 .lks a{font-size:10px;color:var(--muted);text-decoration:none;transition:opacity .2s;}
 .lks a:hover{opacity:.65;}
 .lks a.ws{color:var(--gold);font-weight:500;border-bottom:1px solid rgba(201,168,92,.3);}
+.lks a.ta{color:#00aa6c;font-weight:500;border-bottom:1px solid rgba(0,170,108,.3);}
 .sc{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:9px;}
 .sg{display:inline-flex;align-items:center;gap:3px;padding:3px 7px;border-radius:2px;font-size:9px;font-weight:600;}
 .sg.mi{background:#FFF0F0;border:1px solid #FFCDD2;color:var(--mr);}
@@ -235,6 +236,7 @@ function card(r){
     + '<div class="lks">'
     + '<a href="' + maps(r.a) + '" target="_blank">📍 ' + r.a + '</a>'
     + '<a href="' + r.ws + '" target="_blank" class="ws">🌐 Sito web</a>'
+    + '<a href="https://www.tripadvisor.it/Search?q=' + encodeURIComponent(r.n + ' Milano') + '" target="_blank" class="ta">🍽️ TripAdvisor</a>'
     + '</div>'
     + '<div class="sc">' + miBadge(r)
     + '<span class="sg gr">' + '🍴'.repeat(r.gr.f) + ' ' + r.gr.l + ' <span class="gn">Gambero Rosso</span></span>'
