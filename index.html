@@ -48,36 +48,33 @@ h1 em{font-style:italic;color:var(--gold);}
 /* CARD */
 .card{background:var(--warm);overflow:hidden;transition:transform .25s,box-shadow .25s;position:relative;}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,.1);}
-/* ZONA BADGE */
-.zbadge{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--sage);background:rgba(122,140,114,.1);border:1px solid rgba(122,140,114,.3);padding:2px 8px;border-radius:2px;}
-
-.favbtn{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:white;border:1px solid var(–lg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .2s;z-index:5;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+/* FAV BUTTON */
+.favbtn{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:white;border:1px solid var(--lg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .2s;z-index:5;box-shadow:0 1px 6px rgba(0,0,0,.08);}
 .favbtn:hover{transform:scale(1.15);}
-.favbtn.on{background:var(–fav);border-color:var(–fav);}
+.favbtn.on{background:var(--fav);border-color:var(--fav);}
 .cb{padding:16px 18px 14px;}
 .ctag{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;padding-right:40px;}
-.ccu{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(–muted);font-weight:500;}
-.cpr{font-size:10px;font-weight:600;color:var(–gold);background:rgba(201,168,92,.1);border:1px solid rgba(201,168,92,.25);padding:2px 8px;border-radius:2px;}
-.cn{font-family:‘Playfair Display’,serif;font-size:19px;line-height:1.2;margin-bottom:6px;padding-right:40px;}
+.ccu{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500;}
+.cpr{font-size:10px;font-weight:600;color:var(--gold);background:rgba(201,168,92,.1);border:1px solid rgba(201,168,92,.25);padding:2px 8px;border-radius:2px;}
+.cn{font-family:'Playfair Display',serif;font-size:19px;line-height:1.2;margin-bottom:6px;padding-right:40px;}
 .lks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:9px;}
-.lks a{font-size:10px;color:var(–muted);text-decoration:none;transition:opacity .2s;}
+.lks a{font-size:10px;color:var(--muted);text-decoration:none;transition:opacity .2s;}
 .lks a:hover{opacity:.65;}
-.lks a.ws{color:var(–gold);font-weight:500;border-bottom:1px solid rgba(201,168,92,.3);}
+.lks a.ws{color:var(--gold);font-weight:500;border-bottom:1px solid rgba(201,168,92,.3);}
 .sc{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:9px;}
 .sg{display:inline-flex;align-items:center;gap:3px;padding:3px 7px;border-radius:2px;font-size:9px;font-weight:600;}
-.sg.mi{background:#FFF0F0;border:1px solid #FFCDD2;color:var(–mr);}
-.sg.gr{background:#FFF8F0;border:1px solid #FFCC80;color:var(–gr);}
-.sg.es{background:#EEF2FF;border:1px solid #C5CAE9;color:var(–eb);}
+.sg.mi{background:#FFF0F0;border:1px solid #FFCDD2;color:var(--mr);}
+.sg.gr{background:#FFF8F0;border:1px solid #FFCC80;color:var(--gr);}
+.sg.es{background:#EEF2FF;border:1px solid #C5CAE9;color:var(--eb);}
 .sg.fd{opacity:.28;}
 .gn{font-size:7px;letter-spacing:.4px;text-transform:uppercase;opacity:.6;font-weight:400;}
-.cs{font-size:10.5px;color:var(–sage);font-style:italic;margin-bottom:9px;line-height:1.5;}
-.rvs{border-top:1px solid var(–lg);padding-top:8px;}
-.rv{font-size:10.5px;color:var(–muted);line-height:1.5;padding:3px 0;border-bottom:1px solid var(–lg);display:flex;gap:5px;}
+.cs{font-size:10.5px;color:var(--sage);font-style:italic;margin-bottom:9px;line-height:1.5;}
+.rvs{border-top:1px solid var(--lg);padding-top:8px;}
+.rv{font-size:10.5px;color:var(--muted);line-height:1.5;padding:3px 0;border-bottom:1px solid var(--lg);display:flex;gap:5px;}
 .rv:last-child{border-bottom:none;}
-.st{color:var(–gold);flex-shrink:0;font-size:8px;padding-top:2px;}
+.st{color:var(--gold);flex-shrink:0;font-size:8px;padding-top:2px;}
 @media(max-width:600px){header{padding:32px 18px 28px;}.ctrl{padding:10px 14px;}.gw{padding:18px 14px 60px;}.grid{grid-template-columns:1fr;}.mapbar a{padding:12px 18px;}}
 </style>
-
 </head>
 <body>
 
@@ -234,14 +231,9 @@ function updateFavBtn(){
 
 // STATE
 const S = {c:'all', p:'all', g:'all', q:'', fav:false};
-// Estrae la zona dall'indirizzo (seconda parte dopo la virgola)
-function zona(a){ return a.split(',')[1]?.trim() || ''; }
-
-// Tutte le zone uniche ordinate
-const ZONE = [...new Set(R.map(r=>zona(r.a)))].sort();
-
 const maps = a => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a+', Milano')}`;
 
+function miBadge(r){
   if(r.mi.s>=1) return`<span class="sg mi">${'⭐'.repeat(r.mi.s)} ${r.mi.s===1?'Una Stella':r.mi.s+' Stelle'} <span class="gn">Michelin</span></span>`;
   if(r.mi.b) return`<span class="sg mi">😊 Bib Gourmand <span class="gn">Michelin</span></span>`;
   if(r.mi.green) return`<span class="sg mi" style="background:#f0fff4;border-color:#a8d5b5;color:#276749">🌿 Green Star <span class="gn">Michelin</span></span>`;
@@ -257,8 +249,7 @@ function card(r){
       <div class="ctag"><span class="ccu">${r.cu.toUpperCase()}</span><span class="cpr">${r.pr}</span></div>
       <h2 class="cn">${r.n}</h2>
       <div class="lks">
-        <a href="${maps(r.a)}" target="_blank">📍 ${r.a.split(',')[0]}</a>
-        <span class="zbadge">📌 ${zona(r.a)}</span>
+        <a href="${maps(r.a)}" target="_blank">📍 ${r.a}</a>
         <a href="${r.ws}" target="_blank" class="ws">🌐 Sito web</a>
       </div>
       <div class="sc">
