@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guida Ristoranti Milano 2026</title>
+<title>Guida Ristoranti Milano 2025</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{--cream:#F5F0E8;--charcoal:#1A1A1A;--gold:#C9A85C;--sage:#7A8C72;--warm:#FDFAF4;--lg:#E8E4DC;--muted:#6B6560;--mr:#E4002B;--gr:#8B1A1A;--eb:#1B3A6B;}
@@ -56,7 +56,8 @@ h1 em{font-style:italic;color:var(--gold);}
 .lks a:hover{opacity:.65;}
 .lks a.ws{color:var(--gold);font-weight:500;border-bottom:1px solid rgba(201,168,92,.3);}
 .sc{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:9px;}
-.sg{display:inline-flex;align-items:center;gap:3px;padding:3px 7px;border-radius:2px;font-size:9px;font-weight:600;}
+.sg{display:inline-flex;align-items:center;gap:3px;padding:3px 7px;border-radius:2px;font-size:9px;font-weight:600;text-decoration:none;cursor:pointer;transition:opacity .2s;}
+.sg:hover{opacity:.75;}
 .sg.mi{background:#FFF0F0;border:1px solid #FFCDD2;color:var(--mr);}
 .sg.gr{background:#FFF8F0;border:1px solid #FFCC80;color:var(--gr);}
 .sg.es{background:#EEF2FF;border:1px solid #C5CAE9;color:var(--eb);}
@@ -74,7 +75,7 @@ h1 em{font-style:italic;color:var(--gold);}
 
 <header>
   <div class="hi">
-    <p class="ht">Edizione 2026 · Stefano's Pick</p>
+    <p class="ht">Edizione 2025 · Stefano's Pick</p>
     <h1>I Migliori Ristoranti<br>di <em>Milano</em></h1>
     <p class="hs">Una selezione curata con i punteggi di Michelin, Gambero Rosso e L'Espresso. Ogni indirizzo linkato a Google Maps.</p>
     <div class="hc"><b id="tot">67</b><small>Ristoranti<br>Selezionati</small></div>
@@ -206,10 +207,17 @@ const R=[
 const maps=a=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a+', Milano')}`;
 const S={c:'all',p:'all',g:'all',q:''};
 
+const guideLinks = n => ({
+  mi: `https://guide.michelin.com/it/it/search?query=${encodeURIComponent(n)}`,
+  gr: `https://www.gamberorosso.it/search/?q=${encodeURIComponent(n)}`,
+  es: `https://espresso.repubblica.it/ristoranti/ricerca?q=${encodeURIComponent(n)}`
+});
+
 function miBadge(r){
-  if(r.mi.s>=1)return`<span class="sg mi">${'⭐'.repeat(r.mi.s)} ${r.mi.s===1?'Una Stella':r.mi.s+' Stelle'} <span class="gn">Michelin</span></span>`;
-  if(r.mi.b)return`<span class="sg mi">😊 Bib Gourmand <span class="gn">Michelin</span></span>`;
-  if(r.mi.green)return`<span class="sg mi" style="background:#f0fff4;border-color:#a8d5b5;color:#276749">🌿 Green Star <span class="gn">Michelin</span></span>`;
+  const l = guideLinks(r.n);
+  if(r.mi.s>=1)return`<a href="${l.mi}" target="_blank" class="sg mi">${'⭐'.repeat(r.mi.s)} ${r.mi.s===1?'Una Stella':r.mi.s+' Stelle'} <span class="gn">Michelin ↗</span></a>`;
+  if(r.mi.b)return`<a href="${l.mi}" target="_blank" class="sg mi">😊 Bib Gourmand <span class="gn">Michelin ↗</span></a>`;
+  if(r.mi.green)return`<a href="${l.mi}" target="_blank" class="sg mi" style="background:#f0fff4;border-color:#a8d5b5;color:#276749">🌿 Green Star <span class="gn">Michelin ↗</span></a>`;
   return`<span class="sg mi fd">⭐ – <span class="gn">Michelin</span></span>`;
 }
 
@@ -223,8 +231,8 @@ function card(r){
     </div>
     <div class="sc">
       ${miBadge(r)}
-      <span class="sg gr">${'🍴'.repeat(r.gr.f)} ${r.gr.l} <span class="gn">Gambero Rosso</span></span>
-      <span class="sg es">☕ ${r.es.l} <span class="gn">L'Espresso</span></span>
+      <a href="${guideLinks(r.n).gr}" target="_blank" class="sg gr">${'🍴'.repeat(r.gr.f)} ${r.gr.l} <span class="gn">Gambero Rosso ↗</span></a>
+      <a href="${guideLinks(r.n).es}" target="_blank" class="sg es">☕ ${r.es.l} <span class="gn">L'Espresso ↗</span></a>
     </div>
     <p class="cs">${r.st}</p>
     <div class="rvs">${r.rv.map(v=>`<div class="rv"><span class="st">★★★★★</span><span>${v}</span></div>`).join('')}</div>
