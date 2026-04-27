@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guida Ristoranti Milano 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E8;--charcoal:#1A1A1A;--gold:#C9A85C;--sage:#7A8C72;--warm:#FDFAF4;--lg:#E8E4DC;--muted:#6B6560;--mr:#E4002B;--gr:#8B1A1A;--eb:#1B3A6B;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--charcoal);}
+header{background:var(--charcoal);color:var(--cream);padding:52px 40px 40px;position:relative;overflow:hidden;}
+header::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:2px solid rgba(201,168,92,.18);}
+header::after{content:'';position:absolute;bottom:-70px;left:-70px;width:240px;height:240px;border-radius:50%;border:2px solid rgba(201,168,92,.12);}
+.hi{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+.ht{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:500;}
+h1{font-family:'Playfair Display',serif;font-size:clamp(38px,6vw,72px);line-height:1.05;letter-spacing:-1px;}
+h1 em{font-style:italic;color:var(--gold);}
+.hs{margin-top:16px;font-size:13px;color:rgba(245,240,232,.55);max-width:460px;line-height:1.6;}
+.hc{margin-top:22px;display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(201,168,92,.35);padding:9px 18px;}
+.hc b{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold);}
+.hc small{font-size:9px;color:rgba(245,240,232,.4);letter-spacing:1px;text-transform:uppercase;line-height:1.4;}
+.mapbar{background:#111;border-bottom:2px solid var(--gold);}
+.mapbar a{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 40px;text-decoration:none;color:var(--cream);transition:background .2s;}
+.mapbar a:hover{background:#000;}
+.mapbar strong{display:block;font-size:13px;color:var(--gold);letter-spacing:.4px;}
+.mapbar span{font-size:10px;color:rgba(245,240,232,.45);}
+.ctrl{background:var(--warm);border-bottom:1px solid var(--lg);padding:12px 40px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.05);}
+.ci{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:7px;}
+.row{display:flex;flex-wrap:wrap;gap:7px;align-items:center;}
+.sw{flex:1;min-width:170px;position:relative;}
+.sw input{width:100%;padding:7px 11px 7px 34px;border:1px solid var(--lg);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:12px;background:white;outline:none;transition:border-color .2s;}
+.sw input:focus{border-color:var(--gold);}
+.si{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:12px;}
+.fl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500;white-space:nowrap;}
+.fg{display:flex;flex-wrap:wrap;gap:4px;}
+.fb{padding:5px 11px;border:1px solid var(--lg);border-radius:2px;background:white;font-family:'DM Sans',sans-serif;font-size:10px;cursor:pointer;transition:all .2s;color:var(--muted);white-space:nowrap;}
+.fb:hover,.fb.on{background:var(--charcoal);border-color:var(--charcoal);color:var(--cream);}
+.pb.on{background:var(--gold);border-color:var(--gold);color:var(--charcoal);font-weight:700;}
+.dv{width:1px;height:16px;background:var(--lg);flex-shrink:0;}
+.rc{font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap;}
+.gw{max-width:1200px;margin:0 auto;padding:24px 40px 80px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2px;}
+.nr{text-align:center;padding:80px 20px;grid-column:1/-1;display:none;}
+.nr h3{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:8px;}
+.card{background:var(--warm);overflow:hidden;transition:transform .25s,box-shadow .25s;}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,.1);}
+.cb{padding:16px 18px 14px;}
+.ctag{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.ccu{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500;}
+.cpr{font-size:10px;font-weight:600;color:var(--gold);background:rgba(201,168,92,.1);border:1px solid rgba(201,168,92,.25);padding:2px 8px;border-radius:2px;}
+.cn{font-family:'Playfair Display',serif;font-size:19px;line-height:1.2;margin-bottom:6px;}
+.lks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:9px;}
+.lks a{font-size:10px;color:var(--muted);text-decoration:none;transition:opacity .2s;}
+.lks a:hover{opacity:.65;}
+.lks a.ws{color:var(--gold);font-weight:500;border-bottom:1px solid rgba(201,168,92,.3);}
+.sc{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:9px;}
+.sg{display:inline-flex;align-items:center;gap:3px;padding:3px 7px;border-radius:2px;font-size:9px;font-weight:600;text-decoration:none;cursor:pointer;transition:opacity .2s;}
+.sg:hover{opacity:.75;}
+.sg.mi{background:#FFF0F0;border:1px solid #FFCDD2;color:var(--mr);}
+.sg.gr{background:#FFF8F0;border:1px solid #FFCC80;color:var(--gr);}
+.sg.es{background:#EEF2FF;border:1px solid #C5CAE9;color:var(--eb);}
+.sg.fd{opacity:.28;}
+.gn{font-size:7px;letter-spacing:.4px;text-transform:uppercase;opacity:.6;font-weight:400;}
+.cs{font-size:10.5px;color:var(--sage);font-style:italic;margin-bottom:9px;line-height:1.5;}
+.rvs{border-top:1px solid var(--lg);padding-top:8px;}
+.rv{font-size:10.5px;color:var(--muted);line-height:1.5;padding:3px 0;border-bottom:1px solid var(--lg);display:flex;gap:5px;}
+.rv:last-child{border-bottom:none;}
+.st{color:var(--gold);flex-shrink:0;font-size:8px;padding-top:2px;}
+@media(max-width:600px){header{padding:32px 18px 28px;}.ctrl{padding:10px 14px;}.gw{padding:18px 14px 60px;}.grid{grid-template-columns:1fr;}.mapbar a{padding:12px 18px;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <p class="ht">Edizione 2025 · Stefano's Pick</p>
+    <h1>I Migliori Ristoranti<br>di <em>Milano</em></h1>
+    <p class="hs">Una selezione curata con i punteggi di Michelin, Gambero Rosso e L'Espresso. Ogni indirizzo linkato a Google Maps.</p>
+    <div class="hc"><b id="tot">67</b><small>Ristoranti<br>Selezionati</small></div>
+  </div>
+</header>
+
+<div class="mapbar">
+  <a href="https://www.google.com/maps/search/ristoranti+Milano/@45.4654,9.1859,13z" target="_blank">
+    <span style="font-size:20px">🗺️</span>
+    <div>
+      <strong>Apri la mappa su Google Maps</strong>
+      <span>Tutti i ristoranti della guida · Milano</span>
+    </div>
+    <span style="color:var(--gold);font-size:16px;margin-left:8px">→</span>
+  </a>
+</div>
+
+<div class="ctrl">
+  <div class="ci">
+    <div class="row">
+      <div class="sw"><span class="si">🔍</span><input type="text" id="srch" placeholder="Cerca nome, cucina, zona..."></div>
+      <div class="dv"></div>
+      <span class="fl">Cucina</span>
+      <div class="fg" id="cg">
+        <button class="fb on" data-c="all">Tutti</button>
+        <button class="fb" data-c="italiana">Italiana</button>
+        <button class="fb" data-c="pesce">Pesce</button>
+        <button class="fb" data-c="giapponese">Giapponese</button>
+        <button class="fb" data-c="asiatica">Asiatica</button>
+        <button class="fb" data-c="internazionale">Internazionale</button>
+        <button class="fb" data-c="pizza">Pizza</button>
+      </div>
+      <span class="rc" id="rc">67 risultati</span>
+    </div>
+    <div class="row">
+      <span class="fl">Prezzo</span>
+      <div class="fg" id="pg">
+        <button class="fb pb on" data-p="all">Tutti</button>
+        <button class="fb pb" data-p="1">€ &lt;25</button>
+        <button class="fb pb" data-p="2">€€ 25–50</button>
+        <button class="fb pb" data-p="3">€€€ 50–80</button>
+        <button class="fb pb" data-p="4">€€€€ 80–120</button>
+        <button class="fb pb" data-p="5">€€€€€ 120+</button>
+      </div>
+      <div class="dv"></div>
+      <span class="fl">Guide</span>
+      <div class="fg" id="gg">
+        <button class="fb" data-g="all">Tutte</button>
+        <button class="fb" data-g="michelin">⭐ Michelin</button>
+        <button class="fb" data-g="gambero">🍴 Gambero</button>
+        <button class="fb" data-g="espresso">☕ Espresso</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="gw"><div class="grid" id="grid">
+  <div class="nr" id="nr"><h3>Nessun risultato</h3><p style="color:var(--muted)">Prova con un altro filtro</p></div>
+</div></div>
+
+<script>
+const R=[
+{n:"Sea Signora",a:"Via Fiori Chiari 32, Brera",pl:4,pr:"€€€€·~120€",cu:"Pesce",tg:"pesce",ws:"https://seasignora.com",st:"Design anni '80, pavimenti in marmo, velluti porpora e acquario cilindrico. Cucina di mare cosmopolita.",mi:{s:0,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:16,l:"16/20"},rv:["Crudi di mare straordinari, materia prima di altissimo livello.","Cucina mediterranea con tocchi mediorientali. Servizio impeccabile.","La frittura di calamari di Mazara con labneh è fantastica."]},
+{n:"Trippa",a:"Via Giorgio Vasari 1, Porta Romana",pl:3,pr:"€€€·~50€",cu:"Quinto Quarto",tg:"italiana",ws:"https://trippamilano.it",st:"Diego Rossi reinventa la cucina di recupero con tecnica e passione. Bib Gourmand Michelin.",mi:{s:0,b:1},gr:{f:2,l:"Due Forchette"},es:{v:15,l:"15/20"},rv:["La trippa fritta è un capolavoro: croccante fuori, morbida dentro.","Il vitello tonnato probabilmente il migliore di Milano.","Le tagliatelle al burro sono la prova che la semplicità è perfezione."]},
+{n:"Seta",a:"Via Andegari 9, Duomo",pl:5,pr:"€€€€€·~200€",cu:"Alta Cucina",tg:"italiana",ws:"https://mandarinoriental.com/milan",st:"Due stelle Michelin al Mandarin Oriental. Chef Antonio Guida, cucina italiana nell'olimpo gastronomico mondiale.",mi:{s:2,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:19,l:"19/20"},rv:["Una delle esperienze gastronomiche più complete d'Italia.","Menu degustazione straordinario: tecnica, creatività, tradizione.","Servizio di rara perfezione. Sommelier tra i migliori d'Italia."]},
+{n:"Ratanà",a:"Via G. De Castillia 28, Porta Garibaldi",pl:3,pr:"€€€·~60€",cu:"Milanese",tg:"italiana",ws:"https://ratana.it",st:"Cucina milanese contemporanea tra gli orti urbani di Porta Garibaldi. Una stella Michelin.",mi:{s:1,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:17,l:"17/20"},rv:["Il risotto alla milanese è probabilmente il migliore di Milano.","La cotoletta è alta, dorata, burro perfetto.","Il giardino è uno dei più belli della città."]},
+{n:"Langosteria",a:"Via Savona 10, Navigli",pl:5,pr:"€€€€€·~150€",cu:"Pesce Fine Dining",tg:"pesce",ws:"https://langosteria.com",st:"Il tempio del pesce di lusso dal 2007. Ha ridefinito il fine dining ittico a Milano. Una stella Michelin.",mi:{s:1,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:18,l:"18/20"},rv:["Il plateau di crudi è senza rivali a Milano.","Langoustine, astice, ostriche: qualità costante nel tempo.","Cantina straordinaria: champagne e grandi bianchi italiani."]},
+{n:"Pellico 3",a:"Via Silvio Pellico 3, Duomo",pl:4,pr:"€€€€·~100€",cu:"Fine Dining",tg:"italiana",ws:"https://pellico3.it",st:"Fine dining nel centro storico. Eleganza sobria, cucina di alto livello, servizio di scuola classica. Una stella Michelin.",mi:{s:1,b:0},gr:{f:2,l:"Due Forchette"},es:{v:16,l:"16/20"},rv:["Cucina d'autore senza eccessi, ogni piatto racconta una storia.","Servizio altissimo livello, attento senza essere invadente.","Ottimo per cene d'affari o occasioni speciali."]},
+{n:"Osteria San Giovanni",a:"Via S. Giovanni sul Muro 8, Cairoli",pl:2,pr:"€€·~40€",cu:"Lombarda",tg:"italiana",ws:"https://osteriasangiovanni.it",st:"Osteria autentica nel cuore di Milano con cucina della tradizione lombarda. Bib Gourmand.",mi:{s:0,b:1},gr:{f:2,l:"Due Forchette"},es:{v:13,l:"13/20"},rv:["La cassoeula è leggendaria.","La cotoletta probabilmente la migliore della città.","Da anni il mio posto preferito per una cena in compagnia."]},
+{n:"Dry Milano",a:"Via Solferino 33, Brera",pl:2,pr:"€€·~40€",cu:"Pizza Gourmet",tg:"pizza",ws:"https://drymilano.it",st:"Pioniere della pizza gourmet a Milano. Impasto ricercato, ingredienti selezionati e cocktail list eccellente. Bib Gourmand.",mi:{s:0,b:1},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["La pizza qui è un'altra cosa rispetto alla media milanese.","La cocktail list è tra le migliori di Milano.","Un'istituzione che ha cambiato la cultura gastronomica milanese."]},
+{n:"Pacifico",a:"Via della Moscova 29, Moscova",pl:3,pr:"€€€·~65€",cu:"Peruviana Nikkei",tg:"internazionale",ws:"https://gruppopacifico.it",st:"Il Perù incontra il Giappone. Design coloniale latinoamericano e cucina Nikkei di altissimo livello.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:15,l:"15/20"},rv:["Il ceviche è perfetto: acidità, freschezza, pesce di qualità.","Tiradito e causas: piatti che non trovate altrove a Milano.","Il Pisco Sour qui è quello autentico."]},
+{n:"Gong",a:"Corso Concordia 8, Porta Venezia",pl:3,pr:"€€€·~70€",cu:"Cinese Contemporanea",tg:"asiatica",ws:"https://gongmilano.it",st:"La cucina cinese di lusso a Milano. Design orientale di gran classe, ambiente glamour.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Il Peking Duck è tra i migliori fuori dalla Cina.","Ambiente di grande fascino, perfetto per ospiti importanti.","Dim sum di qualità superiore rispetto alla media milanese."]},
+{n:"Miyama",a:"Via Bazzini 37, Città Studi",pl:3,pr:"€€€·~70€",cu:"Giapponese",tg:"giapponese",ws:"https://miyamamilan.com",st:"Cucina kaiseki tradizionale in uno spazio raccolto e sereno. Precisione e filosofia giapponese classica. Una stella Michelin.",mi:{s:1,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:17,l:"17/20"},rv:["Il miglior giapponese tradizionale di Milano senza dubbio.","Sashimi servito con rispetto. Il tonno è straordinario.","Si percepisce subito il rispetto per la tradizione."]},
+{n:"Roppongi",a:"Via Canova 33, Sarpi",pl:3,pr:"€€€·~70€",cu:"Sushi Omakase",tg:"giapponese",ws:"https://ristoranteroppongi.it",st:"Omakase e sushi di qualità. Il pesce arriva direttamente dal Giappone. Una stella Michelin.",mi:{s:1,b:0},gr:{f:2,l:"Due Forchette"},es:{v:16,l:"16/20"},rv:["L'omakase è un'esperienza da vivere almeno una volta.","Toro, uni e salmone selvatico di qualità che non si trova altrove.","Uno dei migliori sushi bar d'Italia."]},
+{n:"Starita",a:"Via Procaccini 20, Sarpi",pl:1,pr:"€·~25€",cu:"Pizza Napoletana",tg:"pizza",ws:"https://staritanapoli.it",st:"La leggendaria pizzeria napoletana di Materdei arriva a Milano. Lievito madre e forno a legna.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:13,l:"13/20"},rv:["La pizza napoletana più autentica di Milano.","Friggitoria straordinaria: montanarine, cuoppo, crocchette.","Prezzi paragonabili a Napoli, qualità idem."]},
+{n:"Bela Tusa",a:"Via Procaccini 37, Sarpi",pl:2,pr:"€€·~35€",cu:"Piemontese",tg:"italiana",ws:"https://belatusa.it",st:"Trattoria piemontese autentica. Tajarin, vitello tonnato e formaggi delle valli. Bib Gourmand.",mi:{s:0,b:1},gr:{f:2,l:"Due Forchette"},es:{v:13,l:"13/20"},rv:["I tajarin al ragù d'anatra sono uno dei piatti più buoni di Milano.","Il vitello tonnato qui è quello vero: carne tenera, salsa cremosa.","Prezzi contenuti per un'esperienza genuina."]},
+{n:"Trattoria del Nuovo Macello",a:"Via C. Lombroso 20, Porta Romana",pl:2,pr:"€€·~40€",cu:"Lombarda",tg:"italiana",ws:"https://trattoriadelnuovomacello.it",st:"Una delle trattorie più autentiche di Milano. Cucina lombarda vera, atmosfera senza tempo. Bib Gourmand.",mi:{s:0,b:1},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["La trippa alla milanese è la migliore della città.","Cassoeula d'inverno: scalda il corpo e l'anima.","Un'istituzione che non ha ceduto alle mode."]},
+{n:"Antica Trattoria della Pesa",a:"Viale Pasubio 10, Moscova",pl:3,pr:"€€€·~65€",cu:"Milanese Storica",tg:"italiana",ws:"https://anticatrattoriadellapesa.com",st:"Dal 1880, una delle trattorie più antiche di Milano. Cucina lombarda classica in ambiente storico unico.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Un pezzo di storia di Milano. Si torna indietro di un secolo.","La cotoletta alla milanese è quella originale. Il riferimento assoluto.","Risotto alla milanese e ossobuco che non deludono mai."]},
+{n:"Trattoria Masuelli San Marco",a:"Viale Umbria 80, Porta Romana",pl:2,pr:"€€·~45€",cu:"Lombarda",tg:"italiana",ws:"https://masuelli-trattoria.com",st:"Trattoria familiare dal 1921. Cucina milanese borghese alla quarta generazione. Bib Gourmand.",mi:{s:0,b:1},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["La luganega con purè è il comfort food nella sua forma più alta.","Gestione familiare alla quarta generazione. Si sente l'orgoglio.","Un'istituzione che resiste al tempo e alle mode."]},
+{n:"Brolo Orto con Cucina",a:"Via E. Oldofredi 2, Porta Garibaldi",pl:3,pr:"€€€·~65€",cu:"Vegetariana",tg:"italiana",ws:"https://broloorto.it",st:"L'orto come fonte d'ispirazione. Cucina vegetale d'autore. Michelin Green Star.",mi:{s:0,b:0,green:1},gr:{f:2,l:"Due Forchette"},es:{v:15,l:"15/20"},rv:["La cucina vegetale qui è all'altezza di qualsiasi stellato.","Menu degustazione: viaggio attraverso le stagioni dell'orto.","Giardino interno meraviglioso. D'estate è magico."]},
+{n:"Beef Bar",a:"Piazza Gae Aulenti 5, Porta Nuova",pl:4,pr:"€€€€·~90€",cu:"Steakhouse",tg:"internazionale",ws:"https://beefbar.com/en/milan",st:"La celebre steakhouse internazionale a Porta Nuova. Carni pregiate da tutto il mondo.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["La Wagyu A5 si scioglie in bocca. Vale ogni centesimo.","Il Tomahawk per due è uno spettacolo.","Cocktail bar di primissimo livello."]},
+{n:"La Latteria",a:"Via San Marco 24, Brera",pl:2,pr:"€€·~35€",cu:"Italiana Classica",tg:"italiana",ws:"https://latteriasanmarco.it",st:"Piccola trattoria storica a Brera. Menu scritto a mano su lavagna, cucina di mercato. Bib Gourmand.",mi:{s:0,b:1},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["La latteria è un pezzo di Milano che non si dovrebbe mai perdere.","La pasta al pomodoro migliore del 90% dei ristoranti stellati.","L'esperienza vale qualsiasi sacrificio per ottenere un tavolo."]},
+{n:"10_11 Portrait",a:"Corso Venezia 11, Porta Venezia",pl:4,pr:"€€€€·~100€",cu:"Fine Dining",tg:"italiana",ws:"https://lungarnocollection.com/portrait-milano",st:"L'hotel Portrait ospita uno dei ristoranti più glamour di Milano. Cucina italiana d'autore.",mi:{s:0,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:16,l:"16/20"},rv:["Eleganza e sostanza in equilibrio perfetto.","La terrazza sul Corso Venezia è magnifica d'estate.","Carta vini di grande profondità con etichette rare."]},
+{n:"Maoji Street Food",a:"Via Paolo Sarpi 22, Chinatown",pl:1,pr:"€·~20€",cu:"Sichuan",tg:"asiatica",ws:"https://maoji.it",st:"Il vero street food del Sichuan in Paolo Sarpi. Piccante, aromatico, autentico. Nessun compromesso.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:11,l:"11/20"},rv:["Il mapo tofu più autentico fuori dalla Cina.","I noodles freddi al sesamo con pepe di Sichuan sono magnifici.","Prezzi da street food, qualità da ristorante serio."]},
+{n:"Paper Moon Giardino",a:"Via Bagutta 1, San Babila",pl:3,pr:"€€€·~75€",cu:"Italiana Classica",tg:"italiana",ws:"https://papermoonmilano.com",st:"Il giardino segreto di Milano. Cucina italiana classica in uno dei cortili più belli della città.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Il giardino estivo è tra i luoghi più belli di tutta Milano.","La cucina italiana classica è eseguita con grande cura.","Servizio impeccabile e discreto."]},
+{n:"Meze",a:"Viale Col di Lana 8, Navigli",pl:2,pr:"€€·~35€",cu:"Mediorientale",tg:"internazionale",ws:"https://mezemilano.it",st:"Viaggio culinario nel Medioriente. Meze condivisi, spezie profumate, atmosfera conviviale.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["I meze sono abbondanti e autentici. L'hummus fatto in casa è un'altra categoria.","Perfetto per gruppi: tutto da condividere, prezzi corretti.","Il baklava fatto in casa è il miglior finale possibile."]},
+{n:"Zio Pesce",a:"Via Conchetta 8, Navigli",pl:2,pr:"€€·~45€",cu:"Crudo di Mare",tg:"pesce",ws:"https://ziopesce.it",st:"Piccolo indirizzo informale ai Navigli dedicato al crudo. Pescato freschissimo e filosofia del prodotto.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:13,l:"13/20"},rv:["Il crudo di mare più fresco di Milano. Ostriche, gamberi, scampi.","Il plateau di crudi è il miglior inizio di serata.","Quasi impossibile trovare posto senza prenotazione."]},
+{n:"Mitù",a:"Via Savona 11, Tortona",pl:2,pr:"€€·~40€",cu:"Messicana",tg:"internazionale",ws:"https://mitu.it",st:"La cucina messicana seria che Milano aspettava. Autentica, ingredienti importati, tortillas fatte a mano.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["I tacos al pastor con ananas sono quelli originali.","La carta del mezcal è straordinaria.","Le tortillas fatte a mano fanno tutta la differenza."]},
+{n:"Razdora",a:"Via Molino delle Armi 48, Duomo",pl:3,pr:"€€€·~65€",cu:"Emiliana",tg:"italiana",ws:"https://razdora.it",st:"La cucina emiliana nella sua forma più raffinata. Tortellini in brodo, tagliatelle al ragù, culatello.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:15,l:"15/20"},rv:["Il tortellino in brodo originale: piccolo, saporito, brodo profondo.","Le tagliatelle al ragù bolognese sono il piatto cult.","Il culatello è fuori categoria."]},
+{n:"Fioraio Bianchi",a:"Via Montebello 7, Moscova",pl:3,pr:"€€€·~60€",cu:"Italiana Contemporanea",tg:"italiana",ws:"https://fioraio-bianchi.com",st:"Il ristorante dentro la storica fioreria di Brera. Atmosfera unica tra fiori freschi e luci calde.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Tra i fiori e le luci soffuse si crea vera magia.","Per occasioni speciali è il posto perfetto a Milano.","La carta dei vini è curata con intelligenza."]},
+{n:"Orizzonti",a:"Viale Monte Nero 56, Porta Romana",pl:3,pr:"€€€·~60€",cu:"Italiana Contemporanea",tg:"italiana",ws:"https://ristoranteorizzonti.it",st:"Cucina italiana contemporanea con forte attenzione agli ingredienti di stagione e tradizioni regionali.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Cucina pulita e precisa, ingredienti di stagione con rispetto.","Carta dei vini sorprendente: etichette ricercate a prezzi onesti.","I primi piatti sono il punto di forza: pasta fatta in casa."]},
+{n:"Da Berti",a:"Via Solari 32, Tortona",pl:2,pr:"€€·~38€",cu:"Italiana Tradizionale",tg:"italiana",ws:"https://trattoriadaberti.it",st:"Trattoria milanese classica, vino sfuso, cucina senza mode. Pura autenticità nel quartiere Tortona.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["Un'ancora di tradizione nel quartiere Tortona.","Semplicità e qualità in ogni piatto. La pasta al forno è memorabile.","L'animella impanata è un capolavoro di cucina di recupero."]},
+{n:"Manna",a:"Via L. Cusani 1, Brera",pl:3,pr:"€€€·~55€",cu:"Italiana Creativa",tg:"italiana",ws:"https://ristorantemanna.it",st:"Cucina italiana contemporanea creativa. Ingredienti di stagione e tecniche moderne in atmosfera elegante.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Menu stagionale: ogni visita è una nuova esperienza.","La pasta fresca fatta in casa con farine di qualità eccelsa.","Servizio giovane e preparato, racconta ogni piatto con passione."]},
+{n:"Ba",a:"Via Bagnera 2, Duomo",pl:3,pr:"€€€·~60€",cu:"Asiatica Fusion",tg:"asiatica",ws:"https://baresto.it",st:"Viaggio gastronomico attraverso le cucine dell'Asia in uno dei vicoli più antichi di Milano.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Dim sum di livello autentico: delicati e saporosi. Rarità a Milano.","Atmosfera unica in una delle strade più antiche della città.","Cucina fusion che non tradisce le origini asiatiche."]},
+{n:"Cavoli a Merenda",a:"Via Melzo 10, Porta Venezia",pl:2,pr:"€€·~40€",cu:"Vegetariana",tg:"italiana",ws:"https://cavoliam.it",st:"Cucina vegetariana creativa che dimostra come si possa mangiare benissimo senza carne.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Finalmente un vegetariano che non sembra un sacrificio.","Anche i carnivori escono soddisfatti. Le verdure sono protagoniste.","Ottimo rapporto qualità/prezzo per il quartiere."]},
+{n:"Bottega Lucia",a:"Via P. Castaldi 16, Repubblica",pl:3,pr:"€€€·~55€",cu:"Italiana Contemporanea",tg:"italiana",ws:"https://bottegalucia.it",st:"Bistrot dal fascino caldo con legno e mattoni a vista. Cucina italiana gustosa e cocktail bar curato.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:13,l:"13/20"},rv:["Atmosfera bistrot autentica. Il cibo è curato senza fronzoli.","La terrazza estiva è uno dei posti più piacevoli di Milano.","Il cocktail bar abbina i drink ai piatti con cura."]},
+{n:"Robata Kan",a:"Via Anfossi 10, Porta Romana",pl:3,pr:"€€€·~65€",cu:"Robatayaki",tg:"giapponese",ws:"https://robatakan.it",st:"Cottura robatayaki su carbone di qualità: grigliate giapponesi autentiche, rarità in Europa.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:15,l:"15/20"},rv:["Robata autentico: carbone, temperatura perfetta, prodotti giapponesi.","Yakitori di un livello che non avevo trovato fuori dal Giappone.","Il sake abbinato ai piatti è una scoperta continua."]},
+{n:"Voja",a:"Via Melzo 8, Porta Venezia",pl:2,pr:"€€·~40€",cu:"Enoteca con Cucina",tg:"italiana",ws:"https://vojavineria.it",st:"Enoteca con cucina a Porta Venezia. Il vino è protagonista: naturali, biodinamici, rari.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Selezione di vini straordinaria: etichette naturali e biodinamiche.","Il crudo di pesce abbinato al vino giusto è un'esperienza completa.","Uno dei pochi posti dove si beve bene senza spendere una fortuna."]},
+{n:"Kaja Bistrot",a:"Via Vigevano 18, Navigli",pl:2,pr:"€€·~45€",cu:"Scandinava",tg:"internazionale",ws:"https://kajabistrot.it",st:"Cucina nordica a Milano: minimalismo, ingredienti d'eccellenza e tecnica scandinava.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Una ventata di freschezza nel panorama milanese. Cucina nordica autentica.","Il salmone marinato in casa con aneto è inaspettatamente eccellente.","La carta dei vini nordici e naturali è una scoperta continua."]},
+{n:"Sali",a:"Via B. Marcello 88, Città Studi",pl:2,pr:"€€·~38€",cu:"Pesce",tg:"pesce",ws:"https://saliristorante.it",st:"Piccolo indirizzo di cucina di mare informale. Menu breve, prodotto freschissimo, semplicità intelligente.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:13,l:"13/20"},rv:["Miglior rapporto qualità/prezzo per il pesce a Milano. Fritto leggero.","La zuppa di pesce è memorabile: profumata, sostanziosa, generosa.","Un posto che fa della semplicità la propria forza."]},
+{n:"Confine",a:"Piazza XXIV Maggio 8, Navigli",pl:3,pr:"€€€·~60€",cu:"Italiana Contemporanea",tg:"italiana",ws:"https://confineristorante.it",st:"Sulla Darsena, cucina italiana contemporanea con vista. Ingredienti locali e sostenibilità.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["La posizione sulla Darsena è magnifica.","Il risotto alle erbe selvatiche lo ricorderò a lungo.","Ottima selezione di vini naturali."]},
+{n:"Casa Tobago",a:"Via Melzo 22, Porta Venezia",pl:2,pr:"€€·~45€",cu:"Fusion Caraibica",tg:"internazionale",ws:"https://casatobago.it",st:"Cucina fusion caraibica e latinoamericana. Cocktail tropicali e atmosfera festosa.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["I cocktail sono straordinari e originali. Rum con infusioni tropicali.","La cucina è una festa di sapori: autenticità e abbondanza.","La ceviche fusion è sorprendentemente ben eseguita."]},
+{n:"Tsukiji Market",a:"Via Mercalli 11, Porta Romana",pl:2,pr:"€€·~45€",cu:"Sushi",tg:"giapponese",ws:"https://tsukijimarket.it",st:"Ispirato al mercato del pesce di Tokyo: sushi e sashimi di qualità in ambiente informale.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Qualità del pesce eccezionale per prezzi così accessibili.","Sashimi misto: un inno alla freschezza. Tonno sempre perfetto.","Informale e vivace, senza la cerimonia dei giapponesi di lusso."]},
+{n:"Abba",a:"Via Pontaccio 15, Brera",pl:3,pr:"€€€·~65€",cu:"Italiana Contemporanea",tg:"italiana",ws:"https://abbamilano.it",st:"Cucina italiana contemporanea a Brera. Chef giovane con idee chiare: stagionalità e territorio.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:15,l:"15/20"},rv:["Cucina matura e precisa per uno chef così giovane.","Il risotto varia con le stagioni: sempre cremoso e saporito.","Ambiente raffinato senza essere formale."]},
+{n:"Trattoria del Pescatore",a:"Via A. Vannucci 5, Porta Romana",pl:2,pr:"€€·~45€",cu:"Pesce Tradizionale",tg:"pesce",ws:"https://trattoriadelpescatoremilano.it",st:"Trattoria di mare classica e affidabile. Pesce sempre fresco, ricette della tradizione marinara.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["Una trattoria di mare come non se ne trovano facilmente.","La frittura mista è il benchmark: leggera, croccante.","Ci si sente ospiti di qualcuno, non clienti."]},
+{n:"Autem",a:"Via Castelfidardo 7, Repubblica",pl:3,pr:"€€€·~70€",cu:"Italiana Creativa",tg:"italiana",ws:"https://autemmilano.com",st:"Cucina italiana reinterpretata con tecnica e creatività. Vini naturali di grande carattere.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:15,l:"15/20"},rv:["Cucina ambiziosa e centrata. Ogni piatto ha una logica chiara.","Il menu degustazione è il modo migliore per vivere Autem.","Una delle migliori esperienze gastronomiche della stagione."]},
+{n:"Sandì",a:"Via Lomellina 14, Porta Romana",pl:2,pr:"€€·~42€",cu:"Italiana Moderna",tg:"italiana",ws:"https://sandiristorante.it",st:"Piccolo ristorante di quartiere con cucina sincera. Menu breve e rotazione stagionale.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Un posto che fa bene all'anima. Cucina vera, senza fronzoli.","La pasta fresca è motivo sufficiente per tornare ogni settimana.","Tra i migliori rapporti qualità/prezzo della zona."]},
+{n:"Trattoria Rovello",a:"Via Tivoli 2, Cairoli",pl:2,pr:"€€·~40€",cu:"Milanese",tg:"italiana",ws:"https://trattoriarovello.it",st:"Trattoria storica nel centro di Milano. Cucina della tradizione milanese in atmosfera genuina.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Le mondeghili (polpette milanesi) sono quelle vere.","Il risotto al midollo qui lo fanno come una volta.","Una delle trattorie più autentiche rimaste in centro."]},
+{n:"Eppol Milano",a:"Via Ettore Ponti 35, Navigli",pl:3,pr:"€€€·~60€",cu:"Italiana Contemporanea",tg:"italiana",ws:"https://eppolmilano.it",st:"Ristorante contemporaneo sui Navigli. Cucina che valorizza il territorio lombardo con occhio moderno.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Cucina lombarda reinterpretata con intelligenza.","Carta dei vini tra le migliori dei Navigli.","Servizio professionale e giovane, con vera passione."]},
+{n:"Allangolare",a:"Via B. Marcello 70, Porta Venezia",pl:2,pr:"€€·~40€",cu:"Italiana Moderna",tg:"italiana",ws:"https://allangolare.it",st:"Osteria moderna a Porta Venezia. Cucina di stagione legata al territorio, ambiente informale.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Il posto di quartiere perfetto: buono, onesto, senza pretese.","La tartare è tra le migliori della zona.","La pasta al ragù bianco non la trovi da nessun'altra parte."]},
+{n:"Terroir",a:"Via Meda 10, Porta Romana",pl:3,pr:"€€€·~60€",cu:"Vino Naturale",tg:"italiana",ws:"https://terroirmilano.it",st:"Enoteca con cucina dedicata ai vini naturali. Carta dei vini straordinaria e in continua evoluzione.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Selezione di vini naturali tra le migliori d'Italia.","La cucina è essenziale e corretta, pensata per valorizzare il vino.","Le degustazioni guidate sono eventi preziosi per gli appassionati."]},
+{n:"Via Stampa",a:"Via Vincenzo Monti 30, Cadorna",pl:3,pr:"€€€·~70€",cu:"Italiana Fine Dining",tg:"italiana",ws:"https://viastampa.it",st:"Ristorante raffinato a Cadorna. Cucina italiana con forte attenzione ai prodotti regionali.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:15,l:"15/20"},rv:["Ristorante solido e affidabile. Cucina precisa, ingredienti eccellenti.","Cantina eccezionale con etichette rare e sommelier preparato.","Servizio professionale e discreto. Non delude mai."]},
+{n:"Osteria Pugliese Gatto Bianco",a:"Via Jommelli 20, Lambrate",pl:2,pr:"€€·~38€",cu:"Pugliese",tg:"italiana",ws:"https://osteriagatobianco.it",st:"La Puglia autentica a Milano: orecchiette, burrata, fave e cicoria.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["Le orecchiette alle cime di rapa sono quelle vere.","La burrata fresca arriva direttamente dalla Puglia.","Il pane di Altamura come benvenuto è già una dichiarazione d'intenti."]},
+{n:"Al Garghet",a:"Via Selvanesco 36, Rozzano",pl:3,pr:"€€€·~65€",cu:"Milanese",tg:"italiana",ws:"https://algarghet.it",st:"Trattoria storica in un cascinale lombardo fuori Milano. Cucina milanese autentica con spazio estivo.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Vale il viaggio fuori città. Cucina milanese vera, non da turista.","D'estate si mangia sotto la pergola con vista sul verde.","Il fagiano in salmì è memorabile."]},
+{n:"Onest",a:"Via Savona 1, Tortona",pl:2,pr:"€€·~45€",cu:"Italiana Moderna",tg:"italiana",ws:"https://onestristorante.it",st:"Ristorante contemporaneo nel distretto del design. Cucina di mercato e vini naturali.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Cucina onesta e ben eseguita, come suggerisce il nome.","La pasta del giorno è sempre una piacevole sorpresa.","Miglior rapporto qualità/prezzo nel distretto del design."]},
+{n:"Mater Bistrot",a:"Via Broggi 15, Porta Venezia",pl:2,pr:"€€·~40€",cu:"Naturale",tg:"italiana",ws:"https://materbistrot.it",st:"Bistrot dedicato ai prodotti naturali e artigianali. Cucina vegetale, vini naturali, approccio etico.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Un posto che fa bene e fa del bene. Cucina vegetale di qualità.","La cura per la provenienza degli ingredienti si sente nel gusto.","I dessert sono sorprendentemente buoni e creativi."]},
+{n:"Casazul",a:"Via Vigevano 6, Navigli",pl:2,pr:"€€·~40€",cu:"Latinoamericana",tg:"internazionale",ws:"https://casazulmilano.it",st:"Colori e sapori latinoamericani sui Navigli. Cucina fusion con influenze peruviane, messicane e colombiane.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["Il ceviche è fresco e ben bilanciato tra acido e piccante.","Atmosfera festosa e vivace, perfetto per una serata informale.","Le empanadas sono croccanti e ben ripiene."]},
+{n:"Yapa",a:"Via Petrella 12, Porta Venezia",pl:2,pr:"€€·~40€",cu:"Peruviana",tg:"internazionale",ws:"https://yaparestaurant.it",st:"Cucina peruviana autentica in ambiente vivace. Ceviche, tiradito, lomo saltado e pisco cocktail.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Il ceviche è fresco e ben bilanciato. Autenticità garantita.","Il lomo saltado preparato con wok e fuoco vivo: tecnica giusta.","Cocktail a base di pisco originali e ben costruiti."]},
+{n:"Lubna",a:"Via Argelati 19, Navigli",pl:2,pr:"€€·~35€",cu:"Libanese",tg:"internazionale",ws:"https://lubnaristorante.it",st:"La cucina libanese nella sua forma più autentica. Meze condivisi, pita fresca, hummus al momento.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["Il kibbeh è perfetto: croccante fuori, saporito dentro.","L'hummus con burro e pinoli è una rivelazione.","Il fattoush freschissimo. Il miglior libanese della città."]},
+{n:"Cantina Piemontese",a:"Via Laghetto 2, Duomo",pl:3,pr:"€€€·~60€",cu:"Piemontese",tg:"italiana",ws:"https://cantinapiemontese.it",st:"La cucina piemontese nel centro di Milano. Vini delle Langhe, tartufo, fonduta e bagna cauda.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Il menu invernale con tartufo bianco d'Alba vale ogni euro.","La bagna cauda è quella autentica: aglio, acciughe, olio.","La cantina con Barolo e Barbaresco è straordinaria."]},
+{n:"Food Writers",a:"Via Vigevano 28, Navigli",pl:2,pr:"€€·~40€",cu:"Italiana Contemporanea",tg:"italiana",ws:"https://foodwriters.it",st:"Ristorante che racconta il cibo attraverso storie e prodotti selezionati. Approccio narrativo.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Ogni piatto racconta una storia di produttori e territori.","Selezione di formaggi e salumi tra le migliori di Milano.","Un posto che ama il cibo in modo autentico."]},
+{n:"Jiao10",a:"Via Paolo Sarpi 10, Chinatown",pl:1,pr:"€·~22€",cu:"Dumplings",tg:"asiatica",ws:"https://jiao10.it",st:"Specialisti dei jiaozi in tutte le forme. Qualità rara a questi prezzi a Milano.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:11,l:"11/20"},rv:["I jiaozi al vapore con gamberi e bambù: delicatezza assoluta.","La pasta tirata sottile come si deve. Differenza abissale dalla media.","Prezzi da street food, qualità da ristorante serio."]},
+{n:"Sogni",a:"Via Orti 14, Porta Romana",pl:3,pr:"€€€·~60€",cu:"Italiana Creativa",tg:"italiana",ws:"https://sognimilano.it",st:"Piccolo ristorante con cucina italiana creativa. Chef giovane e ambizioso, menu che cambia spesso.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Una scoperta bellissima. La cucina è ambiziosa e centrata.","Menu degustazione: viaggio tra creatività e tradizione.","Pochi tavoli garantiscono attenzione personalizzata."]},
+{n:"Mogo",a:"Via Bergamo 6, Porta Venezia",pl:1,pr:"€·~18€",cu:"Street Food Fusion",tg:"internazionale",ws:"https://mogomilano.it",st:"Street food fusion con influenze asiatiche e latinoamericane. Veloce, economico e saporito.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:11,l:"11/20"},rv:["I bao sono morbidi e ben ripieni. Veloce ed economico.","Qualità degli ingredienti sorprendentemente alta per street food.","Miglior rapporto qualità/prezzo di Porta Venezia."]},
+{n:"Forneria Metropolitana",a:"Via Anfossi 13, Porta Romana",pl:1,pr:"€·~20€",cu:"Bakery",tg:"italiana",ws:"https://forneriamet.it",st:"Panificio artigianale con cucina. Pane di qualità eccezionale e panini gourmet.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["Il pane è straordinario: crosta, alveolatura, profumo.","I panini sono costruiti con intelligenza e ingredienti di qualità.","La focaccia calda del mattino è un motivo per svegliarsi presto."]},
+{n:"Coke Tales",a:"Via B. Marcello 34, Porta Venezia",pl:2,pr:"€€·~35€",cu:"Cocktail Bar",tg:"internazionale",ws:"https://coketales.it",st:"Cocktail bar con cucina fusion. Il cocktail è al centro, la cucina lo accompagna con creatività.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["Cocktail di livello altissimo. Il bartender crea abbinamenti originali.","La cucina è sorprendentemente buona per un cocktail bar.","Uno dei migliori indirizzi di Porta Venezia per iniziare la serata."]}
+];
+
+const maps=a=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a+', Milano')}`;
+const S={c:'all',p:'all',g:'all',q:''};
+
+const guideLinks = n => ({
+  mi: `https://guide.michelin.com/it/it/search?query=${encodeURIComponent(n)}`,
+  gr: `https://www.gamberorosso.it/search/?q=${encodeURIComponent(n)}`,
+  es: `https://espresso.repubblica.it/ristoranti/ricerca?q=${encodeURIComponent(n)}`
+});
+
+function miBadge(r){
+  const l = guideLinks(r.n);
+  if(r.mi.s>=1)return`<a href="${l.mi}" target="_blank" class="sg mi">${'⭐'.repeat(r.mi.s)} ${r.mi.s===1?'Una Stella':r.mi.s+' Stelle'} <span class="gn">Michelin ↗</span></a>`;
+  if(r.mi.b)return`<a href="${l.mi}" target="_blank" class="sg mi">😊 Bib Gourmand <span class="gn">Michelin ↗</span></a>`;
+  if(r.mi.green)return`<a href="${l.mi}" target="_blank" class="sg mi" style="background:#f0fff4;border-color:#a8d5b5;color:#276749">🌿 Green Star <span class="gn">Michelin ↗</span></a>`;
+  return`<span class="sg mi fd">⭐ – <span class="gn">Michelin</span></span>`;
+}
+
+function card(r){
+  return`<div class="card"><div class="cb">
+    <div class="ctag"><span class="ccu">${r.cu.toUpperCase()}</span><span class="cpr">${r.pr}</span></div>
+    <h2 class="cn">${r.n}</h2>
+    <div class="lks">
+      <a href="${maps(r.a)}" target="_blank">📍 ${r.a}</a>
+      <a href="${r.ws}" target="_blank" class="ws">🌐 Sito web</a>
+    </div>
+    <div class="sc">
+      ${miBadge(r)}
+      <a href="${guideLinks(r.n).gr}" target="_blank" class="sg gr">${'🍴'.repeat(r.gr.f)} ${r.gr.l} <span class="gn">Gambero Rosso ↗</span></a>
+      <a href="${guideLinks(r.n).es}" target="_blank" class="sg es">☕ ${r.es.l} <span class="gn">L'Espresso ↗</span></a>
+    </div>
+    <p class="cs">${r.st}</p>
+    <div class="rvs">${r.rv.map(v=>`<div class="rv"><span class="st">★★★★★</span><span>${v}</span></div>`).join('')}</div>
+  </div></div>`;
+}
+
+function render(){
+  const d=R.filter(r=>{
+    if(S.c!=='all'&&r.tg!==S.c)return false;
+    if(S.p!=='all'&&r.pl!==+S.p)return false;
+    if(S.g==='michelin'&&!r.mi.s&&!r.mi.b&&!r.mi.green)return false;
+    if(S.g==='gambero'&&r.gr.f<2)return false;
+    if(S.g==='espresso'&&r.es.v<15)return false;
+    if(S.q){const q=S.q.toLowerCase();if(![r.n,r.cu,r.a,r.st].some(s=>s.toLowerCase().includes(q)))return false;}
+    return true;
+  });
+  document.getElementById('tot').textContent=d.length;
+  document.getElementById('rc').textContent=d.length+' risultati';
+  const g=document.getElementById('grid');
+  [...g.querySelectorAll('.card')].forEach(c=>c.remove());
+  document.getElementById('nr').style.display=d.length?'none':'block';
+  d.forEach(r=>g.insertAdjacentHTML('beforeend',card(r)));
+}
+
+['cg','pg','gg'].forEach(id=>{
+  document.getElementById(id).addEventListener('click',e=>{
+    const b=e.target.closest('.fb');if(!b)return;
+    document.querySelectorAll(`#${id} .fb`).forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    if(id==='cg')S.c=b.dataset.c;
+    if(id==='pg')S.p=b.dataset.p;
+    if(id==='gg')S.g=b.dataset.g;
+    render();
+  });
+});
+document.getElementById('srch').addEventListener('input',e=>{S.q=e.target.value;render();});
+render();
+</script>
+
+</body>
+</html>
