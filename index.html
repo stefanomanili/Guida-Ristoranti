@@ -7,69 +7,108 @@
 <title>Guida Ristoranti Milano 2025</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#F5F0E8;--charcoal:#1A1A1A;--gold:#C9A85C;--sage:#7A8C72;--warm:#FDFAF4;--lg:#E8E4DC;--muted:#6B6560;--mr:#E4002B;--gr:#8B1A1A;--eb:#1B3A6B;}
+:root{--cream:#F5F0E8;--charcoal:#1A1A1A;--gold:#C9A85C;--sage:#7A8C72;--warm:#FDFAF4;--lg:#E8E4DC;--muted:#6B6560;--mr:#E4002B;--gr:#8B1A1A;--eb:#1B3A6B;--fav:#E8445A;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--cream);font-family:'DM Sans',sans-serif;color:var(--charcoal);}
-header{background:var(--charcoal);color:var(--cream);padding:52px 40px 40px;position:relative;overflow:hidden;}
-header::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:2px solid rgba(201,168,92,.18);}
-header::after{content:'';position:absolute;bottom:-70px;left:-70px;width:240px;height:240px;border-radius:50%;border:2px solid rgba(201,168,92,.12);}
+
+/* HEADER */
+header{background:var(–charcoal);color:var(–cream);padding:52px 40px 40px;position:relative;overflow:hidden;}
+header::before{content:’’;position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;border:2px solid rgba(201,168,92,.18);}
+header::after{content:’’;position:absolute;bottom:-70px;left:-70px;width:240px;height:240px;border-radius:50%;border:2px solid rgba(201,168,92,.12);}
 .hi{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
-.ht{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:500;}
-h1{font-family:'Playfair Display',serif;font-size:clamp(38px,6vw,72px);line-height:1.05;letter-spacing:-1px;}
-h1 em{font-style:italic;color:var(--gold);}
+.ht{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(–gold);margin-bottom:12px;font-weight:500;}
+h1{font-family:‘Playfair Display’,serif;font-size:clamp(38px,6vw,72px);line-height:1.05;letter-spacing:-1px;}
+h1 em{font-style:italic;color:var(–gold);}
 .hs{margin-top:16px;font-size:13px;color:rgba(245,240,232,.55);max-width:460px;line-height:1.6;}
 .hc{margin-top:22px;display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(201,168,92,.35);padding:9px 18px;}
-.hc b{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold);}
+.hc b{font-family:‘Playfair Display’,serif;font-size:26px;color:var(–gold);}
 .hc small{font-size:9px;color:rgba(245,240,232,.4);letter-spacing:1px;text-transform:uppercase;line-height:1.4;}
-.mapbar{background:#111;border-bottom:2px solid var(--gold);}
-.mapbar a{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 40px;text-decoration:none;color:var(--cream);transition:background .2s;}
+
+/* MAP BAR */
+.mapbar{background:#111;border-bottom:2px solid var(–gold);}
+.mapbar a{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 40px;text-decoration:none;color:var(–cream);transition:background .2s;}
 .mapbar a:hover{background:#000;}
-.mapbar strong{display:block;font-size:13px;color:var(--gold);letter-spacing:.4px;}
+.mapbar strong{display:block;font-size:13px;color:var(–gold);letter-spacing:.4px;}
 .mapbar span{font-size:10px;color:rgba(245,240,232,.45);}
-.ctrl{background:var(--warm);border-bottom:1px solid var(--lg);padding:12px 40px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.05);}
+
+/* SORT BAR */
+.sortbar{background:var(–charcoal);padding:10px 40px;border-bottom:1px solid rgba(201,168,92,.2);}
+.sorti{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.sort-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,.45);font-weight:500;white-space:nowrap;}
+.sort-sep{width:1px;height:14px;background:rgba(255,255,255,.1);}
+.sbtn{padding:5px 13px;border:1px solid rgba(201,168,92,.3);border-radius:2px;background:transparent;font-family:‘DM Sans’,sans-serif;font-size:10px;cursor:pointer;transition:all .2s;color:rgba(245,240,232,.6);white-space:nowrap;letter-spacing:.3px;}
+.sbtn:hover{border-color:var(–gold);color:var(–gold);}
+.sbtn.on{background:var(–gold);border-color:var(–gold);color:var(–charcoal);font-weight:600;}
+.sbtn.fav-sort.on{background:var(–fav);border-color:var(–fav);color:white;}
+
+/* CONTROLS */
+.ctrl{background:var(–warm);border-bottom:1px solid var(–lg);padding:12px 40px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.05);}
 .ci{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:7px;}
 .row{display:flex;flex-wrap:wrap;gap:7px;align-items:center;}
 .sw{flex:1;min-width:170px;position:relative;}
-.sw input{width:100%;padding:7px 11px 7px 34px;border:1px solid var(--lg);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:12px;background:white;outline:none;transition:border-color .2s;}
-.sw input:focus{border-color:var(--gold);}
-.si{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:12px;}
-.fl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500;white-space:nowrap;}
+.sw input{width:100%;padding:7px 11px 7px 34px;border:1px solid var(–lg);border-radius:2px;font-family:‘DM Sans’,sans-serif;font-size:12px;background:white;outline:none;transition:border-color .2s;}
+.sw input:focus{border-color:var(–gold);}
+.si{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(–muted);font-size:12px;}
+.fl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(–muted);font-weight:500;white-space:nowrap;}
 .fg{display:flex;flex-wrap:wrap;gap:4px;}
-.fb{padding:5px 11px;border:1px solid var(--lg);border-radius:2px;background:white;font-family:'DM Sans',sans-serif;font-size:10px;cursor:pointer;transition:all .2s;color:var(--muted);white-space:nowrap;}
-.fb:hover,.fb.on{background:var(--charcoal);border-color:var(--charcoal);color:var(--cream);}
-.pb.on{background:var(--gold);border-color:var(--gold);color:var(--charcoal);font-weight:700;}
-.dv{width:1px;height:16px;background:var(--lg);flex-shrink:0;}
-.rc{font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap;}
+.fb{padding:5px 11px;border:1px solid var(–lg);border-radius:2px;background:white;font-family:‘DM Sans’,sans-serif;font-size:10px;cursor:pointer;transition:all .2s;color:var(–muted);white-space:nowrap;}
+.fb:hover,.fb.on{background:var(–charcoal);border-color:var(–charcoal);color:var(–cream);}
+.pb.on{background:var(–gold);border-color:var(–gold);color:var(–charcoal);font-weight:700;}
+.fb.fav-filter.on{background:var(–fav);border-color:var(–fav);color:white;}
+.dv{width:1px;height:16px;background:var(–lg);flex-shrink:0;}
+.rc{font-size:11px;color:var(–muted);margin-left:auto;white-space:nowrap;}
+
+/* GRID */
 .gw{max-width:1200px;margin:0 auto;padding:24px 40px 80px;}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2px;}
 .nr{text-align:center;padding:80px 20px;grid-column:1/-1;display:none;}
-.nr h3{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:8px;}
-.card{background:var(--warm);overflow:hidden;transition:transform .25s,box-shadow .25s;}
+.nr h3{font-family:‘Playfair Display’,serif;font-size:24px;margin-bottom:8px;}
+
+/* CARD */
+.card{background:var(–warm);overflow:hidden;transition:transform .25s,box-shadow .25s;position:relative;}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,.1);}
 .cb{padding:16px 18px 14px;}
-.ctag{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
-.ccu{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500;}
-.cpr{font-size:10px;font-weight:600;color:var(--gold);background:rgba(201,168,92,.1);border:1px solid rgba(201,168,92,.25);padding:2px 8px;border-radius:2px;}
-.cn{font-family:'Playfair Display',serif;font-size:19px;line-height:1.2;margin-bottom:6px;}
+
+/* FAV BUTTON */
+.fav-btn{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:white;border:1px solid var(–lg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:all .2s;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.fav-btn:hover{transform:scale(1.15);}
+.fav-btn.active{background:var(–fav);border-color:var(–fav);}
+
+.ctag{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;padding-right:42px;}
+.ccu{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(–muted);font-weight:500;}
+.cpr{font-size:10px;font-weight:600;color:var(–gold);background:rgba(201,168,92,.1);border:1px solid rgba(201,168,92,.25);padding:2px 8px;border-radius:2px;}
+.cn{font-family:‘Playfair Display’,serif;font-size:19px;line-height:1.2;margin-bottom:6px;padding-right:42px;}
 .lks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:9px;}
-.lks a{font-size:10px;color:var(--muted);text-decoration:none;transition:opacity .2s;}
+.lks a{font-size:10px;color:var(–muted);text-decoration:none;transition:opacity .2s;}
 .lks a:hover{opacity:.65;}
-.lks a.ws{color:var(--gold);font-weight:500;border-bottom:1px solid rgba(201,168,92,.3);}
+.lks a.ws{color:var(–gold);font-weight:500;border-bottom:1px solid rgba(201,168,92,.3);}
 .sc{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:9px;}
-.sg{display:inline-flex;align-items:center;gap:3px;padding:3px 7px;border-radius:2px;font-size:9px;font-weight:600;text-decoration:none;cursor:pointer;transition:opacity .2s;}
-.sg:hover{opacity:.75;}
-.sg.mi{background:#FFF0F0;border:1px solid #FFCDD2;color:var(--mr);}
-.sg.gr{background:#FFF8F0;border:1px solid #FFCC80;color:var(--gr);}
-.sg.es{background:#EEF2FF;border:1px solid #C5CAE9;color:var(--eb);}
+.sg{display:inline-flex;align-items:center;gap:3px;padding:3px 7px;border-radius:2px;font-size:9px;font-weight:600;}
+.sg.mi{background:#FFF0F0;border:1px solid #FFCDD2;color:var(–mr);}
+.sg.gr{background:#FFF8F0;border:1px solid #FFCC80;color:var(–gr);}
+.sg.es{background:#EEF2FF;border:1px solid #C5CAE9;color:var(–eb);}
 .sg.fd{opacity:.28;}
 .gn{font-size:7px;letter-spacing:.4px;text-transform:uppercase;opacity:.6;font-weight:400;}
-.cs{font-size:10.5px;color:var(--sage);font-style:italic;margin-bottom:9px;line-height:1.5;}
-.rvs{border-top:1px solid var(--lg);padding-top:8px;}
-.rv{font-size:10.5px;color:var(--muted);line-height:1.5;padding:3px 0;border-bottom:1px solid var(--lg);display:flex;gap:5px;}
+.cs{font-size:10.5px;color:var(–sage);font-style:italic;margin-bottom:9px;line-height:1.5;}
+.rvs{border-top:1px solid var(–lg);padding-top:8px;}
+.rv{font-size:10.5px;color:var(–muted);line-height:1.5;padding:3px 0;border-bottom:1px solid var(–lg);display:flex;gap:5px;}
 .rv:last-child{border-bottom:none;}
-.st{color:var(--gold);flex-shrink:0;font-size:8px;padding-top:2px;}
-@media(max-width:600px){header{padding:32px 18px 28px;}.ctrl{padding:10px 14px;}.gw{padding:18px 14px 60px;}.grid{grid-template-columns:1fr;}.mapbar a{padding:12px 18px;}}
+.st{color:var(–gold);flex-shrink:0;font-size:8px;padding-top:2px;}
+
+/* FAV COUNTER */
+.fav-count{display:none;font-size:10px;color:var(–fav);font-weight:600;margin-left:4px;}
+.fav-count.show{display:inline;}
+
+@media(max-width:600px){
+header{padding:32px 18px 28px;}
+.sortbar{padding:10px 14px;}
+.ctrl{padding:10px 14px;}
+.gw{padding:18px 14px 60px;}
+.grid{grid-template-columns:1fr;}
+.mapbar a{padding:12px 18px;}
+}
 </style>
+
 </head>
 <body>
 
@@ -92,6 +131,23 @@ h1 em{font-style:italic;color:var(--gold);}
     <span style="color:var(--gold);font-size:16px;margin-left:8px">→</span>
   </a>
 </div>
+
+<!-- SORT BAR -->
+
+<div class="sortbar">
+  <div class="sorti">
+    <span class="sort-label">Ordina per</span>
+    <div class="fg" id="sg">
+      <button class="sbtn on" data-s="default">Predefinito</button>
+      <button class="sbtn" data-s="cuisine">Tipo cucina A→Z</button>
+      <button class="sbtn" data-s="price-asc">Prezzo ↑</button>
+      <button class="sbtn" data-s="price-desc">Prezzo ↓</button>
+      <button class="sbtn fav-sort" data-s="fav">❤️ Preferiti prima</button>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
 
 <div class="ctrl">
   <div class="ci">
@@ -128,6 +184,8 @@ h1 em{font-style:italic;color:var(--gold);}
         <button class="fb" data-g="gambero">🍴 Gambero</button>
         <button class="fb" data-g="espresso">☕ Espresso</button>
       </div>
+      <div class="dv"></div>
+      <button class="fb fav-filter" id="favFilter">❤️ Preferiti <span class="fav-count" id="favCount">0</span></button>
     </div>
   </div>
 </div>
@@ -140,10 +198,10 @@ h1 em{font-style:italic;color:var(--gold);}
 const R=[
 {n:"Sea Signora",a:"Via Fiori Chiari 32, Brera",pl:4,pr:"€€€€·~120€",cu:"Pesce",tg:"pesce",ws:"https://seasignora.com",st:"Design anni '80, pavimenti in marmo, velluti porpora e acquario cilindrico. Cucina di mare cosmopolita.",mi:{s:0,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:16,l:"16/20"},rv:["Crudi di mare straordinari, materia prima di altissimo livello.","Cucina mediterranea con tocchi mediorientali. Servizio impeccabile.","La frittura di calamari di Mazara con labneh è fantastica."]},
 {n:"Trippa",a:"Via Giorgio Vasari 1, Porta Romana",pl:3,pr:"€€€·~50€",cu:"Quinto Quarto",tg:"italiana",ws:"https://trippamilano.it",st:"Diego Rossi reinventa la cucina di recupero con tecnica e passione. Bib Gourmand Michelin.",mi:{s:0,b:1},gr:{f:2,l:"Due Forchette"},es:{v:15,l:"15/20"},rv:["La trippa fritta è un capolavoro: croccante fuori, morbida dentro.","Il vitello tonnato probabilmente il migliore di Milano.","Le tagliatelle al burro sono la prova che la semplicità è perfezione."]},
-{n:"Seta",a:"Via Andegari 9, Duomo",pl:5,pr:"€€€€€·~200€",cu:"Alta Cucina",tg:"italiana",ws:"https://mandarinoriental.com/milan",st:"Due stelle Michelin al Mandarin Oriental. Chef Antonio Guida, cucina italiana nell'olimpo gastronomico mondiale.",mi:{s:2,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:19,l:"19/20"},rv:["Una delle esperienze gastronomiche più complete d'Italia.","Menu degustazione straordinario: tecnica, creatività, tradizione.","Servizio di rara perfezione. Sommelier tra i migliori d'Italia."]},
+{n:"Seta",a:"Via Andegari 9, Duomo",pl:5,pr:"€€€€€·~200€",cu:"Alta Cucina",tg:"italiana",ws:"https://mandarinoriental.com/milan",st:"Due stelle Michelin al Mandarin Oriental. Chef Antonio Guida, cucina italiana nell'olimpo gastronomico.",mi:{s:2,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:19,l:"19/20"},rv:["Una delle esperienze gastronomiche più complete d'Italia.","Menu degustazione straordinario: tecnica, creatività, tradizione.","Servizio di rara perfezione. Sommelier tra i migliori d'Italia."]},
 {n:"Ratanà",a:"Via G. De Castillia 28, Porta Garibaldi",pl:3,pr:"€€€·~60€",cu:"Milanese",tg:"italiana",ws:"https://ratana.it",st:"Cucina milanese contemporanea tra gli orti urbani di Porta Garibaldi. Una stella Michelin.",mi:{s:1,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:17,l:"17/20"},rv:["Il risotto alla milanese è probabilmente il migliore di Milano.","La cotoletta è alta, dorata, burro perfetto.","Il giardino è uno dei più belli della città."]},
 {n:"Langosteria",a:"Via Savona 10, Navigli",pl:5,pr:"€€€€€·~150€",cu:"Pesce Fine Dining",tg:"pesce",ws:"https://langosteria.com",st:"Il tempio del pesce di lusso dal 2007. Ha ridefinito il fine dining ittico a Milano. Una stella Michelin.",mi:{s:1,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:18,l:"18/20"},rv:["Il plateau di crudi è senza rivali a Milano.","Langoustine, astice, ostriche: qualità costante nel tempo.","Cantina straordinaria: champagne e grandi bianchi italiani."]},
-{n:"Pellico 3",a:"Via Silvio Pellico 3, Duomo",pl:4,pr:"€€€€·~100€",cu:"Fine Dining",tg:"italiana",ws:"https://pellico3.it",st:"Fine dining nel centro storico. Eleganza sobria, cucina di alto livello, servizio di scuola classica. Una stella Michelin.",mi:{s:1,b:0},gr:{f:2,l:"Due Forchette"},es:{v:16,l:"16/20"},rv:["Cucina d'autore senza eccessi, ogni piatto racconta una storia.","Servizio altissimo livello, attento senza essere invadente.","Ottimo per cene d'affari o occasioni speciali."]},
+{n:"Pellico 3",a:"Via Silvio Pellico 3, Duomo",pl:4,pr:"€€€€·~100€",cu:"Fine Dining",tg:"italiana",ws:"https://pellico3.it",st:"Fine dining nel centro storico. Eleganza sobria, cucina di alto livello, servizio classico. Una stella Michelin.",mi:{s:1,b:0},gr:{f:2,l:"Due Forchette"},es:{v:16,l:"16/20"},rv:["Cucina d'autore senza eccessi, ogni piatto racconta una storia.","Servizio altissimo livello, attento senza essere invadente.","Ottimo per cene d'affari o occasioni speciali."]},
 {n:"Osteria San Giovanni",a:"Via S. Giovanni sul Muro 8, Cairoli",pl:2,pr:"€€·~40€",cu:"Lombarda",tg:"italiana",ws:"https://osteriasangiovanni.it",st:"Osteria autentica nel cuore di Milano con cucina della tradizione lombarda. Bib Gourmand.",mi:{s:0,b:1},gr:{f:2,l:"Due Forchette"},es:{v:13,l:"13/20"},rv:["La cassoeula è leggendaria.","La cotoletta probabilmente la migliore della città.","Da anni il mio posto preferito per una cena in compagnia."]},
 {n:"Dry Milano",a:"Via Solferino 33, Brera",pl:2,pr:"€€·~40€",cu:"Pizza Gourmet",tg:"pizza",ws:"https://drymilano.it",st:"Pioniere della pizza gourmet a Milano. Impasto ricercato, ingredienti selezionati e cocktail list eccellente. Bib Gourmand.",mi:{s:0,b:1},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["La pizza qui è un'altra cosa rispetto alla media milanese.","La cocktail list è tra le migliori di Milano.","Un'istituzione che ha cambiato la cultura gastronomica milanese."]},
 {n:"Pacifico",a:"Via della Moscova 29, Moscova",pl:3,pr:"€€€·~65€",cu:"Peruviana Nikkei",tg:"internazionale",ws:"https://gruppopacifico.it",st:"Il Perù incontra il Giappone. Design coloniale latinoamericano e cucina Nikkei di altissimo livello.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:15,l:"15/20"},rv:["Il ceviche è perfetto: acidità, freschezza, pesce di qualità.","Tiradito e causas: piatti che non trovate altrove a Milano.","Il Pisco Sour qui è quello autentico."]},
@@ -159,7 +217,7 @@ const R=[
 {n:"Beef Bar",a:"Piazza Gae Aulenti 5, Porta Nuova",pl:4,pr:"€€€€·~90€",cu:"Steakhouse",tg:"internazionale",ws:"https://beefbar.com/en/milan",st:"La celebre steakhouse internazionale a Porta Nuova. Carni pregiate da tutto il mondo.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["La Wagyu A5 si scioglie in bocca. Vale ogni centesimo.","Il Tomahawk per due è uno spettacolo.","Cocktail bar di primissimo livello."]},
 {n:"La Latteria",a:"Via San Marco 24, Brera",pl:2,pr:"€€·~35€",cu:"Italiana Classica",tg:"italiana",ws:"https://latteriasanmarco.it",st:"Piccola trattoria storica a Brera. Menu scritto a mano su lavagna, cucina di mercato. Bib Gourmand.",mi:{s:0,b:1},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["La latteria è un pezzo di Milano che non si dovrebbe mai perdere.","La pasta al pomodoro migliore del 90% dei ristoranti stellati.","L'esperienza vale qualsiasi sacrificio per ottenere un tavolo."]},
 {n:"10_11 Portrait",a:"Corso Venezia 11, Porta Venezia",pl:4,pr:"€€€€·~100€",cu:"Fine Dining",tg:"italiana",ws:"https://lungarnocollection.com/portrait-milano",st:"L'hotel Portrait ospita uno dei ristoranti più glamour di Milano. Cucina italiana d'autore.",mi:{s:0,b:0},gr:{f:3,l:"Tre Forchette"},es:{v:16,l:"16/20"},rv:["Eleganza e sostanza in equilibrio perfetto.","La terrazza sul Corso Venezia è magnifica d'estate.","Carta vini di grande profondità con etichette rare."]},
-{n:"Maoji Street Food",a:"Via Paolo Sarpi 22, Chinatown",pl:1,pr:"€·~20€",cu:"Sichuan",tg:"asiatica",ws:"https://maoji.it",st:"Il vero street food del Sichuan in Paolo Sarpi. Piccante, aromatico, autentico. Nessun compromesso.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:11,l:"11/20"},rv:["Il mapo tofu più autentico fuori dalla Cina.","I noodles freddi al sesamo con pepe di Sichuan sono magnifici.","Prezzi da street food, qualità da ristorante serio."]},
+{n:"Maoji Street Food",a:"Via Paolo Sarpi 22, Chinatown",pl:1,pr:"€·~20€",cu:"Sichuan",tg:"asiatica",ws:"https://maoji.it",st:"Il vero street food del Sichuan in Paolo Sarpi. Piccante, aromatico, autentico.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:11,l:"11/20"},rv:["Il mapo tofu più autentico fuori dalla Cina.","I noodles freddi al sesamo con pepe di Sichuan sono magnifici.","Prezzi da street food, qualità da ristorante serio."]},
 {n:"Paper Moon Giardino",a:"Via Bagutta 1, San Babila",pl:3,pr:"€€€·~75€",cu:"Italiana Classica",tg:"italiana",ws:"https://papermoonmilano.com",st:"Il giardino segreto di Milano. Cucina italiana classica in uno dei cortili più belli della città.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Il giardino estivo è tra i luoghi più belli di tutta Milano.","La cucina italiana classica è eseguita con grande cura.","Servizio impeccabile e discreto."]},
 {n:"Meze",a:"Viale Col di Lana 8, Navigli",pl:2,pr:"€€·~35€",cu:"Mediorientale",tg:"internazionale",ws:"https://mezemilano.it",st:"Viaggio culinario nel Medioriente. Meze condivisi, spezie profumate, atmosfera conviviale.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["I meze sono abbondanti e autentici. L'hummus fatto in casa è un'altra categoria.","Perfetto per gruppi: tutto da condividere, prezzi corretti.","Il baklava fatto in casa è il miglior finale possibile."]},
 {n:"Zio Pesce",a:"Via Conchetta 8, Navigli",pl:2,pr:"€€·~45€",cu:"Crudo di Mare",tg:"pesce",ws:"https://ziopesce.it",st:"Piccolo indirizzo informale ai Navigli dedicato al crudo. Pescato freschissimo e filosofia del prodotto.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:13,l:"13/20"},rv:["Il crudo di mare più fresco di Milano. Ostriche, gamberi, scampi.","Il plateau di crudi è il miglior inizio di serata.","Quasi impossibile trovare posto senza prenotazione."]},
@@ -195,7 +253,7 @@ const R=[
 {n:"Casazul",a:"Via Vigevano 6, Navigli",pl:2,pr:"€€·~40€",cu:"Latinoamericana",tg:"internazionale",ws:"https://casazulmilano.it",st:"Colori e sapori latinoamericani sui Navigli. Cucina fusion con influenze peruviane, messicane e colombiane.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["Il ceviche è fresco e ben bilanciato tra acido e piccante.","Atmosfera festosa e vivace, perfetto per una serata informale.","Le empanadas sono croccanti e ben ripiene."]},
 {n:"Yapa",a:"Via Petrella 12, Porta Venezia",pl:2,pr:"€€·~40€",cu:"Peruviana",tg:"internazionale",ws:"https://yaparestaurant.it",st:"Cucina peruviana autentica in ambiente vivace. Ceviche, tiradito, lomo saltado e pisco cocktail.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Il ceviche è fresco e ben bilanciato. Autenticità garantita.","Il lomo saltado preparato con wok e fuoco vivo: tecnica giusta.","Cocktail a base di pisco originali e ben costruiti."]},
 {n:"Lubna",a:"Via Argelati 19, Navigli",pl:2,pr:"€€·~35€",cu:"Libanese",tg:"internazionale",ws:"https://lubnaristorante.it",st:"La cucina libanese nella sua forma più autentica. Meze condivisi, pita fresca, hummus al momento.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["Il kibbeh è perfetto: croccante fuori, saporito dentro.","L'hummus con burro e pinoli è una rivelazione.","Il fattoush freschissimo. Il miglior libanese della città."]},
-{n:"Cantina Piemontese",a:"Via Laghetto 2, Duomo",pl:3,pr:"€€€·~60€",cu:"Piemontese",tg:"italiana",ws:"https://cantinapiemontese.it",st:"La cucina piemontese nel centro di Milano. Vini delle Langhe, tartufo, fonduta e bagna cauda.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Il menu invernale con tartufo bianco d'Alba vale ogni euro.","La bagna cauda è quella autentica: aglio, acciughe, olio.","La cantina con Barolo e Barbaresco è straordinaria."]},
+{n:"Cantina Piemontese",a:"Via Laghetto 2, Duomo",pl:3,pr:"€€€·~60€",cu:"Piemontese",tg:"italiana",ws:"https://cantinapiemontese.it",st:"La cucina piemontese nel centro di Milano. Vini delle Langhe, tartufo, fonduta e bagna cauda.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Il menu invernale con tartufo bianco d'Alba vale ogni euro.","La bagna cauda è quella autentica.","La cantina con Barolo e Barbaresco è straordinaria."]},
 {n:"Food Writers",a:"Via Vigevano 28, Navigli",pl:2,pr:"€€·~40€",cu:"Italiana Contemporanea",tg:"italiana",ws:"https://foodwriters.it",st:"Ristorante che racconta il cibo attraverso storie e prodotti selezionati. Approccio narrativo.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Ogni piatto racconta una storia di produttori e territori.","Selezione di formaggi e salumi tra le migliori di Milano.","Un posto che ama il cibo in modo autentico."]},
 {n:"Jiao10",a:"Via Paolo Sarpi 10, Chinatown",pl:1,pr:"€·~22€",cu:"Dumplings",tg:"asiatica",ws:"https://jiao10.it",st:"Specialisti dei jiaozi in tutte le forme. Qualità rara a questi prezzi a Milano.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:11,l:"11/20"},rv:["I jiaozi al vapore con gamberi e bambù: delicatezza assoluta.","La pasta tirata sottile come si deve. Differenza abissale dalla media.","Prezzi da street food, qualità da ristorante serio."]},
 {n:"Sogni",a:"Via Orti 14, Porta Romana",pl:3,pr:"€€€·~60€",cu:"Italiana Creativa",tg:"italiana",ws:"https://sognimilano.it",st:"Piccolo ristorante con cucina italiana creativa. Chef giovane e ambizioso, menu che cambia spesso.",mi:{s:0,b:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Una scoperta bellissima. La cucina è ambiziosa e centrata.","Menu degustazione: viaggio tra creatività e tradizione.","Pochi tavoli garantiscono attenzione personalizzata."]},
@@ -204,71 +262,120 @@ const R=[
 {n:"Coke Tales",a:"Via B. Marcello 34, Porta Venezia",pl:2,pr:"€€·~35€",cu:"Cocktail Bar",tg:"internazionale",ws:"https://coketales.it",st:"Cocktail bar con cucina fusion. Il cocktail è al centro, la cucina lo accompagna con creatività.",mi:{s:0,b:0},gr:{f:1,l:"Una Forchetta"},es:{v:12,l:"12/20"},rv:["Cocktail di livello altissimo. Il bartender crea abbinamenti originali.","La cucina è sorprendentemente buona per un cocktail bar.","Uno dei migliori indirizzi di Porta Venezia per iniziare la serata."]}
 ];
 
-const maps=a=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a+', Milano')}`;
-const S={c:'all',p:'all',g:'all',q:''};
+// — FAVOURITES (localStorage) —
+const FAV_KEY = 'milanofav';
+function loadFavs(){ try{ return new Set(JSON.parse(localStorage.getItem(FAV_KEY)||'[]')); }catch(e){ return new Set(); } }
+function saveFavs(s){ localStorage.setItem(FAV_KEY, JSON.stringify([...s])); }
+let favs = loadFavs();
 
-const guideLinks = n => ({
-  mi: `https://guide.michelin.com/it/it/search?query=${encodeURIComponent(n)}`,
-  gr: `https://www.gamberorosso.it/search/?q=${encodeURIComponent(n)}`,
-  es: `https://espresso.repubblica.it/ristoranti/ricerca?q=${encodeURIComponent(n)}`
-});
+function toggleFav(name){
+  if(favs.has(name)) favs.delete(name); else favs.add(name);
+  saveFavs(favs);
+  updateFavCount();
+  render();
+}
+
+function updateFavCount(){
+  const c = favs.size;
+  const el = document.getElementById('favCount');
+  el.textContent = c;
+  el.classList.toggle('show', c > 0);
+}
+
+// — STATE —
+const S = {c:'all', p:'all', g:'all', q:'', onlyFav:false, sort:'default'};
+
+const maps = a => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a+', Milano')}`;
 
 function miBadge(r){
-  const l = guideLinks(r.n);
-  if(r.mi.s>=1)return`<a href="${l.mi}" target="_blank" class="sg mi">${'⭐'.repeat(r.mi.s)} ${r.mi.s===1?'Una Stella':r.mi.s+' Stelle'} <span class="gn">Michelin ↗</span></a>`;
-  if(r.mi.b)return`<a href="${l.mi}" target="_blank" class="sg mi">😊 Bib Gourmand <span class="gn">Michelin ↗</span></a>`;
-  if(r.mi.green)return`<a href="${l.mi}" target="_blank" class="sg mi" style="background:#f0fff4;border-color:#a8d5b5;color:#276749">🌿 Green Star <span class="gn">Michelin ↗</span></a>`;
+  if(r.mi.s>=1) return`<span class="sg mi">${'⭐'.repeat(r.mi.s)} ${r.mi.s===1?'Una Stella':r.mi.s+' Stelle'} <span class="gn">Michelin</span></span>`;
+  if(r.mi.b) return`<span class="sg mi">😊 Bib Gourmand <span class="gn">Michelin</span></span>`;
+  if(r.mi.green) return`<span class="sg mi" style="background:#f0fff4;border-color:#a8d5b5;color:#276749">🌿 Green Star <span class="gn">Michelin</span></span>`;
   return`<span class="sg mi fd">⭐ – <span class="gn">Michelin</span></span>`;
 }
 
 function card(r){
-  return`<div class="card"><div class="cb">
-    <div class="ctag"><span class="ccu">${r.cu.toUpperCase()}</span><span class="cpr">${r.pr}</span></div>
-    <h2 class="cn">${r.n}</h2>
-    <div class="lks">
-      <a href="${maps(r.a)}" target="_blank">📍 ${r.a}</a>
-      <a href="${r.ws}" target="_blank" class="ws">🌐 Sito web</a>
+  const isFav = favs.has(r.n);
+  return`<div class="card">
+    <button class="fav-btn${isFav?' active':''}" onclick="toggleFav('${r.n.replace(/'/g,"\\'")}')">
+      ${isFav ? '❤️' : '🤍'}
+    </button>
+    <div class="cb">
+      <div class="ctag"><span class="ccu">${r.cu.toUpperCase()}</span><span class="cpr">${r.pr}</span></div>
+      <h2 class="cn">${r.n}</h2>
+      <div class="lks">
+        <a href="${maps(r.a)}" target="_blank">📍 ${r.a}</a>
+        <a href="${r.ws}" target="_blank" class="ws">🌐 Sito web</a>
+      </div>
+      <div class="sc">
+        ${miBadge(r)}
+        <span class="sg gr">${'🍴'.repeat(r.gr.f)} ${r.gr.l} <span class="gn">Gambero Rosso</span></span>
+        <span class="sg es">☕ ${r.es.l} <span class="gn">L'Espresso</span></span>
+      </div>
+      <p class="cs">${r.st}</p>
+      <div class="rvs">${r.rv.map(v=>`<div class="rv"><span class="st">★★★★★</span><span>${v}</span></div>`).join('')}</div>
     </div>
-    <div class="sc">
-      ${miBadge(r)}
-      <a href="${guideLinks(r.n).gr}" target="_blank" class="sg gr">${'🍴'.repeat(r.gr.f)} ${r.gr.l} <span class="gn">Gambero Rosso ↗</span></a>
-      <a href="${guideLinks(r.n).es}" target="_blank" class="sg es">☕ ${r.es.l} <span class="gn">L'Espresso ↗</span></a>
-    </div>
-    <p class="cs">${r.st}</p>
-    <div class="rvs">${r.rv.map(v=>`<div class="rv"><span class="st">★★★★★</span><span>${v}</span></div>`).join('')}</div>
-  </div></div>`;
+  </div>`;
+}
+
+function sortData(d){
+  const s = [...d];
+  if(S.sort==='cuisine') s.sort((a,b)=>a.cu.localeCompare(b.cu));
+  else if(S.sort==='price-asc') s.sort((a,b)=>a.pl-b.pl);
+  else if(S.sort==='price-desc') s.sort((a,b)=>b.pl-a.pl);
+  else if(S.sort==='fav') s.sort((a,b)=>(favs.has(b.n)?1:0)-(favs.has(a.n)?1:0));
+  return s;
 }
 
 function render(){
-  const d=R.filter(r=>{
-    if(S.c!=='all'&&r.tg!==S.c)return false;
-    if(S.p!=='all'&&r.pl!==+S.p)return false;
-    if(S.g==='michelin'&&!r.mi.s&&!r.mi.b&&!r.mi.green)return false;
-    if(S.g==='gambero'&&r.gr.f<2)return false;
-    if(S.g==='espresso'&&r.es.v<15)return false;
-    if(S.q){const q=S.q.toLowerCase();if(![r.n,r.cu,r.a,r.st].some(s=>s.toLowerCase().includes(q)))return false;}
+  let d = R.filter(r=>{
+    if(S.c!=='all' && r.tg!==S.c) return false;
+    if(S.p!=='all' && r.pl!==+S.p) return false;
+    if(S.g==='michelin' && !r.mi.s && !r.mi.b && !r.mi.green) return false;
+    if(S.g==='gambero' && r.gr.f<2) return false;
+    if(S.g==='espresso' && r.es.v<15) return false;
+    if(S.onlyFav && !favs.has(r.n)) return false;
+    if(S.q){ const q=S.q.toLowerCase(); if(![r.n,r.cu,r.a,r.st].some(s=>s.toLowerCase().includes(q))) return false; }
     return true;
   });
-  document.getElementById('tot').textContent=d.length;
-  document.getElementById('rc').textContent=d.length+' risultati';
-  const g=document.getElementById('grid');
+  d = sortData(d);
+  document.getElementById('tot').textContent = d.length;
+  document.getElementById('rc').textContent = d.length + ' risultati';
+  const g = document.getElementById('grid');
   [...g.querySelectorAll('.card')].forEach(c=>c.remove());
-  document.getElementById('nr').style.display=d.length?'none':'block';
-  d.forEach(r=>g.insertAdjacentHTML('beforeend',card(r)));
+  document.getElementById('nr').style.display = d.length ? 'none' : 'block';
+  d.forEach(r => g.insertAdjacentHTML('beforeend', card(r)));
 }
 
-['cg','pg','gg'].forEach(id=>{
-  document.getElementById(id).addEventListener('click',e=>{
-    const b=e.target.closest('.fb');if(!b)return;
-    document.querySelectorAll(`#${id} .fb`).forEach(x=>x.classList.remove('on'));
-    b.classList.add('on');
-    if(id==='cg')S.c=b.dataset.c;
-    if(id==='pg')S.p=b.dataset.p;
-    if(id==='gg')S.g=b.dataset.g;
-    render();
-  });
+// — EVENTS —
+document.getElementById('cg').addEventListener('click', e=>{
+  const b=e.target.closest('.fb'); if(!b) return;
+  document.querySelectorAll('#cg .fb').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); S.c=b.dataset.c; render();
 });
-document.getElementById('srch').addEventListener('input',e=>{S.q=e.target.value;render();});
+document.getElementById('pg').addEventListener('click', e=>{
+  const b=e.target.closest('.fb'); if(!b) return;
+  document.querySelectorAll('#pg .fb').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); S.p=b.dataset.p; render();
+});
+document.getElementById('gg').addEventListener('click', e=>{
+  const b=e.target.closest('.fb'); if(!b) return;
+  document.querySelectorAll('#gg .fb').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); S.g=b.dataset.g; render();
+});
+document.getElementById('favFilter').addEventListener('click', function(){
+  S.onlyFav = !S.onlyFav;
+  this.classList.toggle('on', S.onlyFav);
+  render();
+});
+document.getElementById('sg').addEventListener('click', e=>{
+  const b=e.target.closest('.sbtn'); if(!b) return;
+  document.querySelectorAll('#sg .sbtn').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); S.sort=b.dataset.s; render();
+});
+document.getElementById('srch').addEventListener('input', e=>{ S.q=e.target.value; render(); });
+
+updateFavCount();
 render();
 </script>
 
