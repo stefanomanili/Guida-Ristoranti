@@ -139,12 +139,6 @@ h1 em{font-style:italic;color:var(--gold);}
       <div class="dv"></div>
       <button class="fb favf" id="favf">❤️ Preferiti <span id="favc" style="display:none;font-weight:700"></span></button>
     </div>
-    <div class="row">
-      <span class="fl">Zona</span>
-      <div class="fg" id="zg">
-        <button class="fb on" data-z="all">Tutte</button>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -239,7 +233,7 @@ function updateFavBtn(){
 }
 
 // STATE
-const S = {c:'all', p:'all', g:'all', q:'', fav:false, z:'all'};
+const S = {c:'all', p:'all', g:'all', q:'', fav:false};
 // Estrae la zona dall'indirizzo (seconda parte dopo la virgola)
 function zona(a){ return a.split(',')[1]?.trim() || ''; }
 
@@ -285,7 +279,6 @@ function render(){
     if(S.g==='michelin' && !r.mi.s && !r.mi.b && !r.mi.green) return false;
     if(S.g==='gambero' && r.gr.f<2) return false;
     if(S.g==='espresso' && r.es.v<15) return false;
-    if(S.z!=='all' && zona(r.a)!==S.z) return false;
     if(S.fav && !favs.has(r.n)) return false;
     if(S.q){ const q=S.q.toLowerCase(); if(![r.n,r.cu,r.a,r.st].some(s=>s.toLowerCase().includes(q))) return false; }
     return true;
@@ -320,19 +313,6 @@ document.getElementById('favf').addEventListener('click', function(){
   render();
 });
 document.getElementById('srch').addEventListener('input', e=>{ S.q=e.target.value; render(); });
-
-// Popola filtro zone
-const zg = document.getElementById('zg');
-ZONE.forEach(z=>{
-  const b = document.createElement('button');
-  b.className='fb'; b.dataset.z=z; b.textContent=z;
-  zg.appendChild(b);
-});
-document.getElementById('zg').addEventListener('click', e=>{
-  const b=e.target.closest('.fb'); if(!b) return;
-  document.querySelectorAll('#zg .fb').forEach(x=>x.classList.remove('on'));
-  b.classList.add('on'); S.z=b.dataset.z; render();
-});
 
 updateFavBtn();
 render();
