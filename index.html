@@ -67,7 +67,17 @@ h1 em{font-style:italic;color:var(--gold);}
 .rv{font-size:10.5px;color:var(--muted);line-height:1.5;padding:3px 0;border-bottom:1px solid var(--lg);display:flex;gap:5px;}
 .rv:last-child{border-bottom:none;}
 .st{color:var(--gold);flex-shrink:0;font-size:8px;padding-top:2px;}
-@media(max-width:600px){header{padding:32px 18px 28px;}.ctrl{padding:10px 14px;}.gw{padding:18px 14px 60px;}.grid{grid-template-columns:1fr;}}
+/* DINNERISTI NOTE */
+.dnbtn{margin-top:10px;width:100%;padding:7px 12px;background:transparent;border:1px solid var(--gold);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.5px;color:var(--gold);cursor:pointer;transition:all .2s;text-align:left;}
+.dnbtn:hover{background:var(--gold);color:var(--charcoal);}
+.dnbtn.has-note{background:rgba(201,168,92,.12);}
+.dnwrap{display:none;margin-top:8px;}
+.dnwrap.open{display:block;}
+.dntxt{width:100%;min-height:80px;padding:8px 10px;border:1px solid var(--lg);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--charcoal);resize:vertical;outline:none;transition:border-color .2s;background:white;}
+.dntxt:focus{border-color:var(--gold);}
+.dnsave{margin-top:6px;padding:5px 14px;background:var(--charcoal);border:none;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:10px;color:var(--cream);cursor:pointer;transition:background .2s;}
+.dnsave:hover{background:var(--gold);color:var(--charcoal);}
+.dnsaved{font-size:10px;color:var(--sage);margin-left:8px;display:none;}{header{padding:32px 18px 28px;}.ctrl{padding:10px 14px;}.gw{padding:18px 14px 60px;}.grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -203,7 +213,38 @@ var R=[
 {n:"Le Nove Scodelle",a:"Via Casale 5, Porta Venezia",pl:2,pr:"€€ · ~35€",cu:"Cinese Regionale",tg:"asiatica",ws:"https://lenovescodelle.it",st:"Cucina cinese regionale autentica, lontana dai cliché dei ristoranti cinesi da asporto. Piatti delle province dello Yunnan e del Sichuan preparati con ingredienti importati.",mi:{s:0,b:0,g:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["La cucina cinese più autentica di Milano. Sapori profondi e ingredienti che non si trovano altrove.","I noodles dello Yunnan fatti a mano sono un piatto memorabile: texture e sapore eccezionali.","Un posto che ha cambiato la percezione della cucina cinese a Milano. Da scoprire assolutamente."]}
 ];
 
-// FAVOURITES
+// DINNERISTI NOTES
+var NOTES_KEY = 'milanotes';
+function loadNotes(){ try{ return JSON.parse(localStorage.getItem(NOTES_KEY)||'{}'); }catch(e){ return {}; } }
+function saveNote(name, text){ var n=loadNotes(); n[name]=text; localStorage.setItem(NOTES_KEY, JSON.stringify(n)); }
+function getNote(name){ return loadNotes()[name]||''; }
+
+function toggleNote(name){
+  var key = 'dn_' + name.replace(/[^a-z0-9]/gi,'_');
+  var wrap = document.getElementById(key);
+  var btn = document.getElementById('btn_' + key);
+  if(!wrap) return;
+  var isOpen = wrap.classList.contains('open');
+  wrap.classList.toggle('open', !isOpen);
+  if(!isOpen){
+    var ta = wrap.querySelector('textarea');
+    ta.value = getNote(name);
+    ta.focus();
+  }
+}
+
+function saveNoteUI(name){
+  var key = 'dn_' + name.replace(/[^a-z0-9]/gi,'_');
+  var wrap = document.getElementById(key);
+  var ta = wrap.querySelector('textarea');
+  var saved = wrap.querySelector('.dnsaved');
+  saveNote(name, ta.value);
+  // update button style
+  var btn = document.querySelector('[data-dnname="' + name.replace(/"/g,'\\"') + '"]');
+  if(btn) btn.classList.toggle('has-note', ta.value.trim().length > 0);
+  saved.style.display = 'inline';
+  setTimeout(function(){ saved.style.display = 'none'; }, 1500);
+}
 var favs = new Set(JSON.parse(localStorage.getItem('mifav')||'[]'));
 function saveFavs(){ localStorage.setItem('mifav', JSON.stringify([...favs])); }
 
@@ -235,6 +276,8 @@ function miBadge(r){
 function card(r){
   var isFav = favs.has(r.n);
   var safeName = r.n.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+  var key = 'dn_' + r.n.replace(/[^a-z0-9]/gi,'_');
+  var existingNote = getNote(r.n);
   return '<div class="card">'
     + '<button class="favbtn' + (isFav?' on':'') + '" onclick="toggleFav(\'' + safeName + '\')">' + (isFav?'❤️':'🤍') + '</button>'
     + '<div class="cb">'
@@ -251,53 +294,64 @@ function card(r){
     + '</div>'
     + '<p class="cs">' + r.st + '</p>'
     + '<div class="rvs">' + r.rv.map(function(v){ return '<div class="rv"><span class="st">★★★★★</span><span>' + v + '</span></div>'; }).join('') + '</div>'
-    + '</div></div>';
+    + '<button class="dnbtn' + (existingNote?' has-note':'') + '" data-dnname="' + r.n.replace(/"/g,'&quot;') + '" onclick="toggleNote(\'' + safeName + '\')">'
+    + '📝 Dinneristi Fav' + (existingNote?' ✓':'') + '</button>'
+    + '<div class="dnwrap" id="' + key + '">'
+    + '<textarea class="dntxt" placeholder="Aggiungi le tue note su questo ristorante..."></textarea>'
+
+```
++ '<button class="dnsave" onclick="saveNoteUI(\'' + safeName + '\')">Salva</button>'
++ '<span class="dnsaved">✓ Salvato</span>'
++ '</div>'
++ '</div></div>';
+```
+
 }
 
 function render(){
-  var d = R.filter(function(r){
-    if(S.c !== 'all' && r.tg !== S.c) return false;
-    if(S.p !== 'all' && r.pl !== parseInt(S.p)) return false;
-    if(S.g === 'michelin' && !r.mi.s && !r.mi.b && !r.mi.g) return false;
-    if(S.g === 'gambero' && r.gr.f < 2) return false;
-    if(S.g === 'espresso' && r.es.v < 15) return false;
-    if(S.fav && !favs.has(r.n)) return false;
-    if(S.q){
-      var q = S.q.toLowerCase();
-      if(![r.n, r.cu, r.a, r.st].some(function(s){ return s.toLowerCase().indexOf(q) >= 0; })) return false;
-    }
-    return true;
-  });
-  document.getElementById('tot').textContent = d.length;
-  document.getElementById('rc').textContent = d.length + ' risultati';
-  var g = document.getElementById('grid');
-  var cards = g.querySelectorAll('.card');
-  for(var i=0; i<cards.length; i++) cards[i].remove();
-  document.getElementById('nr').style.display = d.length ? 'none' : 'block';
-  d.forEach(function(r){ g.insertAdjacentHTML('beforeend', card(r)); });
+var d = R.filter(function(r){
+if(S.c !== ‘all’ && r.tg !== S.c) return false;
+if(S.p !== ‘all’ && r.pl !== parseInt(S.p)) return false;
+if(S.g === ‘michelin’ && !r.mi.s && !r.mi.b && !r.mi.g) return false;
+if(S.g === ‘gambero’ && r.gr.f < 2) return false;
+if(S.g === ‘espresso’ && r.es.v < 15) return false;
+if(S.fav && !favs.has(r.n)) return false;
+if(S.q){
+var q = S.q.toLowerCase();
+if(![r.n, r.cu, r.a, r.st].some(function(s){ return s.toLowerCase().indexOf(q) >= 0; })) return false;
+}
+return true;
+});
+document.getElementById(‘tot’).textContent = d.length;
+document.getElementById(‘rc’).textContent = d.length + ’ risultati’;
+var g = document.getElementById(‘grid’);
+var cards = g.querySelectorAll(’.card’);
+for(var i=0; i<cards.length; i++) cards[i].remove();
+document.getElementById(‘nr’).style.display = d.length ? ‘none’ : ‘block’;
+d.forEach(function(r){ g.insertAdjacentHTML(‘beforeend’, card(r)); });
 }
 
-document.getElementById('cg').addEventListener('click', function(e){
-  var b = e.target.closest('.fb'); if(!b) return;
-  document.querySelectorAll('#cg .fb').forEach(function(x){ x.classList.remove('on'); });
-  b.classList.add('on'); S.c = b.dataset.c; render();
+document.getElementById(‘cg’).addEventListener(‘click’, function(e){
+var b = e.target.closest(’.fb’); if(!b) return;
+document.querySelectorAll(’#cg .fb’).forEach(function(x){ x.classList.remove(‘on’); });
+b.classList.add(‘on’); S.c = b.dataset.c; render();
 });
-document.getElementById('pg').addEventListener('click', function(e){
-  var b = e.target.closest('.fb'); if(!b) return;
-  document.querySelectorAll('#pg .fb').forEach(function(x){ x.classList.remove('on'); });
-  b.classList.add('on'); S.p = b.dataset.p; render();
+document.getElementById(‘pg’).addEventListener(‘click’, function(e){
+var b = e.target.closest(’.fb’); if(!b) return;
+document.querySelectorAll(’#pg .fb’).forEach(function(x){ x.classList.remove(‘on’); });
+b.classList.add(‘on’); S.p = b.dataset.p; render();
 });
-document.getElementById('gg').addEventListener('click', function(e){
-  var b = e.target.closest('.fb'); if(!b) return;
-  document.querySelectorAll('#gg .fb').forEach(function(x){ x.classList.remove('on'); });
-  b.classList.add('on'); S.g = b.dataset.g; render();
+document.getElementById(‘gg’).addEventListener(‘click’, function(e){
+var b = e.target.closest(’.fb’); if(!b) return;
+document.querySelectorAll(’#gg .fb’).forEach(function(x){ x.classList.remove(‘on’); });
+b.classList.add(‘on’); S.g = b.dataset.g; render();
 });
-document.getElementById('favf').addEventListener('click', function(){
-  S.fav = !S.fav;
-  this.classList.toggle('on', S.fav);
-  render();
+document.getElementById(‘favf’).addEventListener(‘click’, function(){
+S.fav = !S.fav;
+this.classList.toggle(‘on’, S.fav);
+render();
 });
-document.getElementById('srch').addEventListener('input', function(e){ S.q = e.target.value; render(); });
+document.getElementById(‘srch’).addEventListener(‘input’, function(e){ S.q = e.target.value; render(); });
 
 updateFavCount();
 render();
