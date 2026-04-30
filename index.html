@@ -222,8 +222,8 @@ var R=[
 {n:"Orizzonti",a:"Viale Monte Nero 56, Porta Romana",pl:3,pr:"€€€ · ~60€",cu:"Italiana Contemporanea",tg:"italiana",ws:"https://ristoranteorizzonti.it",st:"Cucina italiana contemporanea con forte attenzione agli ingredienti di stagione.",mi:{s:0,b:0,g:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Cucina pulita e precisa, ingredienti di stagione con rispetto.","Carta dei vini sorprendente: etichette ricercate a prezzi onesti.","I primi piatti sono il punto di forza: pasta fatta in casa."]}
 ];
 
-var favs=new Set(JSON.parse(localStorage.getItem(‘mifav25’)||’[]’));
-function saveFavs(){localStorage.setItem(‘mifav25’,JSON.stringify(Array.from(favs)));}
+var favs=new Set();
+function saveFavs(){}
 window.toggleFav=function(i){var n=R[i].n;favs.has(n)?favs.delete(n):favs.add(n);saveFavs();updateFavCount();render();};
 var S={c:‘all’,p:‘all’,g:‘all’,q:’’,fav:false};
 function maps(a){return’https://www.google.com/maps/search/?api=1&query=’+encodeURIComponent(a+’, Milano’);}
