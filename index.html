@@ -70,30 +70,25 @@ h1 em{font-style:italic;color:var(--gold);}
 </style>
 </head>
 <body>
-
 <header>
   <div class="hi">
-    <p class="ht">Edizione 2025 · Stefano's Pick</p>
+    <p class="ht">Edizione 2026 · Stefano's Pick</p>
     <h1>I Migliori Ristoranti<br>di <em>Milano</em></h1>
     <p class="hs">Una selezione curata con i punteggi di Michelin, Gambero Rosso e L'Espresso. Ogni indirizzo linkato a Google Maps.</p>
-    <div class="hc"><b id="tot">74</b><small>Ristoranti<br>Selezionati</small></div>
+    <div class="hc"><b id="tot">75</b><small>Ristoranti<br>Selezionati</small></div>
   </div>
 </header>
-
-<!-- MAP BANNER -->
-
 <div style="background:#111;border-bottom:2px solid var(--gold);">
   <a href="https://www.google.com/maps/d/u/0/viewer?mid=1OquO1No16L1udxIPwf0Bq1BFoDt2gug&ll=45.45420435773724%2C9.190318000000026&z=13" target="_blank"
      style="display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 40px;text-decoration:none;color:var(--cream);transition:background .2s;">
     <span style="font-size:20px">🗺️</span>
     <div>
       <strong style="display:block;font-size:13px;color:var(--gold);letter-spacing:.4px;">Apri la mappa con tutti i ristoranti</strong>
-      <span style="font-size:10px;color:rgba(245,240,232,.45);">74 indirizzi pinnati · Stefano's Pick 2025</span>
+      <span style="font-size:10px;color:rgba(245,240,232,.45);">75 indirizzi pinnati · Stefano's Pick 2025</span>
     </div>
     <span style="color:var(--gold);font-size:16px;margin-left:8px">→</span>
   </a>
 </div>
-
 <div class="ctrl">
   <div class="ci">
     <div class="row">
@@ -109,7 +104,7 @@ h1 em{font-style:italic;color:var(--gold);}
         <button class="fb" data-c="internazionale">Internazionale</button>
         <button class="fb" data-c="pizza">Pizza</button>
       </div>
-      <span class="rc" id="rc">74 risultati</span>
+      <span class="rc" id="rc">75 risultati</span>
     </div>
     <div class="row">
       <span class="fl">Prezzo</span>
@@ -124,7 +119,7 @@ h1 em{font-style:italic;color:var(--gold);}
       <div class="dv"></div>
       <span class="fl">Guide</span>
       <div class="fg" id="gg">
-        <button class="fb" data-g="all">Tutte</button>
+        <button class="fb on" data-g="all">Tutte</button>
         <button class="fb" data-g="michelin">⭐ Michelin</button>
         <button class="fb" data-g="gambero">🍴 Gambero</button>
         <button class="fb" data-g="espresso">☕ Espresso</button>
@@ -134,13 +129,11 @@ h1 em{font-style:italic;color:var(--gold);}
     </div>
   </div>
 </div>
-
 <div class="gw">
   <div class="grid" id="grid">
     <div class="nr" id="nr"><h3>Nessun risultato</h3><p style="color:var(--muted)">Prova con un altro filtro</p></div>
   </div>
 </div>
-
 <script>
 var R=[
   {n:"Sea Signora",a:"Via Fiori Chiari 32, Brera",pl:4,pr:"€€€€ · ~120€",cu:"Pesce",tg:"pesce",ws:"https://seasignora.com",st:"Design anni 80, pavimenti in marmo, velluti porpora e acquario cilindrico. Cucina di mare cosmopolita.",mi:{s:0,b:0,g:0},gr:{f:3,l:"Tre Forchette"},es:{v:16,l:"16/20"},rv:["Crudi di mare straordinari, materia prima di altissimo livello.","Cucina mediterranea con tocchi mediorientali. Servizio impeccabile.","La frittura di calamari di Mazara con labneh e fantastica."]},
@@ -213,86 +206,90 @@ var R=[
   {n:"La Cantina di Manuela",a:"Via C. Poerio 3, Porta Venezia",pl:2,pr:"€€ · ~40€",cu:"Enoteca con Cucina",tg:"italiana",ws:"https://lacantinadimanuela.it",st:"Enoteca con cucina a Porta Venezia. Selezione di vini di piccoli produttori, taglieri curati.",mi:{s:0,b:0,g:0},gr:{f:2,l:"Due Forchette"},es:{v:13,l:"13/20"},rv:["Una delle migliori selezioni di vini naturali e artigianali di Milano.","I taglieri con salumi e formaggi selezionati sono il modo perfetto per iniziare la serata.","Ambiente accogliente e informale, perfetto per una cena in compagnia."]},
   {n:"Osaka",a:"Via Valenza 18, Navigli",pl:2,pr:"€€ · ~40€",cu:"Giapponese",tg:"giapponese",ws:"https://osakaristorante.it",st:"Storico ristorante giapponese dei Navigli. Cucina autentica e prezzi onesti.",mi:{s:0,b:0,g:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Un classico dei Navigli che non tradisce mai. Cucina giapponese autentica.","Il ramen e il sushi sono preparati con cura e ingredienti freschi.","Ambiente informale e accogliente."]},
   {n:"Sushi Matsu Omakase",a:"Via Napo Torriani 34, Repubblica",pl:4,pr:"€€€€ · ~120€",cu:"Sushi Omakase",tg:"giapponese",ws:"https://sushimatsu.it",st:"Omakase puro. Il pesce arriva dal Giappone e il cuoco lavora davanti agli ospiti con precisione.",mi:{s:0,b:0,g:0},gr:{f:2,l:"Due Forchette"},es:{v:16,l:"16/20"},rv:["L'omakase qui e un'esperienza autentica e commovente.","Il pesce importato dal Giappone e di una qualita rara in Italia.","Pochi posti al bancone, prenotazione con mesi di anticipo."]},
-  {n:"Le Nove Scodelle",a:"Via Casale 5, Porta Venezia",pl:2,pr:"€€ · ~35€",cu:"Cinese Regionale",tg:"asiatica",ws:"https://lenovescodelle.it",st:"Cucina cinese regionale autentica. Piatti dello Yunnan e del Sichuan con ingredienti importati.",mi:{s:0,b:0,g:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["La cucina cinese piu autentica di Milano. Sapori profondi e ingredienti rari.","I noodles dello Yunnan fatti a mano sono un piatto memorabile.","Un posto che ha cambiato la percezione della cucina cinese a Milano."]}
+  {n:"Le Nove Scodelle",a:"Via Casale 5, Porta Venezia",pl:2,pr:"€€ · ~35€",cu:"Cinese Regionale",tg:"asiatica",ws:"https://lenovescodelle.it",st:"Cucina cinese regionale autentica. Piatti dello Yunnan e del Sichuan con ingredienti importati.",mi:{s:0,b:0,g:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["La cucina cinese piu autentica di Milano. Sapori profondi e ingredienti rari.","I noodles dello Yunnan fatti a mano sono un piatto memorabile.","Un posto che ha cambiato la percezione della cucina cinese a Milano."]},
+  {n:"Azabu 10",a:"Via San Glicerio 6, Bicocca",pl:4,pr:"€€€€ · ~120€",cu:"Sushi Omakase",tg:"giapponese",ws:"https://azabu10byarcieri.com",st:"Chef Andrea Arcieri porta a Milano un omakase di 22-25 portate tra pesce frollato e tecnica edomae. Premio Novita Gambero Rosso Sushi 2025.",mi:{s:0,b:0,g:0},gr:{f:2,l:"Due Forchette"},es:{v:15,l:"15/20"},rv:["Un talento quasi geniale. Il pesce frollato e un altra dimensione del sushi.","Tonno ikejime e abbinamenti arditi ma centratissimi.","Il banco da 10 posti e un rito: ogni portata e un piccolo capolavoro."]}
 ];
 
-var favs=new Set(JSON.parse(localStorage.getItem('mifav25')||'[]'));
-function saveFavs(){localStorage.setItem('mifav25',JSON.stringify(Array.from(favs)));}
+var favs=new Set(JSON.parse(localStorage.getItem(‘mifav25’)||’[]’));
+function saveFavs(){localStorage.setItem(‘mifav25’,JSON.stringify(Array.from(favs)));}
 
 window.toggleFav=function(i){
-  var n=R[i].n;
-  favs.has(n)?favs.delete(n):favs.add(n);
-  saveFavs();updateFavCount();render();
+var n=R[i].n;
+favs.has(n)?favs.delete(n):favs.add(n);
+saveFavs();updateFavCount();render();
 };
 
-var S={c:'all',p:'all',g:'all',q:'',fav:false};
+var S={c:‘all’,p:‘all’,g:‘all’,q:’’,fav:false};
 
-function maps(a){return'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(a+', Milano');}
+function maps(a){return’https://www.google.com/maps/search/?api=1&query=’+encodeURIComponent(a+’, Milano’);}
 
 function miBadge(r){
-  if(r.mi.s>=1)return'<span class="sg mi">'+'⭐'.repeat(r.mi.s)+' '+(r.mi.s===1?'Una Stella':r.mi.s+' Stelle')+' <span class="gn">Michelin</span></span>';
-  if(r.mi.b)return'<span class="sg mi">😊 Bib Gourmand <span class="gn">Michelin</span></span>';
-  if(r.mi.g)return'<span class="sg mi" style="background:#f0fff4;border-color:#a8d5b5;color:#276749">🌿 Green Star <span class="gn">Michelin</span></span>';
-  return'<span class="sg mi fd">⭐ – <span class="gn">Michelin</span></span>';
+if(r.mi.s>=1)return’<span class="sg mi">’+‘⭐’.repeat(r.mi.s)+’ ‘+(r.mi.s===1?‘Una Stella’:r.mi.s+’ Stelle’)+’ <span class="gn">Michelin</span></span>’;
+if(r.mi.b)return’<span class="sg mi">😊 Bib Gourmand <span class="gn">Michelin</span></span>’;
+if(r.mi.g)return’<span class="sg mi" style="background:#f0fff4;border-color:#a8d5b5;color:#276749">🌿 Green Star <span class="gn">Michelin</span></span>’;
+return’<span class="sg mi fd">⭐ – <span class="gn">Michelin</span></span>’;
 }
 
 function makeCard(r,i){
-  var isFav=favs.has(r.n);
-  var ta='https://www.tripadvisor.it/Search?q='+encodeURIComponent(r.n+' Milano');
-  var rvs='';
-  for(var k=0;k<r.rv.length;k++)rvs+='<div class="rv"><span class="st">★★★★★</span><span>'+r.rv[k]+'</span></div>';
-  return '<div class="card">'
-    +'<button class="favbtn'+(isFav?' on':'')+'" onclick="toggleFav('+i+')">'+(isFav?'❤️':'🤍')+'</button>'
-    +'<div class="cb">'
-    +'<div class="ctag"><span class="ccu">'+r.cu.toUpperCase()+'</span><span class="cpr">'+r.pr+'</span></div>'
-    +'<h2 class="cn">'+r.n+'</h2>'
-    +'<div class="lks">'
-    +'<a href="'+maps(r.a)+'" target="_blank">📍 '+r.a+'</a>'
-    +'<a href="'+r.ws+'" target="_blank" class="ws">🌐 Sito web</a>'
-    +'<a href="'+ta+'" target="_blank" class="ta">🍽️ TripAdvisor</a>'
-    +'</div>'
-    +'<div class="sc">'+miBadge(r)
-    +'<span class="sg gr">'+'🍴'.repeat(r.gr.f)+' '+r.gr.l+' <span class="gn">Gambero Rosso</span></span>'
-    +'<span class="sg es">☕ '+r.es.l+' <span class="gn">L\'Espresso</span></span>'
-    +'</div>'
-    +'<p class="cs">'+r.st+'</p>'
-    +'<div class="rvs">'+rvs+'</div>'
-    +'</div></div>';
+var isFav=favs.has(r.n);
+var ta=‘https://www.tripadvisor.it/Search?q=’+encodeURIComponent(r.n+’ Milano’);
+var rvs=’’;
+for(var k=0;k<r.rv.length;k++)rvs+=’<div class="rv"><span class="st">★★★★★</span><span>’+r.rv[k]+’</span></div>’;
+return ‘<div class="card">’
++’<button class="favbtn'+(isFav?' on':'')+'" onclick="toggleFav('+i+')">’+(isFav?‘❤️’:‘🤍’)+’</button>’
++’<div class="cb">’
++’<div class="ctag"><span class="ccu">’+r.cu.toUpperCase()+’</span><span class="cpr">’+r.pr+’</span></div>’
++’<h2 class="cn">’+r.n+’</h2>’
++’<div class="lks">’
++’<a href="'+maps(r.a)+'" target="_blank">📍 ‘+r.a+’</a>’
++’<a href="'+r.ws+'" target="_blank" class="ws">🌐 Sito web</a>’
++’<a href="'+ta+'" target="_blank" class="ta">🍽️ TripAdvisor</a>’
++’</div>’
++’<div class="sc">’+miBadge(r)
++’<span class="sg gr">’+‘🍴’.repeat(r.gr.f)+’ ‘+r.gr.l+’ <span class="gn">Gambero Rosso</span></span>’
++’<span class="sg es">☕ ‘+r.es.l+’ <span class="gn">L\u2019Espresso</span></span>’
++’</div>’
++’<p class="cs">’+r.st+’</p>’
++’<div class="rvs">’+rvs+’</div>’
++’</div></div>’;
 }
 
 function updateFavCount(){
-  var n=favs.size;
-  document.getElementById('favc').textContent=n>0?'('+n+')':'';
+var n=favs.size;
+document.getElementById(‘favc’).textContent=n>0?’(’+n+’)’:’’;
 }
 
 function render(){
-  var f=[];
-  for(var i=0;i<R.length;i++){
-    var r=R[i];
-    if(S.c!=='all'&&r.tg!==S.c)continue;
-    if(S.p!=='all'&&r.pl!==parseInt(S.p))continue;
-    if(S.g==='michelin'&&!r.mi.s&&!r.mi.b&&!r.mi.g)continue;
-    if(S.g==='gambero'&&r.gr.f<2)continue;
-    if(S.g==='espresso'&&r.es.v<15)continue;
-    if(S.fav&&!favs.has(r.n))continue;
-    if(S.q){var q=S.q.toLowerCase();var ok=false;var ff=[r.n,r.cu,r.a,r.st];for(var j=0;j<ff.length;j++){if(ff[j].toLowerCase().indexOf(q)>=0){ok=true;break;}}if(!ok)continue;}
-    f.push(i);
-  }
-  document.getElementById('tot').textContent=f.length;
-  document.getElementById('rc').textContent=f.length+' risultati';
-  var grid=document.getElementById('grid');
-  var cards=grid.querySelectorAll('.card');
-  for(var k=0;k<cards.length;k++)cards[k].remove();
-  document.getElementById('nr').style.display=f.length?'none':'block';
-  for(var m=0;m<f.length;m++)grid.insertAdjacentHTML('beforeend',makeCard(R[f[m]],f[m]));
+var f=[];
+for(var i=0;i<R.length;i++){
+var r=R[i];
+if(S.c!==‘all’&&r.tg!==S.c)continue;
+if(S.p!==‘all’&&r.pl!==parseInt(S.p))continue;
+if(S.g===‘michelin’&&!r.mi.s&&!r.mi.b&&!r.mi.g)continue;
+if(S.g===‘gambero’&&r.gr.f<2)continue;
+if(S.g===‘espresso’&&r.es.v<15)continue;
+if(S.fav&&!favs.has(r.n))continue;
+if(S.q){var q=S.q.toLowerCase();var ok=false;var ff=[r.n,r.cu,r.a,r.st];for(var j=0;j<ff.length;j++){if(ff[j].toLowerCase().indexOf(q)>=0){ok=true;break;}}if(!ok)continue;}
+f.push(i);
+}
+document.getElementById(‘tot’).textContent=f.length;
+document.getElementById(‘rc’).textContent=f.length+’ risultati’;
+var grid=document.getElementById(‘grid’);
+var cards=grid.querySelectorAll(’.card’);
+for(var k=0;k<cards.length;k++)cards[k].remove();
+document.getElementById(‘nr’).style.display=f.length?‘none’:‘block’;
+for(var m=0;m<f.length;m++)grid.insertAdjacentHTML(‘beforeend’,makeCard(R[f[m]],f[m]));
 }
 
-document.getElementById('cg').addEventListener('click',function(e){var b=e.target.closest('.fb');if(!b)return;document.querySelectorAll('#cg .fb').forEach(function(x){x.classList.remove('on');});b.classList.add('on');S.c=b.dataset.c;render();});
-document.getElementById('pg').addEventListener('click',function(e){var b=e.target.closest('.fb');if(!b)return;document.querySelectorAll('#pg .fb').forEach(function(x){x.classList.remove('on');});b.classList.add('on');S.p=b.dataset.p;render();});
-document.getElementById('gg').addEventListener('click',function(e){var b=e.target.closest('.fb');if(!b)return;document.querySelectorAll('#gg .fb').forEach(function(x){x.classList.remove('on');});b.classList.add('on');S.g=b.dataset.g;render();});
-document.getElementById('favf').addEventListener('click',function(){S.fav=!S.fav;this.classList.toggle('on',S.fav);render();});
-document.getElementById('srch').addEventListener('input',function(e){S.q=e.target.value;render();});
+document.getElementById(‘cg’).addEventListener(‘click’,function(e){var b=e.target.closest(’.fb’);if(!b)return;document.querySelectorAll(’#cg .fb’).forEach(function(x){x.classList.remove(‘on’);});b.classList.add(‘on’);S.c=b.dataset.c;render();});
+document.getElementById(‘pg’).addEventListener(‘click’,function(e){var b=e.target.closest(’.fb’);if(!b)return;document.querySelectorAll(’#pg .fb’).forEach(function(x){x.classList.remove(‘on’);});b.classList.add(‘on’);S.p=b.dataset.p;render();});
+document.getElementById(‘gg’).addEventListener(‘click’,function(e){var b=e.target.closest(’.fb’);if(!b)return;document.querySelectorAll(’#gg .fb’).forEach(function(x){x.classList.remove(‘on’);});b.classList.add(‘on’);S.g=b.dataset.g;render();});
+document.getElementById(‘favf’).addEventListener(‘click’,function(){S.fav=!S.fav;this.classList.toggle(‘on’,S.fav);render();});
+document.getElementById(‘srch’).addEventListener(‘input’,function(e){S.q=e.target.value;render();});
 
 updateFavCount();
 render();
 </script>
+
+</body>
+</html>
