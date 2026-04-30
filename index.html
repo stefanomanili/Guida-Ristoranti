@@ -262,15 +262,15 @@ var rvs = ‘’;
 for (var k = 0; k < r.rv.length; k++) {
 rvs += ‘<div class="rv"><span class="st">★★★★★</span><span>’ + esc(r.rv[k]) + ‘</span></div>’;
 }
-return ‘<div class="card">’ +
-‘<button class="favbtn' + (isFav ? ' on' : '') + '" onclick="toggleFav(' + idx + ')">’ + (isFav ? ‘❤️’ : ‘🤍’) + ‘</button>’ +
+return ‘<div class="card" data-idx="' + idx + '">’ +
+‘<button class="favbtn' + (isFav ? ' on' : '') + '" data-fav="' + idx + '">’ + (isFav ? ‘❤️’ : ‘🤍’) + ‘</button>’ +
 ‘<div class="cb">’ +
 ‘<div class="ctag"><span class="ccu">’ + esc(r.cu.toUpperCase()) + ‘</span><span class="cpr">’ + esc(r.pr) + ‘</span></div>’ +
 ‘<h2 class="cn">’ + esc(r.n) + ‘</h2>’ +
 ‘<div class="lks">’ +
 ’<a href="' + maps(r.a) + '" target="_blank">📍 ’ + esc(r.a) + ’</a> ’ +
-‘<a href="' + r.ws + '" target="_blank" class="ws">🌐 Sito web</a> ’ +
-‘<a href="' + ta + '" target="_blank" class="ta">🍽 TripAdvisor</a>’ +
+‘<a href="' + esc(r.ws) + '" target="_blank" class="ws">🌐 Sito web</a> ’ +
+‘<a href="' + esc(ta) + '" target="_blank" class="ta">🍽 TripAdvisor</a>’ +
 ‘</div>’ +
 ‘<div class="sc">’ + miBadge(r) +
 ‘<span class="sg gr">’ + fork(r.gr.f) + ’ ’ + esc(r.gr.l) + ’ <span class="gn">Gambero Rosso</span></span>’ +
@@ -325,38 +325,35 @@ grid.insertAdjacentHTML(‘beforeend’, makeCard(R[f[m]], f[m]));
 }
 }
 
+// Event delegation per favbtn — niente onclick inline
+document.getElementById(‘grid’).addEventListener(‘click’, function(e) {
+var btn = e.target.closest(’[data-fav]’);
+if (btn) { toggleFav(parseInt(btn.dataset.fav, 10)); }
+});
+
 document.getElementById(‘cg’).addEventListener(‘click’, function(e) {
 var b = e.target.closest(’.fb’);
 if (!b) return;
 document.querySelectorAll(’#cg .fb’).forEach(function(x) { x.classList.remove(‘on’); });
-b.classList.add(‘on’);
-S.c = b.dataset.c;
-render();
+b.classList.add(‘on’); S.c = b.dataset.c; render();
 });
 document.getElementById(‘pg’).addEventListener(‘click’, function(e) {
 var b = e.target.closest(’.fb’);
 if (!b) return;
 document.querySelectorAll(’#pg .fb’).forEach(function(x) { x.classList.remove(‘on’); });
-b.classList.add(‘on’);
-S.p = b.dataset.p;
-render();
+b.classList.add(‘on’); S.p = b.dataset.p; render();
 });
 document.getElementById(‘gg’).addEventListener(‘click’, function(e) {
 var b = e.target.closest(’.fb’);
 if (!b) return;
 document.querySelectorAll(’#gg .fb’).forEach(function(x) { x.classList.remove(‘on’); });
-b.classList.add(‘on’);
-S.g = b.dataset.g;
-render();
+b.classList.add(‘on’); S.g = b.dataset.g; render();
 });
 document.getElementById(‘favf’).addEventListener(‘click’, function() {
-S.fav = !S.fav;
-this.classList.toggle(‘on’, S.fav);
-render();
+S.fav = !S.fav; this.classList.toggle(‘on’, S.fav); render();
 });
 document.getElementById(‘srch’).addEventListener(‘input’, function(e) {
-S.q = e.target.value;
-render();
+S.q = e.target.value; render();
 });
 
 updateFavCount();
