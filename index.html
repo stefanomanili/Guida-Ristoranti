@@ -42,7 +42,6 @@ h1 em{font-style:italic;color:var(--gold);}
 .card{background:var(--warm);overflow:hidden;transition:transform .25s,box-shadow .25s;position:relative;}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,.1);}
 .favbtn{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:white;border:1px solid var(--lg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .2s;z-index:5;box-shadow:0 1px 6px rgba(0,0,0,.08);}
-.favbtn:hover{transform:scale(1.15);}
 .favbtn.on{background:var(--fav);border-color:var(--fav);}
 .cb{padding:16px 18px 14px;}
 .ctag{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;padding-right:40px;}
@@ -50,8 +49,7 @@ h1 em{font-style:italic;color:var(--gold);}
 .cpr{font-size:10px;font-weight:600;color:var(--gold);background:rgba(201,168,92,.1);border:1px solid rgba(201,168,92,.25);padding:2px 8px;border-radius:2px;}
 .cn{font-family:'Playfair Display',serif;font-size:19px;line-height:1.2;margin-bottom:6px;padding-right:40px;}
 .lks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:9px;}
-.lks a{font-size:10px;color:var(--muted);text-decoration:none;transition:opacity .2s;}
-.lks a:hover{opacity:.65;}
+.lks a{font-size:10px;color:var(--muted);text-decoration:none;}
 .lks a.ws{color:var(--gold);font-weight:500;border-bottom:1px solid rgba(201,168,92,.3);}
 .lks a.ta{color:#00aa6c;font-weight:500;border-bottom:1px solid rgba(0,170,108,.3);}
 .sc{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:9px;}
@@ -75,7 +73,7 @@ h1 em{font-style:italic;color:var(--gold);}
     <p class="ht">Edizione 2025 &middot; Stefano's Pick</p>
     <h1>I Migliori Ristoranti<br>di <em>Milano</em></h1>
     <p class="hs">Una selezione curata con i punteggi di Michelin, Gambero Rosso e L&apos;Espresso. Ogni indirizzo linkato a Google Maps.</p>
-    <div class="hc"><b id="tot">92</b><small>Ristoranti<br>Selezionati</small></div>
+    <div class="hc"><b id="tot">0</b><small>Ristoranti<br>Selezionati</small></div>
   </div>
 </header>
 <div style="background:#111;border-bottom:2px solid var(--gold);">
@@ -100,7 +98,7 @@ h1 em{font-style:italic;color:var(--gold);}
         <button class="fb" data-c="internazionale">Internazionale</button>
         <button class="fb" data-c="pizza">Pizza</button>
       </div>
-      <span class="rc" id="rc">92 risultati</span>
+      <span class="rc" id="rc">0 risultati</span>
     </div>
     <div class="row">
       <span class="fl">Prezzo</span>
@@ -115,7 +113,7 @@ h1 em{font-style:italic;color:var(--gold);}
       <div class="dv"></div>
       <span class="fl">Guide</span>
       <div class="fg" id="gg">
-        <button class="fb" data-g="all">Tutte</button>
+        <button class="fb on" data-g="all">Tutte</button>
         <button class="fb" data-g="michelin">&#11088; Michelin</button>
         <button class="fb" data-g="gambero">&#127860; Gambero</button>
         <button class="fb" data-g="espresso">&#9749; Espresso</button>
@@ -125,7 +123,7 @@ h1 em{font-style:italic;color:var(--gold);}
     </div>
   </div>
 </div>
-<div class="gw"><div class="grid" id="grid"><div class="nr" id="nr"><h3>Nessun risultato</h3><p style="color:var(--muted)">Prova con un altro filtro</p></div></div></div>
+<div class="gw"><div class="grid" id="grid"></div></div>
 <script>
 var R=[
 {n:"Sea Signora",a:"Via Fiori Chiari 32, Brera",pl:4,pr:"€€€€ · ~120€",cu:"Pesce",tg:"pesce",ws:"https://seasignora.com",st:"Design anni 80, pavimenti in marmo, velluti porpora e acquario cilindrico. Cucina di mare cosmopolita.",mi:{s:0,b:0,g:0},gr:{f:3,l:"Tre Forchette"},es:{v:16,l:"16/20"},rv:["Crudi di mare straordinari, materia prima di altissimo livello.","Cucina mediterranea con tocchi mediorientali. Servizio impeccabile.","La frittura di calamari di Mazara con labneh è fantastica."]},
@@ -225,72 +223,100 @@ var R=[
 var favs = new Set();
 var S = {c:‘all’, p:‘all’, g:‘all’, q:’’, fav:false};
 
-function esc(s) {
-var d = document.createElement(‘div’);
-d.textContent = String(s);
-return d.innerHTML;
-}
+function te(s) { return document.createTextNode(String(s)); }
 
 function maps(a) {
 return ‘https://www.google.com/maps/search/?api=1&query=’ + encodeURIComponent(a + ‘, Milano’);
 }
 
 function miBadge(r) {
+var wrap = document.createElement(‘span’);
 if (r.mi.s >= 1) {
 var stars = ‘’;
 for (var i = 0; i < r.mi.s; i++) stars += ‘⭐’;
-var label = r.mi.s === 1 ? ‘Una Stella’ : r.mi.s + ’ Stelle’;
-var b = ‘<span class="sg mi">’ + stars + ’ ’ + label + ’ <span class="gn">Michelin</span></span>’;
-if (r.mi.g) b += ‘<span class="sg mi" style="background:#f0fff4;border-color:#a8d5b5;color:#276749">🌿 Green Star <span class="gn">Michelin</span></span>’;
-return b;
+var sp = document.createElement(‘span’);
+sp.className = ‘sg mi’;
+sp.textContent = stars + ’ ’ + (r.mi.s === 1 ? ‘Una Stella’ : r.mi.s + ’ Stelle’) + ’ ’;
+var gn = document.createElement(‘span’); gn.className = ‘gn’; gn.textContent = ‘Michelin’;
+sp.appendChild(gn); wrap.appendChild(sp);
+if (r.mi.g) {
+var gs = document.createElement(‘span’);
+gs.className = ‘sg mi’; gs.style.cssText = ‘background:#f0fff4;border-color:#a8d5b5;color:#276749’;
+gs.textContent = ’🌿 Green Star ’;
+var gn2 = document.createElement(‘span’); gn2.className = ‘gn’; gn2.textContent = ‘Michelin’;
+gs.appendChild(gn2); wrap.appendChild(gs);
 }
-if (r.mi.b) return ‘<span class="sg mi">😊 Bib Gourmand <span class="gn">Michelin</span></span>’;
-if (r.mi.g) return ‘<span class="sg mi" style="background:#f0fff4;border-color:#a8d5b5;color:#276749">🌿 Green Star <span class="gn">Michelin</span></span>’;
-return ‘<span class="sg mi fd">⭐ – <span class="gn">Michelin</span></span>’;
+return wrap;
 }
-
-function fork(n) {
-var s = ‘’;
-for (var i = 0; i < n; i++) s += ‘🍴’;
-return s;
+var sp = document.createElement(‘span’);
+if (r.mi.b) { sp.className = ‘sg mi’; sp.textContent = ’😊 Bib Gourmand ’; }
+else if (r.mi.g) { sp.className = ‘sg mi’; sp.style.cssText = ‘background:#f0fff4;border-color:#a8d5b5;color:#276749’; sp.textContent = ’🌿 Green Star ’; }
+else { sp.className = ‘sg mi fd’; sp.textContent = ’⭐ – ’; }
+var gn = document.createElement(‘span’); gn.className = ‘gn’; gn.textContent = ‘Michelin’;
+sp.appendChild(gn); wrap.appendChild(sp);
+return wrap;
 }
 
 function makeCard(r, idx) {
-var isFav = favs.has(r.n);
+var card = document.createElement(‘div’);
+card.className = ‘card’;
+card.dataset.idx = idx;
+
+var btn = document.createElement(‘button’);
+btn.className = ‘favbtn’ + (favs.has(r.n) ? ’ on’ : ‘’);
+btn.dataset.fav = idx;
+btn.textContent = favs.has(r.n) ? ‘❤️’ : ‘🤍’;
+card.appendChild(btn);
+
+var cb = document.createElement(‘div’); cb.className = ‘cb’;
+
+var ctag = document.createElement(‘div’); ctag.className = ‘ctag’;
+var ccu = document.createElement(‘span’); ccu.className = ‘ccu’; ccu.textContent = r.cu.toUpperCase();
+var cpr = document.createElement(‘span’); cpr.className = ‘cpr’; cpr.textContent = r.pr;
+ctag.appendChild(ccu); ctag.appendChild(cpr); cb.appendChild(ctag);
+
+var cn = document.createElement(‘h2’); cn.className = ‘cn’; cn.textContent = r.n;
+cb.appendChild(cn);
+
+var lks = document.createElement(‘div’); lks.className = ‘lks’;
+var am = document.createElement(‘a’); am.href = maps(r.a); am.target = ‘_blank’; am.textContent = ‘📍 ’ + r.a;
+var aw = document.createElement(‘a’); aw.href = r.ws; aw.target = ‘_blank’; aw.className = ‘ws’; aw.textContent = ‘🌐 Sito web’;
 var ta = ‘https://www.tripadvisor.it/Search?q=’ + encodeURIComponent(r.n + ’ Milano’);
-var rvs = ‘’;
+var at = document.createElement(‘a’); at.href = ta; at.target = ‘_blank’; at.className = ‘ta’; at.textContent = ‘🍽 TripAdvisor’;
+lks.appendChild(am); lks.appendChild(aw); lks.appendChild(at); cb.appendChild(lks);
+
+var sc = document.createElement(‘div’); sc.className = ‘sc’;
+sc.appendChild(miBadge(r));
+var forks = ‘’; for (var fi = 0; fi < r.gr.f; fi++) forks += ‘🍴’;
+var sgr = document.createElement(‘span’); sgr.className = ‘sg gr’;
+sgr.textContent = forks + ’ ’ + r.gr.l + ’ ’;
+var gnr = document.createElement(‘span’); gnr.className = ‘gn’; gnr.textContent = ‘Gambero Rosso’;
+sgr.appendChild(gnr); sc.appendChild(sgr);
+var ses = document.createElement(‘span’); ses.className = ‘sg es’;
+ses.textContent = ’☕ ’ + r.es.l + ’ ’;
+var gne = document.createElement(‘span’); gne.className = ‘gn’; gne.textContent = ‘L’Espresso’;
+ses.appendChild(gne); sc.appendChild(ses);
+cb.appendChild(sc);
+
+var cs = document.createElement(‘p’); cs.className = ‘cs’; cs.textContent = r.st; cb.appendChild(cs);
+
+var rvs = document.createElement(‘div’); rvs.className = ‘rvs’;
 for (var k = 0; k < r.rv.length; k++) {
-rvs += ‘<div class="rv"><span class="st">★★★★★</span><span>’ + esc(r.rv[k]) + ‘</span></div>’;
+var rv = document.createElement(‘div’); rv.className = ‘rv’;
+var st = document.createElement(‘span’); st.className = ‘st’; st.textContent = ‘★★★★★’;
+var tx = document.createElement(‘span’); tx.textContent = r.rv[k];
+rv.appendChild(st); rv.appendChild(tx); rvs.appendChild(rv);
 }
-return ‘<div class="card" data-idx="' + idx + '">’ +
-‘<button class="favbtn' + (isFav ? ' on' : '') + '" data-fav="' + idx + '">’ + (isFav ? ‘❤️’ : ‘🤍’) + ‘</button>’ +
-‘<div class="cb">’ +
-‘<div class="ctag"><span class="ccu">’ + esc(r.cu.toUpperCase()) + ‘</span><span class="cpr">’ + esc(r.pr) + ‘</span></div>’ +
-‘<h2 class="cn">’ + esc(r.n) + ‘</h2>’ +
-‘<div class="lks">’ +
-’<a href="' + maps(r.a) + '" target="_blank">📍 ’ + esc(r.a) + ’</a> ’ +
-‘<a href="' + esc(r.ws) + '" target="_blank" class="ws">🌐 Sito web</a> ’ +
-‘<a href="' + esc(ta) + '" target="_blank" class="ta">🍽 TripAdvisor</a>’ +
-‘</div>’ +
-‘<div class="sc">’ + miBadge(r) +
-‘<span class="sg gr">’ + fork(r.gr.f) + ’ ’ + esc(r.gr.l) + ’ <span class="gn">Gambero Rosso</span></span>’ +
-‘<span class="sg es">☕ ’ + esc(r.es.l) + ’ <span class="gn">L’Espresso</span></span>’ +
-‘</div>’ +
-‘<p class="cs">’ + esc(r.st) + ‘</p>’ +
-‘<div class="rvs">’ + rvs + ‘</div>’ +
-‘</div></div>’;
+cb.appendChild(rvs);
+card.appendChild(cb);
+return card;
 }
 
 function toggleFav(i) {
 var name = R[i].n;
 if (favs.has(name)) { favs.delete(name); } else { favs.add(name); }
-updateFavCount();
+document.getElementById(‘favc’).textContent = favs.size > 0 ? ‘(’ + favs.size + ‘)’ : ‘’;
 render();
-}
-
-function updateFavCount() {
-var n = favs.size;
-document.getElementById(‘favc’).textContent = n > 0 ? ‘(’ + n + ‘)’ : ‘’;
 }
 
 function render() {
@@ -304,12 +330,9 @@ if (S.g === ‘gambero’ && r.gr.f < 2) continue;
 if (S.g === ‘espresso’ && r.es.v < 15) continue;
 if (S.fav && !favs.has(r.n)) continue;
 if (S.q) {
-var q = S.q.toLowerCase();
-var ok = false;
+var q = S.q.toLowerCase(), ok = false;
 var ff = [r.n, r.cu, r.a, r.st];
-for (var j = 0; j < ff.length; j++) {
-if (ff[j].toLowerCase().indexOf(q) >= 0) { ok = true; break; }
-}
+for (var j = 0; j < ff.length; j++) { if (ff[j].toLowerCase().indexOf(q) >= 0) { ok = true; break; } }
 if (!ok) continue;
 }
 f.push(i);
@@ -317,36 +340,34 @@ f.push(i);
 document.getElementById(‘tot’).textContent = f.length;
 document.getElementById(‘rc’).textContent = f.length + ’ risultati’;
 var grid = document.getElementById(‘grid’);
-var cards = grid.querySelectorAll(’.card’);
-for (var k = 0; k < cards.length; k++) { cards[k].remove(); }
-document.getElementById(‘nr’).style.display = f.length ? ‘none’ : ‘block’;
-for (var m = 0; m < f.length; m++) {
-grid.insertAdjacentHTML(‘beforeend’, makeCard(R[f[m]], f[m]));
+while (grid.firstChild) { grid.removeChild(grid.firstChild); }
+if (!f.length) {
+var nr = document.createElement(‘div’); nr.className = ‘nr’;
+nr.innerHTML = ‘<h3>Nessun risultato</h3><p style="color:var(--muted)">Prova con un altro filtro</p>’;
+grid.appendChild(nr); return;
 }
+var frag = document.createDocumentFragment();
+for (var m = 0; m < f.length; m++) { frag.appendChild(makeCard(R[f[m]], f[m])); }
+grid.appendChild(frag);
 }
 
-// Event delegation per favbtn — niente onclick inline
 document.getElementById(‘grid’).addEventListener(‘click’, function(e) {
 var btn = e.target.closest(’[data-fav]’);
-if (btn) { toggleFav(parseInt(btn.dataset.fav, 10)); }
+if (btn) toggleFav(parseInt(btn.dataset.fav, 10));
 });
-
 document.getElementById(‘cg’).addEventListener(‘click’, function(e) {
-var b = e.target.closest(’.fb’);
-if (!b) return;
-document.querySelectorAll(’#cg .fb’).forEach(function(x) { x.classList.remove(‘on’); });
+var b = e.target.closest(’.fb’); if (!b) return;
+document.querySelectorAll(’#cg .fb’).forEach(function(x){x.classList.remove(‘on’);});
 b.classList.add(‘on’); S.c = b.dataset.c; render();
 });
 document.getElementById(‘pg’).addEventListener(‘click’, function(e) {
-var b = e.target.closest(’.fb’);
-if (!b) return;
-document.querySelectorAll(’#pg .fb’).forEach(function(x) { x.classList.remove(‘on’); });
+var b = e.target.closest(’.fb’); if (!b) return;
+document.querySelectorAll(’#pg .fb’).forEach(function(x){x.classList.remove(‘on’);});
 b.classList.add(‘on’); S.p = b.dataset.p; render();
 });
 document.getElementById(‘gg’).addEventListener(‘click’, function(e) {
-var b = e.target.closest(’.fb’);
-if (!b) return;
-document.querySelectorAll(’#gg .fb’).forEach(function(x) { x.classList.remove(‘on’); });
+var b = e.target.closest(’.fb’); if (!b) return;
+document.querySelectorAll(’#gg .fb’).forEach(function(x){x.classList.remove(‘on’);});
 b.classList.add(‘on’); S.g = b.dataset.g; render();
 });
 document.getElementById(‘favf’).addEventListener(‘click’, function() {
@@ -356,8 +377,7 @@ document.getElementById(‘srch’).addEventListener(‘input’, function(e) {
 S.q = e.target.value; render();
 });
 
-updateFavCount();
-render();
+document.addEventListener(‘DOMContentLoaded’, function() { render(); });
 </script>
 
 </body>
