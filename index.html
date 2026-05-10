@@ -29,9 +29,9 @@ h1 em{font-style:italic;color:var(--gold);}
 .fl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500;white-space:nowrap;}
 .fg{display:flex;flex-wrap:wrap;gap:4px;}
 .fb{padding:5px 11px;border:1px solid var(--lg);border-radius:2px;background:white;font-family:'DM Sans',sans-serif;font-size:10px;cursor:pointer;transition:all .2s;color:var(--muted);white-space:nowrap;}
-.fb:hover,.fb.on{background:var(--charcoal);border-color:var(--charcoal);color:var(--cream);}
-.pb.on{background:var(--gold);border-color:var(--gold);color:var(--charcoal);font-weight:700;}
-.fb.favf.on{background:var(--fav);border-color:var(--fav);color:white;}
+.fb:hover,.fb.on{background:var(--gold);border-color:var(--gold);color:var(--charcoal);}
+.pb.on{background:var(--gold);border-color:var(--gold);color:var(--charcoal);}
+.fb.favf.on{background:var(--gold);border-color:var(--gold);color:var(--charcoal);}
 .dv{width:1px;height:16px;background:var(--lg);flex-shrink:0;}
 .rc{font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap;}
 .gw{max-width:1200px;margin:0 auto;padding:24px 40px 80px;}
@@ -91,7 +91,8 @@ h1 em{font-style:italic;color:var(--gold);}
   <div class="ci">
     <div class="row">
       <div class="sw"><span class="si">🔍</span><input type="text" id="srch" placeholder="Cerca nome, cucina, zona..."></div>
-      <div class="dv"></div>
+    </div>
+    <div class="row">
       <span class="fl">Cucina</span>
       <div class="fg" id="cg">
         <button class="fb on" data-c="all">Tutti</button>
@@ -102,7 +103,6 @@ h1 em{font-style:italic;color:var(--gold);}
         <button class="fb" data-c="internazionale">Internazionale</button>
         <button class="fb" data-c="pizza">Pizza</button>
       </div>
-            <span class="rc" id="rc">100 risultati</span>
     </div>
     <div class="row">
       <span class="fl">Zona</span>
@@ -120,6 +120,7 @@ h1 em{font-style:italic;color:var(--gold);}
         <button class="fb" data-z="isola">Isola</button>
         <button class="fb" data-z="other">Altro</button>
       </div>
+    </div>
     <div class="row">
       <span class="fl">Prezzo</span>
       <div class="fg" id="pg">
@@ -130,7 +131,8 @@ h1 em{font-style:italic;color:var(--gold);}
         <button class="fb pb" data-p="4">€€€€ 80–120</button>
         <button class="fb pb" data-p="5">€€€€€ 120+</button>
       </div>
-      <div class="dv"></div>
+    </div>
+    <div class="row">
       <span class="fl">Guide</span>
       <div class="fg" id="gg">
         <button class="fb on" data-g="all">Tutte</button>
