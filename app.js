@@ -78,7 +78,7 @@ var R=[
   {n:"Sandi",a:"Via Lomellina 14, Porta Romana",pl:2,pr:"€€ · ~42€",cu:"Italiana Moderna",tg:"italiana",ws:"https://sandiristorante.it",st:"Piccolo ristorante di quartiere con cucina sincera. Menu breve e rotazione stagionale.",mi:{s:0,b:0,g:0},gr:{f:1,l:"Una Forchetta"},es:{v:13,l:"13/20"},rv:["Un posto che fa bene all’anima. Cucina vera, senza fronzoli.","La pasta fresca e motivo sufficiente per tornare ogni settimana.","Tra i migliori rapporti qualita/prezzo della zona."]},
     {n:"Sea Signora",a:"Via Fiori Chiari 32, Brera",pl:4,pr:"€€€€ · ~120€",cu:"Pesce",tg:"pesce",ws:"https://seasignora.com",st:"Design anni 80, pavimenti in marmo, velluti porpora e acquario cilindrico. Cucina di mare cosmopolita.",mi:{s:0,b:0,g:0},gr:{f:3,l:"Tre Forchette"},es:{v:16,l:"16/20"},rv:["Crudi di mare straordinari, materia prima di altissimo livello.","Cucina mediterranea con tocchi mediorientali. Servizio impeccabile.","La frittura di calamari di Mazara con labneh e fantastica."]},
   {n:"Seta",a:"Via Andegari 9, Duomo",pl:5,pr:"€€€€€ · ~200€",cu:"Alta Cucina",tg:"italiana",ws:"https://mandarinoriental.com/milan",st:"Due stelle Michelin al Mandarin Oriental. Chef Antonio Guida, cucina italiana nell’olimpo gastronomico.",mi:{s:2,b:0,g:0},gr:{f:3,l:"Tre Forchette"},es:{v:19,l:"19/20"},rv:["Una delle esperienze gastronomiche piu complete d’Italia.","Menu degustazione straordinario: tecnica, creativita, tradizione.","Servizio di rara perfezione. Sommelier tra i migliori d’Italia."]},
-  {n:"Sine",a:"Via Cesare da Sesto 5, Porta Romana",pl:3,pr:"€€€ · ~65€",cu:"Italiana Contemporanea",tg:"italiana",ws:"https://sineristorante.it",st:"Cucina italiana contemporanea in zona Porta Romana. Menu stagionale, ingredienti selezionati, atmosfera elegante e raccolta.",mi:{s:0,b:0,g:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Cucina precisa e ben centrata, ogni piatto racconta una storia.","Ambiente sofisticato ma non formale, perfetto per cene importanti.","La carta dei vini e curata con grande intelligenza."]},
+  {n:"Sine",a:"Via Cesare da Sesto 5, Porta Romana",pl:3,pr:"€€€ · ~65€",cu:"Italiana Contemporanea",tg:"italiana",ws:"https://sineristorante.it",st:"Cucina italiana contemporanea in zona Porta Romana. Menu stagionale, ingredienti selezionati, atmosfera elegante.",mi:{s:0,b:0,g:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Cucina precisa e ben centrata, ogni piatto racconta una storia.","Ambiente sofisticato ma non formale, perfetto per cene importanti.","La carta dei vini e curata con grande intelligenza."]},
   {n:"Sogni",a:"Via Orti 14, Porta Romana",pl:3,pr:"€€€ · ~60€",cu:"Italiana Creativa",tg:"italiana",ws:"https://sognimilano.it",st:"Piccolo ristorante con cucina italiana creativa. Chef giovane e ambizioso.",mi:{s:0,b:0,g:0},gr:{f:2,l:"Due Forchette"},es:{v:14,l:"14/20"},rv:["Una scoperta bellissima. La cucina e ambiziosa e centrata.","Menu degustazione: viaggio tra creativita e tradizione.","Pochi tavoli garantiscono attenzione personalizzata."]},
   {n:"Starita",a:"Via Procaccini 20, Sarpi",pl:1,pr:"€ · ~25€",cu:"Pizza Napoletana",tg:"pizza",ws:"https://staritanapoli.it",st:"La leggendaria pizzeria napoletana di Materdei a Milano. Lievito madre e forno a legna.",mi:{s:0,b:0,g:0},gr:{f:2,l:"Due Forchette"},es:{v:13,l:"13/20"},rv:["La pizza napoletana piu autentica di Milano.","Friggitoria straordinaria: montanarine, cuoppo, crocchette.","Prezzi paragonabili a Napoli, qualita idem."]},
   {n:"Sushi Matsu Omakase",a:"Via Napo Torriani 34, Repubblica",pl:4,pr:"€€€€ · ~120€",cu:"Sushi Omakase",tg:"giapponese",ws:"https://sushimatsu.it",st:"Omakase puro. Il pesce arriva dal Giappone e il cuoco lavora davanti agli ospiti con precisione.",mi:{s:0,b:0,g:0},gr:{f:2,l:"Due Forchette"},es:{v:16,l:"16/20"},rv:["L’omakase qui e un’esperienza autentica e commovente.","Il pesce importato dal Giappone e di una qualita rara in Italia.","Pochi posti al bancone, prenotazione con mesi di anticipo."]},
@@ -103,7 +103,15 @@ var R=[
 ];
 
 var favs=new Set(JSON.parse(localStorage.getItem('mifav25')||'[]'));
+var wish=new Set(JSON.parse(localStorage.getItem('miwish25')||'[]'));
 function saveFavs(){localStorage.setItem('mifav25',JSON.stringify(Array.from(favs)));}
+function saveWish(){localStorage.setItem('miwish25',JSON.stringify(Array.from(wish)));}
+
+window.toggleWish=function(i){
+  var n=R[i].n;
+  wish.has(n)?wish.delete(n):wish.add(n);
+  saveWish();updateWishCount();render();
+};
 
 window.toggleFav=function(i){
   var n=R[i].n;
@@ -130,11 +138,13 @@ function miBadge(r){
 
 function makeCard(r,i){
   var isFav=favs.has(r.n);
+  var isWish=wish.has(r.n);
   var ta='https://www.tripadvisor.it/Search?q='+encodeURIComponent(r.n+' Milano');
   var rvs='';
   for(var k=0;k<r.rv.length;k++)rvs+='<div class="rv"><span class="st">\u2605\u2605\u2605\u2605\u2605</span><span>'+r.rv[k]+'</span></div>';
   return '<div class="card">'
     +'<button class="favbtn'+(isFav?' on':'')+'" onclick="toggleFav('+i+')">'+( isFav?'\u2764\uFE0F':'\uD83E\uDD0D')+'</button>'
+    +'<button class="wishbtn'+(isWish?' on':'')+'" onclick="toggleWish('+i+')">\uD83C\uDFAF</button>'
     +'<div class="cb">'
     +'<div class="ctag"><span class="ccu">'+r.cu.toUpperCase()+'</span><span class="cpr">'+r.pr+'</span></div>'
     +'<h2 class="cn"><a href="'+r.ws+'" target="_blank" style="color:inherit;text-decoration:none;">'+r.n+'</a></h2>'
@@ -156,6 +166,10 @@ function updateFavCount(){
   var n=favs.size;
   document.getElementById('favc').textContent=n>0?'('+n+')':'';
 }
+function updateWishCount(){
+  var n=wish.size;
+  document.getElementById('wishc').textContent=n>0?'('+n+')':'';
+}
 
 function render(){
   var f=[];
@@ -166,6 +180,8 @@ function render(){
     if(S.g==='michelin'&&!r.mi.s&&!r.mi.b&&!r.mi.g)continue;
     if(S.g==='gambero'&&r.gr.f<2)continue;
     if(S.g==='espresso'&&r.es.v<15)continue;
+    if(S.z!=='all'){var rz=getZone(r.a);if(S.z==='other'){if(mainZones.indexOf(rz)!==-1)continue;}else{if(rz!==S.z)continue;}}
+    if(S.wish&&!wish.has(r.n))continue;
     if(S.z!=='all'){var rz=getZone(r.a);if(S.z==='other'){if(mainZones.indexOf(rz)!==-1)continue;}else{if(rz!==S.z)continue;}}
     if(S.fav&&!favs.has(r.n))continue;
     if(S.q){var q=S.q.toLowerCase();var ok=false;var ff=[r.n,r.cu,r.a,r.st];for(var j=0;j<ff.length;j++){if(ff[j].toLowerCase().indexOf(q)>=0){ok=true;break;}}if(!ok)continue;}
@@ -183,8 +199,11 @@ function render(){
 document.getElementById('cg').addEventListener('click',function(e){var b=e.target.closest('.fb');if(!b)return;document.querySelectorAll('#cg .fb').forEach(function(x){x.classList.remove('on');});b.classList.add('on');S.c=b.dataset.c;render();});
 document.getElementById('pg').addEventListener('click',function(e){var b=e.target.closest('.fb');if(!b)return;document.querySelectorAll('#pg .fb').forEach(function(x){x.classList.remove('on');});b.classList.add('on');S.p=b.dataset.p;render();});
 document.getElementById('gg').addEventListener('click',function(e){var b=e.target.closest('.fb');if(!b)return;document.querySelectorAll('#gg .fb').forEach(function(x){x.classList.remove('on');});b.classList.add('on');S.g=b.dataset.g;render();});
-document.getElementById('favf').addEventListener('click',function(){S.fav=!S.fav;this.classList.toggle('on',S.fav);render();});
+document.getElementById('zg').addEventListener('click',function(e){var b=e.target.closest('.fb');if(!b)return;document.querySelectorAll('#zg .fb').forEach(function(x){x.classList.remove('on');});b.classList.add('on');S.z=b.dataset.z;render();});
+document.getElementById('favf').addEventListener('click',function(){S.fav=!S.fav;S.wish=false;document.getElementById('wishf').classList.remove('on');this.classList.toggle('on',S.fav);render();});
+document.getElementById('wishf').addEventListener('click',function(){S.wish=!S.wish;S.fav=false;document.getElementById('favf').classList.remove('on');this.classList.toggle('on',S.wish);render();});
 document.getElementById('srch').addEventListener('input',function(e){S.q=e.target.value;render();});
 
 updateFavCount();
+updateWishCount();
 render();
