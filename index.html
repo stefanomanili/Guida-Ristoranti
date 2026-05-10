@@ -43,6 +43,9 @@ h1 em{font-style:italic;color:var(--gold);}
 .favbtn{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:white;border:1px solid var(--lg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .2s;z-index:5;box-shadow:0 1px 6px rgba(0,0,0,.08);}
 .favbtn:hover{transform:scale(1.15);}
 .favbtn.on{background:var(--fav);border-color:var(--fav);}
+.wishbtn{position:absolute;top:12px;right:50px;width:32px;height:32px;border-radius:50%;background:white;border:1px solid var(--lg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .2s;z-index:5;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+.wishbtn:hover{transform:scale(1.15);}
+.wishbtn.on{background:#FF6B35;border-color:#FF6B35;}
 .cb{padding:16px 18px 14px;}
 .ctag{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;padding-right:40px;}
 .ccu{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500;}
@@ -136,7 +139,8 @@ h1 em{font-style:italic;color:var(--gold);}
         <button class="fb" data-g="espresso">☕ Espresso</button>
       </div>
       <div class="dv"></div>
-      <button class="fb favf" id="favf">❤️ Preferiti <span id="favc"></span></button>
+      <button class="fb favf" id="favf">❤️ Visited <span id="favc"></span></button>
+      <button class="fb favf" id="wishf">🎯 Wishlist <span id="wishc"></span></button>
     </div>
   </div>
 </div>
@@ -145,6 +149,6 @@ h1 em{font-style:italic;color:var(--gold);}
     <div class="nr" id="nr"><h3>Nessun risultato</h3><p style="color:var(--muted)">Prova con un altro filtro</p></div>
   </div>
 </div>
-<script src="app3.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
