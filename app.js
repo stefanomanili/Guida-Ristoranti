@@ -143,7 +143,7 @@ function makeCard(r,i){
   var rvs='';
   for(var k=0;k<r.rv.length;k++)rvs+='<div class="rv"><span class="st">\u2605\u2605\u2605\u2605\u2605</span><span>'+r.rv[k]+'</span></div>';
   return '<div class="card">'
-    +'<button class="favbtn'+(isFav?' on':'')+'" onclick="toggleFav('+i+')">'+( isFav?'\u2764\uFE0F':'\uD83E\uDD0D')+'</button>'
+    +'<button class="favbtn'+(isFav?' on':'')+'" onclick="toggleFav('+i+')">'+( '\u2764\uFE0F')+'</button>'
     +'<button class="wishbtn'+(isWish?' on':'')+'" onclick="toggleWish('+i+')">\uD83C\uDFAF</button>'
     +'<div class="cb">'
     +'<div class="ctag"><span class="ccu">'+r.cu.toUpperCase()+'</span><span class="cpr">'+r.pr+'</span></div>'
