@@ -103,7 +103,15 @@ var R=[
 ];
 
 var favs=new Set(JSON.parse(localStorage.getItem('mifav25')||'[]'));
+var wish=new Set(JSON.parse(localStorage.getItem('miwish25')||'[]'));
 function saveFavs(){localStorage.setItem('mifav25',JSON.stringify(Array.from(favs)));}
+function saveWish(){localStorage.setItem('miwish25',JSON.stringify(Array.from(wish)));}
+
+window.toggleWish=function(i){
+  var n=R[i].n;
+  wish.has(n)?wish.delete(n):wish.add(n);
+  saveWish();updateWishCount();render();
+};
 
 window.toggleFav=function(i){
   var n=R[i].n;
@@ -113,7 +121,7 @@ window.toggleFav=function(i){
 updateFavCount();render();
 };
 
-var S={c:'all',p:'all',g:'all',z:'all',q:'',fav:false};
+var S={c:'all',p:'all',g:'all',z:'all',q:'',fav:false,wish:false};
 
 var mainZones=['brera','navigli','duomo','porta venezia','porta romana','porta garibaldi','moscova','sarpi','tortona','isola'];
 
@@ -130,11 +138,13 @@ function miBadge(r){
 
 function makeCard(r,i){
   var isFav=favs.has(r.n);
+  var isWish=wish.has(r.n);
   var ta='https://www.tripadvisor.it/Search?q='+encodeURIComponent(r.n+' Milano');
   var rvs='';
   for(var k=0;k<r.rv.length;k++)rvs+='<div class="rv"><span class="st">\u2605\u2605\u2605\u2605\u2605</span><span>'+r.rv[k]+'</span></div>';
   return '<div class="card">'
     +'<button class="favbtn'+(isFav?' on':'')+'" onclick="toggleFav('+i+')">'+( isFav?'\u2764\uFE0F':'\uD83E\uDD0D')+'</button>'
+    +'<button class="wishbtn'+(isWish?' on':'')+'" onclick="toggleWish('+i+')">'+( isWish?'\u2705':'\u2714\uFE0F')+'</button>'
     +'<div class="cb">'
     +'<div class="ctag"><span class="ccu">'+r.cu.toUpperCase()+'</span><span class="cpr">'+r.pr+'</span></div>'
     +'<h2 class="cn"><a href="'+r.ws+'" target="_blank" style="color:inherit;text-decoration:none;">'+r.n+'</a></h2>'
@@ -156,6 +166,10 @@ function updateFavCount(){
   var n=favs.size;
   document.getElementById('favc').textContent=n>0?'('+n+')':'';
 }
+function updateWishCount(){
+  var n=wish.size;
+  document.getElementById('wishc').textContent=n>0?'('+n+')':'';
+}
 
 function render(){
   var f=[];
@@ -168,6 +182,7 @@ function render(){
     if(S.g==='espresso'&&r.es.v<15)continue;
     if(S.z!=='all'){var rz=getZone(r.a);if(S.z==='other'){if(mainZones.indexOf(rz)!==-1)continue;}else{if(rz!==S.z)continue;}}
     if(S.fav&&!favs.has(r.n))continue;
+    if(S.wish&&!wish.has(r.n))continue;
     if(S.q){var q=S.q.toLowerCase();var ok=false;var ff=[r.n,r.cu,r.a,r.st];for(var j=0;j<ff.length;j++){if(ff[j].toLowerCase().indexOf(q)>=0){ok=true;break;}}if(!ok)continue;}
     f.push(i);
   }
@@ -183,8 +198,10 @@ function render(){
 document.getElementById('cg').addEventListener('click',function(e){var b=e.target.closest('.fb');if(!b)return;document.querySelectorAll('#cg .fb').forEach(function(x){x.classList.remove('on');});b.classList.add('on');S.c=b.dataset.c;render();});
 document.getElementById('pg').addEventListener('click',function(e){var b=e.target.closest('.fb');if(!b)return;document.querySelectorAll('#pg .fb').forEach(function(x){x.classList.remove('on');});b.classList.add('on');S.p=b.dataset.p;render();});
 document.getElementById('gg').addEventListener('click',function(e){var b=e.target.closest('.fb');if(!b)return;document.querySelectorAll('#gg .fb').forEach(function(x){x.classList.remove('on');});b.classList.add('on');S.g=b.dataset.g;render();});
-document.getElementById('favf').addEventListener('click',function(){S.fav=!S.fav;this.classList.toggle('on',S.fav);render();});
+document.getElementById('favf').addEventListener('click',function(){S.fav=!S.fav;S.wish=false;document.getElementById('wishf').classList.remove('on');this.classList.toggle('on',S.fav);render();});
+document.getElementById('wishf').addEventListener('click',function(){S.wish=!S.wish;S.fav=false;document.getElementById('favf').classList.remove('on');this.classList.toggle('on',S.wish);render();});
 document.getElementById('srch').addEventListener('input',function(e){S.q=e.target.value;render();});
 
 updateFavCount();
+updateWishCount();
 render();
